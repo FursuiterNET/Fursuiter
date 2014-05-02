@@ -10,7 +10,7 @@ Session = None
 
 
 def main(global_config, **settings):
-    config = Configurator(settings=settings, root_factory='.FSModels.Root')
+    config = Configurator(settings=settings)
     config.include('pyramid_chameleon')
     config.add_renderer('prettyjson', JSON(indent=4))
     authn = AuthTktAuthenticationPolicy(secret=config.registry.settings['auth_key'], callback=get_auth_level,
