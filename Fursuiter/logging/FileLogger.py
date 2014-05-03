@@ -1,3 +1,5 @@
+import datetime
+
 from Fursuiter.logging import PrintLogger, LogLevel
 
 
@@ -8,16 +10,16 @@ class FileLogger(PrintLogger):
 
     def error(self, msg):
         if self.log_level >= LogLevel.ERROR:
-            self.fp.write(msg + "\n")
+            self.fp.write("%s ERROR: %s" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), msg + "\n"))
 
     def warn(self, msg):
         if self.log_level >= LogLevel.WARN:
-            self.fp.write(msg + "\n")
+            self.fp.write("%s WARN: %s" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), msg + "\n"))
 
     def info(self, msg):
         if self.log_level >= LogLevel.INFO:
-            self.fp.write(msg + "\n")
+            self.fp.write("%s INFO: %s" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), msg + "\n"))
 
     def debug(self, msg):
         if self.log_level >= LogLevel.DEBUG:
-            self.fp.write(msg + "\n")
+            self.fp.write("%s DEBUG: %s" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), msg + "\n"))
