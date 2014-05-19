@@ -12,7 +12,7 @@ __logger = None
 def getlogger():
     global __logger
     if __logger is None:
-        __logger = PrintLogger()
+        __logger = PrintLogger(log_level=LogLevel.DEBUG)
     return __logger
 
 
