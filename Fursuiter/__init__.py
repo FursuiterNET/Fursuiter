@@ -21,6 +21,8 @@ def main(global_config, **settings):
 
     config.add_renderer('prettyjson', JSON(indent=4))
 
+    config.add_static_view('/static', 'Fursuiter:static', cache_max_age=3600)
+
     config.add_route('home', '/')
     config.scan('Fursuiter.views')
 

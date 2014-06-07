@@ -1,0 +1,45 @@
+@background: #343838;
+@accent: #005F6B;
+@primary: #008C9E;
+@secondary: #00B4CC;
+@highlight: darken(#00DFFC, 10%);
+
+a {
+  color: @highlight;
+  text-decoration: none;
+  &:hover {
+    color: darken(@highlight, 25%);
+  }
+}
+
+.btn-primary {
+  display: inline-block;
+  text-align: center;
+  border-radius: 4px;
+  border: none;
+  background-color: @primary;
+  padding: 5px 8px;
+  color: #fff;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken(@primary, 25%);
+    color: #fff;
+  }
+}
+
+.btn-default {
+  display: inline-block;
+  text-align: center;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  padding: 5px 8px;
+  color: #000;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken(#fff, 5%);
+    color: #000;
+  }
+}
