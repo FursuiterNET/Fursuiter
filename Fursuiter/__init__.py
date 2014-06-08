@@ -13,6 +13,7 @@ def main(global_config, **settings):
     config.set_session_factory(session_factory_from_settings(settings))
     sql.sql_init(config.registry.settings['sql.dsn'])
 
+    # TODO: Refactor subscribers
     config.add_subscriber(validate_session, NewRequest)
     config.add_subscriber(sql.start_db_profiling, NewRequest)
 
