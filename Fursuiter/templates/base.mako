@@ -10,14 +10,18 @@
 <div class="page-wrap">
     <div class="header">
         <div class="nav-toggle">
-            <i class="fa fa-bars fa-lg"></i>
+            <i class="fa fa-paw fa-lg"></i>
         </div>
         <div class="logo"><h2>Fursuiter</h2></div>
         <div class="note-icon">
             <i class="fa fa-bell-o fa-lg"></i>
+
+            <div class="count">12</div>
         </div>
         <div class="note-icon">
             <i class="fa fa-envelope-o fa-lg"></i>
+
+            <div class="count">14</div>
         </div>
         <div class="note-icon">
             <i class="fa fa-search fa-lg"></i>

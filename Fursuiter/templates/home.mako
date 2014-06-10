@@ -16,6 +16,8 @@
         <div class="tab">
             <div class="icon">
                 <i class="fa fa-inbox fa-lg fa-fw"></i>
+
+                <div class="pill">14</div>
             </div>
             Inbox
         </div>
@@ -30,6 +32,40 @@
                 <i class="fa fa-cog fa-lg fa-fw"></i>
             </div>
             Settings
+        </div>
+    </div>
+</div>
+<div class="dash-content">
+    <div class="dash-feed">
+        <h2 class="title">Feed</h2>
+
+        <div class="media">
+            <img src="/static/demo/avatar.png" class="avi">
+
+            <p class="time">2 Hours ago</p>
+
+            <p>SomeUser liked SomeThing</p>
+        </div>
+        <div class="media">
+            <img src="/static/demo/avatar.png" class="avi">
+
+            <p class="time">2 Hours ago</p>
+
+            <p>SomeUser liked SomeThing</p>
+        </div>
+        <div class="media">
+            <img src="/static/demo/avatar.png" class="avi">
+
+            <p class="time">2 Hours ago</p>
+
+            <p>SomeUser liked SomeThing</p>
+        </div>
+        <div class="media">
+            <img src="/static/demo/avatar.png" class="avi">
+
+            <p class="time">2 Hours ago</p>
+
+            <p>SomeUser liked SomeThing</p>
         </div>
     </div>
 </div>

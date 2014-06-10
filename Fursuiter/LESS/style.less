@@ -22,19 +22,19 @@ body {
   .page-wrap {
     display: block;
     max-width: 1600px;
-    min-height: 100%;
+    height: 100%;
     margin-left: auto;
     margin-right: auto;
     position: relative;
+    overflow: auto;
     background-color: darken(#ffffff, 5%);
 
     .nav-menu {
-      min-height: 100%;
+      height: 100%;
       width: 45px;
-      position: absolute;
+      position: relative;
       background-color: darken(@accent, 12%);
-      left: 0;
-      top: 0;
+      .pull-left;
 
       a {
         color: darken(#fff, 15%);
@@ -60,13 +60,6 @@ body {
         margin: 18px 0;
         height: 0;
         border-bottom: 1px solid fade(#fff, 15%);
-      }
-
-      &:before {
-        content: ".";
-        margin-bottom: 78px;
-        height: 0;
-        display: block;
       }
     }
 
@@ -114,7 +107,7 @@ body {
       }
 
       .note-icon {
-        width: 40px;
+        min-width: 40px;
         height: 64px;
         display: inline-block;
         position: relative;
@@ -122,6 +115,21 @@ body {
         line-height: 64px;
         vertical-align: middle;
         .pull-left;
+
+        .count {
+          display: block;
+          position: absolute;
+          line-height: 14px;
+          min-width: 14px;
+          height: 14px;
+          left: 14px;
+          top: 18px;
+          color: #fff;
+          background-color: red;
+          border-radius: 2px;
+          font-size: 8pt;
+          text-align: center;
+        }
       }
 
       .clock {
@@ -133,6 +141,11 @@ body {
         vertical-align: middle;
         font-size: 20px;
         font-weight: 400;
+        display: none;
+
+        @media (min-width: 620px) {
+          display: inline;
+        }
 
         .hmin {
           &:after {
@@ -146,19 +159,18 @@ body {
 
     .dash-menu {
       color: #fff;
-      min-height: 100%;
+      height: 100%;
       width: 220px;
       background-color: darken(@accent, 5%);
       display: block;
-      position: absolute;
-      left: 45px;
-      top: 0;
+      .pull-left;
 
       .profile {
         display: block;
         height: 180px;
         width: 100%;
         text-align: center;
+        margin-top: 8px;
 
         .full-name {
           font-size: 20px;
@@ -196,6 +208,21 @@ body {
           margin-right: 16px;
           .pull-left;
         }
+
+        .pill {
+          display: block;
+          position: absolute;
+          right: 24px;
+          height: 20px;
+          padding-left: 4px;
+          padding-right: 4px;
+          line-height: 20px;
+          vertical-align: middle;
+          text-align: center;
+          border-radius: 2px;
+          top: 3px;
+          background-color: lighten(@accent, 5%);
+        }
       }
 
       .tab.active {
@@ -212,12 +239,52 @@ body {
           border-right: 8px solid darken(#fff, 5%);
         }
       }
+    }
 
-      &:before {
-        content: ".";
-        margin-bottom: 84px;
-        height: 0;
+    .dash-content {
+      position: relative;
+      display: block;
+      margin-left: 265px;
+      min-height: 300px;
+
+      .dash-feed {
         display: block;
+        max-width: 600px;
+        text-overflow: ellipsis;
+        position: relative;
+        border: 1px solid fade(#000, 15%);
+        box-shadow: 0px 0px 5px 0px fade(#000, 15%);
+        margin-top: 16px;
+        margin-left: 16px;
+
+        .title {
+          display: block;
+          color: #fff;
+          background-color: fade(@accent, 80%);
+          padding: 4px 4px 4px 8px;
+          font-size: 14px;
+          font-weight: 400;
+        }
+
+        .media {
+          display: block;
+          vertical-align: middle;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+          padding: 6px;
+
+          .time {
+            color: fade(#000, 60%);
+            font-size: 10pt;
+          }
+
+          .avi {
+            width: 40px;
+            height: 40px;
+            display: block;
+            margin-right: 12px;
+            .pull-left;
+          }
+        }
       }
     }
   }
