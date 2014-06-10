@@ -68,4 +68,16 @@
             <p>SomeUser liked SomeThing</p>
         </div>
     </div>
+    <div class="trending">
+        <h2 class="title">Trends</h2>
+
+        <div class="media"><a href="#">SomeImage</a> by <a href="#">@SomeUser</a></div>
+        <div class="media"><a href="#">#SomeUpcomingConvention</a></div>
+        <div class="media"><a href="#">SomeImage</a> by <a href="#">@SomeUser</a></div>
+        <div class="media"><a href="#">#SomeUpcomingConvention</a></div>
+        <div class="media"><a href="#">SomeImage</a> by <a href="#">@SomeUser</a></div>
+        <div class="media"><a href="#">#SomeUpcomingConvention</a></div>
+        <div class="media"><a href="#">SomeImage</a> by <a href="#">@SomeUser</a></div>
+        <div class="media"><a href="#">#SomeUpcomingConvention</a></div>
+    </div>
 </div>

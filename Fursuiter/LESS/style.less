@@ -247,24 +247,24 @@ body {
       margin-left: 265px;
       min-height: 300px;
 
-      .dash-feed {
+      .title {
         display: block;
-        max-width: 600px;
+        color: #fff;
+        background-color: fade(@accent, 80%);
+        padding: 4px 4px 4px 8px;
+        font-size: 14px;
+        font-weight: 400;
+      }
+
+      .dash-feed {
+        display: inline-block;
+        width: 44%;
         text-overflow: ellipsis;
         position: relative;
         border: 1px solid fade(#000, 15%);
         box-shadow: 0px 0px 5px 0px fade(#000, 15%);
         margin-top: 16px;
         margin-left: 16px;
-
-        .title {
-          display: block;
-          color: #fff;
-          background-color: fade(@accent, 80%);
-          padding: 4px 4px 4px 8px;
-          font-size: 14px;
-          font-weight: 400;
-        }
 
         .media {
           display: block;
@@ -284,6 +284,26 @@ body {
             margin-right: 12px;
             .pull-left;
           }
+        }
+
+      }
+
+      .trending {
+        display: inline-block;
+        width: 24%;
+        position: relative;
+        border: 1px solid fade(#000, 15%);
+        box-shadow: 0px 0px 5px 0px fade(#000, 15%);
+        margin-top: 16px;
+        margin-right: 16px;
+        border-radius: 4px;
+        .pull-right;
+
+        .media {
+          display: block;
+          vertical-align: middle;
+          padding: 6px;
+          line-height: 1em;
         }
       }
     }

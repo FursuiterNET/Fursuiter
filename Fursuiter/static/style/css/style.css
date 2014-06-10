@@ -278,23 +278,25 @@ body .page-wrap .dash-content {
   margin-left: 265px;
   min-height: 300px;
 }
-body .page-wrap .dash-content .dash-feed {
+
+body .page-wrap .dash-content .title {
   display: block;
-  max-width: 600px;
+    color: #fff;
+    background-color: rgba(0, 95, 107, 0.8);
+    padding: 4px 4px 4px 8px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+body .page-wrap .dash-content .dash-feed {
+    display: inline-block;
+    width: 44%;
   text-overflow: ellipsis;
   position: relative;
   border: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
   margin-top: 16px;
   margin-left: 16px;
-}
-body .page-wrap .dash-content .dash-feed .title {
-  display: block;
-  color: #fff;
-  background-color: rgba(0, 95, 107, 0.8);
-  padding: 4px 4px 4px 8px;
-  font-size: 14px;
-  font-weight: 400;
 }
 body .page-wrap .dash-content .dash-feed .media {
   display: block;
@@ -312,4 +314,23 @@ body .page-wrap .dash-content .dash-feed .media .avi {
   display: block;
   margin-right: 12px;
   float: left;
+}
+
+body .page-wrap .dash-content .trending {
+    display: inline-block;
+    width: 24%;
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
+    margin-top: 16px;
+    margin-right: 16px;
+    border-radius: 4px;
+    float: right;
+}
+
+body .page-wrap .dash-content .trending .media {
+    display: block;
+    vertical-align: middle;
+    padding: 6px;
+    line-height: 1em;
 }
