@@ -29,6 +29,7 @@ def main(global_config, **settings):
 
     # TODO: Refactor route definitions (per module?)
     config_.add_route('home', '/')
+    config_.add_route('login', '/login')
     config_.add_route('media', '/media/{location}')
 
     config_.scan('Fursuiter.views')
