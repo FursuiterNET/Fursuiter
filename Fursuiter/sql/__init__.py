@@ -12,6 +12,9 @@ Session = None
 
 threadlocal = threading.local()
 
+# Updating a database schema can be done automatically via a helper function:
+# http://stackoverflow.com/a/7610243
+
 
 def sql_init(dsn):
     engine = create_engine(dsn, pool_size=12)
