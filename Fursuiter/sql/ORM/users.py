@@ -11,6 +11,7 @@ class User(DecBase):
     username = Column(String(32), unique=True)
     password = Column(String(255))
     email = Column(String(255))
+    realname = Column(String(255))
     level = Column(Integer)
 
 

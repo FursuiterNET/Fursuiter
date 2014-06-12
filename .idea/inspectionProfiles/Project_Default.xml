@@ -14,6 +14,16 @@
         </list>
       </option>
     </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <value>
+          <list size="2">
+            <item index="0" class="java.lang.String" itemvalue="run.SocketServer" />
+            <item index="1" class="java.lang.String" itemvalue="passlib.hash.bcrypt" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
     <inspection_tool class="SpellCheckingInspection" enabled="false" level="TYPO" enabled_by_default="false">
       <option name="processCode" value="true" />
       <option name="processLiterals" value="true" />
