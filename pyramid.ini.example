@@ -1,0 +1,14 @@
+[app:main]
+use = call:Fursuiter:main
+
+pyramid.reload_templates = true
+
+sql.dsn = mysql+pymysql://user:pass@localhost:3306/fursuiter
+
+session.type = file
+session.data_dir = %(here)s/data/sessions/data
+session.lock_dir = %(here)s/data/sessions/lock
+session.key = session
+session.secret = foobar
+session.cookie_expires = 31556940
+session.timeout = 31556940
