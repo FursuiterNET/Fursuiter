@@ -1,6 +1,9 @@
 import base64
 import os
 
+from Fursuiter.sql.ORM import User
+from Fursuiter.sql import Session
+
 
 def validate_session(event):
     if 'session' not in event.request.cookies:
@@ -17,6 +20,13 @@ def validate_session(event):
     if token != event.request.session['__token__']:
         event.request.session.invalidate()
         return
+
+    if 'username' in event.request.session:
+        user = Session.query(User).filter(User.username == event.request.session['username']).scalar()
+        if not user:
+            del event.request.session['username']
+        else:
+            event.request.user = user
 
 
 def create_valid_session(request):

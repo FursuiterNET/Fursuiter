@@ -6,28 +6,31 @@ from pyramid_beaker import session_factory_from_settings
 from Fursuiter import sql
 from Fursuiter.sql import ORM
 from Fursuiter.authentication import validate_session
+from Fursuiter.config import configure
 
 
 def main(global_config, **settings):
-    config = Configurator(settings=settings)
-    config.set_session_factory(session_factory_from_settings(settings))
-    sql.sql_init(config.registry.settings['sql.dsn'])
+    config_ = Configurator(settings=settings)
+    config_.set_session_factory(session_factory_from_settings(settings))
+    sql.sql_init(config_.registry.settings['sql.dsn'])
+
+    configure(config_)
 
     # TODO: Refactor subscribers
-    config.add_subscriber(validate_session, NewRequest)
-    config.add_subscriber(sql.start_db_profiling, NewRequest)
+    config_.add_subscriber(validate_session, NewRequest)
+    config_.add_subscriber(sql.start_db_profiling, NewRequest)
 
-    config.include('pyramid_mako')
-    config.include('pyramid_beaker')
+    config_.include('pyramid_mako')
+    config_.include('pyramid_beaker')
 
-    config.add_renderer('prettyjson', JSON(indent=4))
+    config_.add_renderer('prettyjson', JSON(indent=4))
 
-    config.add_static_view('/static', 'Fursuiter:static', cache_max_age=3600)
+    config_.add_static_view('/static', 'Fursuiter:static', cache_max_age=3600)
 
     # TODO: Refactor route definitions (per module?)
-    config.add_route('home', '/')
-    config.add_route('media', '/media/{location}')
+    config_.add_route('home', '/')
+    config_.add_route('media', '/media/{location}')
 
-    config.scan('Fursuiter.views')
+    config_.scan('Fursuiter.views')
 
-    return config.make_wsgi_app()
+    return config_.make_wsgi_app()

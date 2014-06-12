@@ -10,5 +10,5 @@ setup(
     author='Dreae',
     author_email='penitenttangentt@gmail.com',
     description='Social networking site for fursuiters',
-    install_requires=['pyramid', 'pyramid_beaker', 'pyramid_mako', 'python-swiftclient', 'sqlalchemy']
+    install_requires=['pyramid', 'pyramid_beaker', 'pyramid_mako', 'python-swiftclient', 'sqlalchemy', 'passlib']
 )
