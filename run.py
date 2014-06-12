@@ -1,4 +1,7 @@
-from socketserver import ThreadingMixIn
+try:
+    from socketserver import ThreadingMixIn
+except ImportError:
+    from SocketServer import ThreadingMixIn
 from wsgiref.simple_server import make_server, WSGIServer
 import os
 
