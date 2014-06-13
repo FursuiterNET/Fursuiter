@@ -10,6 +10,7 @@ from Fursuiter.authentication import create_valid_session
 def home(request):
     return {}
 
+
 @view_config(route_name='login', renderer='Fursuiter:templates/login.mako')
 def login(request):
     if 'username' in request.POST:
@@ -21,9 +22,8 @@ def login(request):
             request.session['username'] = user.username
             request.user = user
 
-        return {"username" : request.POST['username'],
-                "password" : request.POST['password']}
+        return {"username": request.POST['username'],
+                "password": request.POST['password']}
 
     return {}
     
-#TODO: Login required decorator

@@ -6,7 +6,11 @@ from Fursuiter.sql import Session
 
 
 def validate_session(event):
+    print("Validate prehook")
     if 'session' not in event.request.cookies:
+        return
+    if event.request.session.new:
+        create_valid_session(event.request)
         return
     if '__token__' not in event.request.session:
         event.request.session.invalidate()

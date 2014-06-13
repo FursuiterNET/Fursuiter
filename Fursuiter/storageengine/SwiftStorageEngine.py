@@ -7,7 +7,7 @@ from Fursuiter.logging import getlogger
 
 class SwiftStorageEngine(BaseStorageEngine):
     def __init__(self, authurl, user, key, **kwargs):
-        self.client = Connection(authurl, user, key, kwargs)
+        self.client = Connection(authurl, user, key, **kwargs)
 
     def save(self, fp, location):
         location = location.strip("/")
