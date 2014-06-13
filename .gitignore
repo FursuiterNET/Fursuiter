@@ -4,3 +4,5 @@ pyramid.ini
 data/
 build/
 npm-debug.log
+
+css/style.css
