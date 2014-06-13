@@ -11,6 +11,8 @@ from Fursuiter.config import configure
 
 def main(global_config, **settings):
     config_ = Configurator(settings=settings)
+    # Session factory will need to change, as Jack
+    # wants multiple servers serving the site
     config_.set_session_factory(session_factory_from_settings(settings))
     sql.sql_init(config_.registry.settings['sql.dsn'])
 
