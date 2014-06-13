@@ -2,4 +2,5 @@
 pyramid.ini
 .idea/
 data/
+build/
 npm-debug.log
