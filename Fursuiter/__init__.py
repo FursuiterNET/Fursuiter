@@ -1,12 +1,12 @@
 from pyramid.config import Configurator
 from pyramid.events import NewRequest
 from pyramid.renderers import JSON
-from pyramid_beaker import session_factory_from_settings
 
 from Fursuiter import sql
 from Fursuiter.sql import ORM
 from Fursuiter.authentication import validate_session
 from Fursuiter.config import configure
+from Fursuiter.session import session_factory_from_settings
 
 
 def main(global_config, **settings):
@@ -23,7 +23,6 @@ def main(global_config, **settings):
     config_.add_subscriber(sql.start_db_profiling, NewRequest)
 
     config_.include('pyramid_mako')
-    config_.include('pyramid_beaker')
 
     config_.add_renderer('prettyjson', JSON(indent=4))
 
