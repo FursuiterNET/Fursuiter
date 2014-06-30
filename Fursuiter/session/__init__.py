@@ -60,6 +60,7 @@ def RedisSessionFactory(r,
 
         def invalidate(self):
             self.request.response.set_cookie(self.ssid, '', 0)
+            r.delete(self.ssid)
 
         get = dict.get
         __getitem__ = dict.__getitem__
