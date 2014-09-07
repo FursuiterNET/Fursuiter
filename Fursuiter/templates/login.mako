@@ -1,5 +1,5 @@
 <%inherit file="base.mako"/>
-<% messages = request.session.pop_flash('error') %>
+<% messages = req.session.pop_flash('error') %>
 % if messages is not None:
     % for error in messages:
     <div class="error">

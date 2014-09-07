@@ -5,31 +5,31 @@ from Fursuiter.sql.ORM import User
 from Fursuiter.sql import Session
 
 
-def validate_session(event):
-    if 'session' not in event.request.cookies:
+def validate_session(request, response):
+    if 'session' not in request.cookies:
         return
-    if event.request.session.new:
-        create_valid_session(event.request)
+    if request.session.new:
+        create_valid_session(request)
         return
-    if '__token__' not in event.request.session:
-        event.request.session.invalidate()
+    if '__token__' not in request.session:
+        request.session.invalidate()
         return
-    if '__key__' not in event.request.session:
-        event.request.session.invalidate()
-        return
-
-    token = "%s:%s" % (event.request.session['__key__'], event.request.remote_addr)
-
-    if token != event.request.session['__token__']:
-        event.request.session.invalidate()
+    if '__key__' not in request.session:
+        request.session.invalidate()
         return
 
-    if 'username' in event.request.session:
-        user = Session.query(User).filter(User.username == event.request.session['username']).scalar()
+    token = "%s:%s" % (request.session['__key__'], request.remote_addr)
+
+    if token != request.session['__token__']:
+        request.session.invalidate()
+        return
+
+    if 'username' in request.session:
+        user = Session().query(User).filter(User.username == request.session['username']).scalar()
         if not user:
-            del event.request.session['username']
+            del request.session['username']
         else:
-            event.request.user = user
+            request.user = user
 
 
 def create_valid_session(request):

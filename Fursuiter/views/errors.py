@@ -1,11 +1,11 @@
-from pyramid.view import forbidden_view_config, notfound_view_config
+from distill.renderers import renderer
 
 
-@forbidden_view_config(renderer='prettyjson')
-def forbidden(request):
+@renderer('prettyjson')
+def forbidden(request, response):
     return {"Hello": "World"}
 
 
-@notfound_view_config(renderer='prettyjson')
-def notfound(request):
+@renderer('prettyjson')
+def notfound(request, response):
     return {"Hello": "World"}

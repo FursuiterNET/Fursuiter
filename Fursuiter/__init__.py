@@ -1,38 +1,35 @@
-from pyramid.config import Configurator
-from pyramid.events import NewRequest
-from pyramid.renderers import JSON
+from distill.application import Distill
+from distill.renderers import JSON
+from distill.exceptions import HTTPNotFound, HTTPForbidden
 
 from Fursuiter import sql
 from Fursuiter.sql import ORM
 from Fursuiter.authentication import validate_session
 from Fursuiter.config import configure
 from Fursuiter.session import session_factory_from_settings
+from Fursuiter.views import notfound, forbidden, static
 
 
-def main(global_config, **settings):
-    config_ = Configurator(settings=settings)
-    # Session factory will need to change, as Jack
-    # wants multiple servers serving the site
-    config_.set_session_factory(session_factory_from_settings(settings))
-    sql.sql_init(config_.registry.settings['sql.dsn'])
+def main(**settings):
+    app = Distill(settings=settings)
+    app.set_session_factory(session_factory_from_settings(settings))
+    sql.sql_init(settings['sql.dsn'])
 
-    configure(config_)
+    configure(app)
 
     # TODO: Refactor subscribers
-    config_.add_subscriber(validate_session, NewRequest)
-    config_.add_subscriber(sql.start_db_profiling, NewRequest)
+    app.use(validate_session)
+    app.use(sql.start_db_profiling)
 
-    config_.include('pyramid_mako')
-
-    config_.add_renderer('prettyjson', JSON(indent=4))
-
-    config_.add_static_view('/static', 'Fursuiter:static', cache_max_age=3600)
+    app.add_renderer('prettyjson', JSON(indent=4))
 
     # TODO: Refactor route definitions (per module?)
-    config_.add_route('home', '/')
-    config_.add_route('login', '/login')
-    config_.add_route('media', '/media/{location}')
+    app.map_connect('home', '/', controller='homecontroller', action='GET_home')
+    app.map_connect('login', '/login', controller='homecontroller', action='GET_login', conditions={"method": "GET"})
+    app.map_connect('login', '/login', controller='homecontroller', action='POST_login', conditions={"method": "POST"})
+    app.map_connect('static', '/static/{pathspec:.+}', action=static)
 
-    config_.scan('Fursuiter.views')
+    app.on_except(HTTPNotFound, notfound)
+    app.on_except(HTTPForbidden, forbidden)
 
-    return config_.make_wsgi_app()
+    return app

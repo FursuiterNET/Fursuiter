@@ -56,6 +56,7 @@ def RedisSessionFactory(r,
             dict.__init__(self, data)
 
         def changed(self):
+            self.dirty = True
             return self.dirty
 
         def invalidate(self):

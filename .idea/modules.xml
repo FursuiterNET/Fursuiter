@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$USER_HOME$/PycharmProjects/CloudShell/.idea/CloudShell.iml" filepath="$USER_HOME$/PycharmProjects/CloudShell/.idea/CloudShell.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../GitHub/Distill/.idea/Distill.iml" filepath="$PROJECT_DIR$/../GitHub/Distill/.idea/Distill.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Fursuiter.iml" filepath="$PROJECT_DIR$/.idea/Fursuiter.iml" />
     </modules>
   </component>

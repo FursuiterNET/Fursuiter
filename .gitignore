@@ -1,5 +1,5 @@
 *.pyc
-pyramid.ini
+config.ini
 .idea/
 data/
 build/

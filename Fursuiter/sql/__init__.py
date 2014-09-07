@@ -8,7 +8,7 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 
 
 DecBase = declarative_base()
-Session = None
+_session = None
 
 threadlocal = threading.local()
 
@@ -16,11 +16,15 @@ threadlocal = threading.local()
 # http://stackoverflow.com/a/7610243
 
 
+def Session():
+    return _session
+
+
 def sql_init(dsn):
     engine = create_engine(dsn, pool_size=12)
     DecBase.metadata.create_all(engine)
-    global Session
-    Session = scoped_session(sessionmaker(bind=engine))
+    global _session
+    _session = scoped_session(sessionmaker(bind=engine))
 
 
 @event.listens_for(Engine, 'before_cursor_execute')
@@ -43,11 +47,11 @@ def after_cursor_execute(*args):
 
 
 def add_db_headers(request, response):
-    response.headerlist.append(('X-DB-Queries', str(getattr(threadlocal, 'db_rt', 0))))
-    response.headerlist.append(('X-DB-TimeSpent', "%.2fms" % getattr(threadlocal, 'db_total_time', 0)))
+    response.headers['X-DB-Queries'] = str(getattr(threadlocal, 'db_rt', 0))
+    response.headers['X-DB-TimeSpent'] = "%.2fms" % getattr(threadlocal, 'db_total_time', 0)
     threadlocal.db_rt = 0
     threadlocal.db_total_time = 0
 
 
-def start_db_profiling(event_):
-    event_.request.add_response_callback(add_db_headers)
+def start_db_profiling(request, response):
+    request.add_response_callback(add_db_headers)
