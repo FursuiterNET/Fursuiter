@@ -32,4 +32,4 @@ class SwiftStorageEngine(BaseStorageEngine):
             raise ex
 
     def get_url(self, request, location):
-        return request.route_url('media', location=location)
+        return request.url('media', location=location)

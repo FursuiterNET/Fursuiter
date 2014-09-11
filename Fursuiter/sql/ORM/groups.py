@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, Integer, String, ForeignKey, PrimaryKeyConstraint
 from sqlalchemy.orm import backref, relationship
 
 from Fursuiter.sql import DecBase
@@ -15,8 +15,8 @@ class Group(DecBase):
 class GroupMember(DecBase):
     __tablename__ = 'fursuiter_groupmembers'
 
-    id = Column(Integer, autoincrement=True, primary_key=True)
     user_id = Column(Integer, ForeignKey('fursuiter_users.id', ondelete='CASCADE'))
     user = relationship('User', backref=backref('groups', cascade='all,delete'))
     group_id = Column(Integer, ForeignKey('fursuiter_groups.id', ondelete='CASCADE'))
     group = relationship('Group', backref=backref('users', cascade='all,delete'))
+    __table_args__ = (PrimaryKeyConstraint('user_id', 'group_id'),)

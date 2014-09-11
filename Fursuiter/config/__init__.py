@@ -43,8 +43,9 @@ def configure(app):
                 password = app.settings['storage_engine.password']
                 set_engine(SwiftStorageEngine(url, user, password))
 
-    from Fursuiter.views import add_controllers
+    from Fursuiter.views import add_controllers, map_routes
     add_controllers(app)
+    map_routes(app)
 
     getlogger().info("Finished configuring app")
 

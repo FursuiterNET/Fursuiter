@@ -6,6 +6,7 @@ from passlib.hash import bcrypt
 from Fursuiter.sql import Session
 from Fursuiter.sql.ORM import User
 from Fursuiter.authentication import create_valid_session
+from Fursuiter.storageengine import StorageEngine
 
 from distill.renderers import renderer
 
@@ -33,8 +34,20 @@ class HomeController(object):
             return {"username": request.POST['username'],
                     "password": request.POST['password']}
 
+    @renderer('upload.mako')
+    def upload(self, request, response):
+        if 'image' in request.POST:
+            StorageEngine().save(request.POST['image'].file, 'test.png')
+        return {}
+
 
 def static(request, response):
+    """
+    Just for running locally.
+    In production requests for static content
+    should never hit python, the should instead
+    be handled by the webserver
+    """
     path = os.path.join(request.settings['staticdir'], request.matchdict['pathspec'])
     if os.path.isfile(path):
         t = mimetypes.guess_type(request.matchdict['pathspec'])

@@ -9,7 +9,7 @@ class LocalStorageEngine(BaseStorageEngine):
         self.base_dir = root_dir
 
     def save(self, fp, location):
-        with open(os.path.join(self.base_dir, location), 'w+') as f:
+        with open(os.path.join(self.base_dir, location), 'wb+') as f:
             fp.seek(0)
             shutil.copyfileobj(fp, f)
 
