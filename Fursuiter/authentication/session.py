@@ -1,5 +1,6 @@
 import base64
 import os
+import time
 
 from Fursuiter.sql.ORM import User
 from Fursuiter.sql import Session
@@ -15,6 +16,12 @@ def validate_session(request, response):
         request.session.invalidate()
         return
     if '__key__' not in request.session:
+        request.session.invalidate()
+        return
+    if '__created__' not in request.session:
+        request.session.invalidate()
+        return
+    elif int(time.time()) - request.session['__created__'] > request.session._timeout:
         request.session.invalidate()
         return
 
@@ -37,3 +44,4 @@ def create_valid_session(request):
     token = "%s:%s" % (key, request.remote_addr)
     request.session['__token__'] = token
     request.session['__key__'] = key
+    request.session['__created__'] = int(time.time())

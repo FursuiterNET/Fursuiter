@@ -44,9 +44,9 @@ def RedisSessionFactory(r,
             self.request = request
             self.new = True
             self.dirty = False
+            self.invalid = False
             self.ssid = request.cookies.get(self._cookie_name)
             data = {}
-
             if self.ssid:
                 saved_data = r.get(self.ssid)
                 if saved_data:
@@ -60,8 +60,7 @@ def RedisSessionFactory(r,
             return self.dirty
 
         def invalidate(self):
-            self.request.response.set_cookie(self.ssid, '', 0)
-            r.delete(self.ssid)
+            self.invalid = True
 
         get = dict.get
         __getitem__ = dict.__getitem__
@@ -92,7 +91,7 @@ def RedisSessionFactory(r,
             return self.get('_f_' + queue, [])
 
         def new_csrf_token(self):
-            token = base64.b64encode(os.urandom(32))
+            token = sha256(base64.b64encode(os.urandom(32))).hexdigest()
             self['__csrft__'] = token
             return token
 
@@ -103,12 +102,18 @@ def RedisSessionFactory(r,
             return token
 
         def save(self, response):
+            if self.invalid:
+                response.set_cookie(self._cookie_name, '', 0)
+                r.delete(self.ssid)
+                return
+
             if self.ssid is None:
                 # No garuntee that there will be no duplicates
                 # but with 256 bits of entropy we can be fairly
                 # certain
                 self.ssid = sha256(os.urandom(32)).hexdigest()
             r.set(self.ssid, pickle.dumps(dict(self)))
+            r.expire(self.ssid, self._timeout)
             response.set_cookie(self._cookie_name, self.ssid, max_age=self._timeout,
                                 path=self._cookie_path, domain=self._cookie_domain)
 

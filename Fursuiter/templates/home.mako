@@ -1,4 +1,5 @@
 <%inherit file="base.mako"/>
+<%namespace name="forms" file="forms.mako"/>
 <div class="dash-menu">
     <div class="profile">
         <img src="/static/demo/avatar.png">

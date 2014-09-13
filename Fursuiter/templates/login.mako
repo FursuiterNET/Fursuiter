@@ -1,4 +1,5 @@
 <%inherit file="base.mako"/>
+<%namespace name="forms" file="forms.mako"/>
 <% messages = req.session.pop_flash('error') %>
 % if messages is not None:
     % for error in messages:
@@ -11,7 +12,7 @@
 <div class="centre">
     <div class="login">
         <h1 class="title">Login to Fursuits.NET</h1>
-        <form class="form centre" role="form" action="/login" method="POST" name="Login">
+        <%forms:form class_="form centre" role="form" action="" method="POST" name="Login">
             <div class="control">
                 <label class="sr-only" for="username">Username</label>
                 <input type="text" name="username" id="username" placeholder="Username" autofocus required>
@@ -23,6 +24,6 @@
             <div class="control">
                 <button type="submit" class="btn btn-primary btn-block">Sign In</button>
             </div>
-        </form>
+        </%forms:form>
     </div>
 </div>
