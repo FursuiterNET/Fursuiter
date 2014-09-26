@@ -1,12 +1,12 @@
 import mimetypes
 import os
+from distill.exceptions import HTTPMoved
 
 from passlib.hash import bcrypt
 
 from Fursuiter.sql import Session
 from Fursuiter.sql.ORM import User
 from Fursuiter.authentication import create_valid_session
-from Fursuiter.storageengine import StorageEngine
 
 from distill.renderers import renderer
 
@@ -18,9 +18,10 @@ class HomeController(object):
 
     @renderer('login.mako')
     def GET_login(self, request, response):
+        if request.user is not None:
+            return HTTPMoved(request.url('home'))
         return {}
-    
-    @renderer('login.mako')
+
     def POST_login(self, request, response):
         if 'username' in request.POST:
             user = Session().query(User).filter(User.username == request.POST['username']).scalar()
@@ -31,14 +32,9 @@ class HomeController(object):
                 request.session['username'] = user.username
                 request.user = user
 
-            return {"username": request.POST['username'],
-                    "password": request.POST['password']}
-
-    @renderer('upload.mako')
-    def upload(self, request, response):
-        if 'image' in request.POST:
-            StorageEngine().save(request.POST['image'].file, 'test.png')
-        return {}
+            return HTTPMoved(request.url("home"))
+        else:
+            return self.GET_login(request, response)
 
 
 def static(request, response):

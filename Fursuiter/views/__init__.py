@@ -5,6 +5,9 @@ from .errors import *
 
 def add_controllers(app_):
     from .front import HomeController
+    from .users import UsersController
+    from .controls import UploadController
+    from .media import MediaController
 
     loc = locals().copy()
     del loc['app_']
@@ -15,8 +18,15 @@ def map_routes(app):
     app.map_connect('home', '/', controller='homecontroller', action='GET_home')
     app.map_connect('login', '/login', controller='homecontroller', action='GET_login', conditions={"method": "GET"})
     app.map_connect('login', '/login', controller='homecontroller', action='POST_login', conditions={"method": "POST"})
-    app.map_connect('upload', '/upload', controller='homecontroller', action='upload')
+
+    app.map_connect('upload_image', '/submit/image', controller='uploadcontroller', action='GET_upload_image',
+                    conditions={"method": "GET"})
+    app.map_connect('upload_image', '/submit/image', controller='uploadcontroller', action='POST_upload_image',
+                    conditions={"method": "POST"})
+
     app.map_connect('static', '/static/{pathspec:.+}', action=static)
+    app.map_connect('media', '/media/:image', controller='mediacontroller', action='media')
+    app.map_connect('user', '/:user', controller='userscontroller', action='user')
 
     app.on_except(HTTPNotFound, notfound)
     app.on_except(HTTPForbidden, forbidden)

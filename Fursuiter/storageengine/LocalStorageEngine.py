@@ -14,7 +14,7 @@ class LocalStorageEngine(BaseStorageEngine):
             shutil.copyfileobj(fp, f)
 
     def read(self, location):
-        return open(os.path.join(self.base_dir, location))
+        return open(os.path.join(self.base_dir, location), 'rb')
 
     def get_url(self, request, location):
-        return request.static_url(os.path.join(self.base_dir, location))
+        return request.url('media', image=location)

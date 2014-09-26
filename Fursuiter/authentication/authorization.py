@@ -1,6 +1,5 @@
-from functools import wraps
-
-from pyramid.httpexceptions import HTTPFound, HTTPForbidden
+from distill.exceptions import HTTPMoved, HTTPForbidden
+from distill.request import Request
 
 
 class LoginRequired(object):
@@ -9,12 +8,15 @@ class LoginRequired(object):
         self._route = redirect_route
 
     def __call__(self, func):
-        @wraps(func)
-        def check_auth(req, **kwargs):
+        def check_auth(*args, **kwargs):
+            if isinstance(args[0], Request):
+                req = args[0]
+            else:
+                req = args[1]
             if req.user is None:
-                return HTTPFound(location=req.route_url(self._route))
+                return HTTPMoved(location=req.route_url(self._route))
             elif req.user.level < self._level:
                 return HTTPForbidden()
-            return func(req, **kwargs)
+            return func(*args, **kwargs)
 
         return check_auth

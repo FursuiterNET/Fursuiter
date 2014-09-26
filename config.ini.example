@@ -3,6 +3,8 @@ use = call:Fursuiter:main
 
 pyramid.reload_templates = true
 
+staticdir = %(here)s/Furstream/static
+
 sql.dsn = mysql+pymysql://user:pass@localhost:3306/fursuiter
 
 session.timeout = 31556940

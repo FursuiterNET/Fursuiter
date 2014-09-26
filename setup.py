@@ -10,5 +10,5 @@ setup(
     author='Dreae',
     author_email='penitenttangentt@gmail.com',
     description='Social networking site for fursuiters',
-    install_requires=['sqlalchemy', 'passlib', 'redis', 'distill-framework']
+    install_requires=['sqlalchemy', 'passlib', 'redis', 'distill-framework', 'python-swiftclient']
 )

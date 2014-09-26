@@ -7,6 +7,7 @@ from Fursuiter.sql import Session
 
 
 def validate_session(request, response):
+    request.user = None
     if 'session' not in request.cookies:
         return
     if request.session.new:
