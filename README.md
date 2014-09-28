@@ -1,4 +1,4 @@
-fursuiter
+Fursuiter
 =========
 
-Fursuiter.net reop
+Fursuiter.net repo
