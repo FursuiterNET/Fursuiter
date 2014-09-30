@@ -1,3 +1,4 @@
+import datetime
 from sqlalchemy.orm import backref, relationship
 from sqlalchemy import Column, String, Integer, ForeignKey, DateTime, PrimaryKeyConstraint
 
@@ -23,6 +24,15 @@ class Submission(DecBase):
     name = Column(String(255))
     description = Column(String(2048))
     date_added = Column(DateTime)
+
+    def __init__(self, user_id, name, description, date_added=None):
+        self.user_id = user_id
+        self.name = name
+        self.description = description
+        if not date_added:
+            self.date_added = datetime.datetime.now()
+        else:
+            self.date_added = date_added
 
 
 class GallerySumbission(DecBase):
