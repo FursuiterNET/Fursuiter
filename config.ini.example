@@ -3,7 +3,9 @@ use = call:Fursuiter:main
 
 pyramid.reload_templates = true
 
-staticdir = %(here)s/Furstream/static
+staticdir = %(here)s/Fursuiter/static
+
+distill.document_root = Fursuiter/templates
 
 sql.dsn = mysql+pymysql://user:pass@localhost:3306/fursuiter
 

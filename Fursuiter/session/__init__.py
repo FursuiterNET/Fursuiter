@@ -13,7 +13,6 @@ from Fursuiter.authentication import create_valid_session
 
 
 def modified(func):
-    @wraps(func)
     def access(session, *args, **kwargs):
         if not session.dirty:
             session.dirty = True
