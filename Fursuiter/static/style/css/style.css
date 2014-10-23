@@ -2,3 +2,28 @@
   margin-bottom: 0px;
   padding-top: 9px;
 }
+
+.media-body {
+  min-width: 150px;
+}
+
+.user-icon {
+  max-width: 100%;
+  height: auto;
+}
+
+.user-icon > img {
+  border:solid 3px rgba(0,0,0,0.2);
+  max-width: 100%; /* img-responsive */
+  height: auto;
+}
+
+@media (max-width: @screen-xs-max) {
+  .media-body {
+    min-width: 0px;
+  }
+  
+  .user-icon {
+    width: 100%;
+  }
+}

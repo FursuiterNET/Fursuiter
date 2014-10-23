@@ -43,8 +43,8 @@
         </ul>
         <div class="media-list">
             <div class="media well">
-                <a href="user/dreae" class="pull-left user-icon">
-                    <img src="/static/demo/avatar.png" alt="Dreae" class="media-object img-rounded img-responsive" style="border:solid 3px rgba(0,0,0,0.2)">
+                <a href="user/dreae" class="pull-left user-icon img-responsive">
+                    <img src="/static/demo/avatar.png" alt="Dreae" class="media-object img-rounded img-responsive">
                 </a>
                 <div class="media-body">
                     <h4 class="media-heading">
@@ -60,7 +60,7 @@
 
             <div class="media well">
                 <a href="user/rechner" class="pull-left user-icon">
-                    <img src="/static/demo/rechner.jpg" alt="Rechner Fox" class="media-object img-rounded img-responsive" style="border:solid 3px rgba(0,0,0,0.2)">
+                    <img src="/static/demo/rechner.jpg" alt="Rechner Fox" class="media-object img-rounded img-responsive">
                 </a>
                 <div class="media-body">
                     <h4 class="media-heading">
@@ -79,7 +79,7 @@
 
             <div class="media well">
                 <a href="user/jacktail" class="pull-left user-icon">
-                    <img src="/static/demo/JackTail.jpg" alt="JackTail" class="media-object img-rounded img-responsive" style="border:solid 3px rgba(0,0,0,0.2)">
+                    <img src="/static/demo/JackTail.jpg" alt="JackTail" class="media-object img-rounded img-responsive">
                 </a>
                 <div class="media-body">
                     <h4 class="media-heading">
@@ -95,7 +95,7 @@
 
             <div class="media well">
                 <a href="user/rechner" class="pull-left user-icon">
-                    <img src="/static/demo/rechner.jpg" alt="Rechner Fox" class="media-object img-rounded img-responsive" style="border:solid 3px rgba(0,0,0,0.2)">
+                    <img src="/static/demo/rechner.jpg" alt="Rechner Fox" class="media-object img-rounded img-responsive">
                 </a>
                 <div class="media-body">
                     <h4 class="media-heading">
@@ -114,7 +114,7 @@
 
             <div class="media well">
                 <a href="user/grenrir" class="pull-left user-icon">
-                    <img src="/static/demo/grenrir.jpg" alt="Grenrir Hunstman" class="media-object img-rounded img-responsive" style="border:solid 3px rgba(0,0,0,0.2)">
+                    <img src="/static/demo/grenrir.jpg" alt="Grenrir Hunstman" class="media-object img-rounded img-responsive">
                 </a>
                 <div class="media-body">
                     <h4 class="media-heading">
