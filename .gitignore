@@ -5,7 +5,6 @@ data/
 build/
 npm-debug.log
 
-style.css
 util.css
 theme.css
 dist/
