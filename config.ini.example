@@ -10,3 +10,5 @@ distill.document_root = Fursuiter/templates
 sql.dsn = mysql+pymysql://user:pass@localhost:3306/fursuiter
 
 session.timeout = 31556940
+
+debug = true
