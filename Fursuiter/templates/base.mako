@@ -13,7 +13,7 @@
   <div class="">
     <div class="navbar navbar-default" id="navbar">
       <div class="navbar-header">
-        <a href="/" class="navbar-brand">
+        <a href="/" class="navbar-brand" title="Fursuiter.net Home">
           Fursuiter.net
         </a>
         <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
@@ -29,23 +29,23 @@
               </a>
             </li>
             <li>
-              <a href="upload">
+              <a href="upload" title="Upload">
                   <span class="glyphicon glyphicon-upload"></span>
               </a>
             </li>
             <li>
-              <a href="notifications">
+              <a href="notifications" title="Notifications">
                   <span class="glyphicon glyphicon-globe"></span>
               </a>
             </li>
             <li class="separator"></li>
             <li>
-              <a href="security">
+              <a href="security" title="Security">
                   <span class="glyphicon glyphicon-lock"></span>
               </a>
             </li>
             <li>
-              <a href="logout">
+              <a href="logout" title="Log out">
                   <span class="glyphicon glyphicon-log-out"></span>
               </a>
             </li>
