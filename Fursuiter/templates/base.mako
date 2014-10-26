@@ -22,34 +22,7 @@
       </div>
       <div class="collapse navbar-collapse" id="navbar-collapse">
         <div class="pull-right">
-          <ul class="nav navbar-nav">
-            <li>
-              <a href="profile">
-                  @CopperBadger
-              </a>
-            </li>
-            <li>
-              <a href="upload" title="Upload">
-                  <span class="glyphicon glyphicon-upload"></span>
-              </a>
-            </li>
-            <li>
-              <a href="notifications" title="Notifications">
-                  <span class="glyphicon glyphicon-globe"></span>
-              </a>
-            </li>
-            <li class="separator"></li>
-            <li>
-              <a href="security" title="Security">
-                  <span class="glyphicon glyphicon-lock"></span>
-              </a>
-            </li>
-            <li>
-              <a href="logout" title="Log out">
-                  <span class="glyphicon glyphicon-log-out"></span>
-              </a>
-            </li>
-          </ul>
+          <%include file="navbar.mako" />
         </div>
         <form action="javascript:void(0)" class="form-inline navbar-form" role="search">
           <div class="form-group">

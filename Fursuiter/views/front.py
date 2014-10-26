@@ -27,6 +27,7 @@ class HomeController(object):
             user = Session().query(User).filter(User.username == request.POST['username']).scalar()
             if not user or not bcrypt.verify(request.POST['password'], user.password):
                 request.session.flash('Invalid username or password', 'error')
+                return self.GET_login(request, response)
             else:
                 create_valid_session(request)
                 request.session['username'] = user.username

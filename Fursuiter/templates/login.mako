@@ -13,7 +13,7 @@
   <div class="row">
     <div class="col-md-4 col-md-offset-4">
       <div class="login">
-        <h1 class="title text-center">Login to Fursuits.NET</h1>
+        <h1 class="title text-center">Login to Fursuiter.NET</h1>
       
         <%forms:form class_="form-horizontal" role="form" action="" method="POST" name="Login">
           <div class="form-group">
