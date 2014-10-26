@@ -11,3 +11,9 @@ class UsersController(object):
         if not user:
             raise HTTPNotFound()
         return {"user": user}
+
+    @renderer("users/register.mako")
+    def GET_register(self, request, response):
+        if request.user is not None:
+            return HTTPMoved(request.url("home"))
+        return {}

@@ -49,7 +49,7 @@
   <div class="row">
     <div class="col-md-4 col-md-offset-4">
       <h2 class="text-center">Don't have an account yet?</h2>
-      <a href="#" class="btn btn-success btn-block">Register</a> 
+      <a href="/register" class="btn btn-success btn-block">Register</a> 
     </div>
   </div>
 </div>
