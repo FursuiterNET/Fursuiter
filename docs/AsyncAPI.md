@@ -22,7 +22,7 @@ responsibility.
 ## Spec
 
 ### User Accounts
-**User account creation, editing and deletion ("deactivation") will be done synchronously**
+User account creation, editing and deletion ("deactivation") will be done synchronously
 
 ### Posts
 	Create(string content, int parentId, int CDNReference, JSON privacySettings, string context) => {CONTENT: HTML for post to display}
@@ -33,19 +33,19 @@ responsibility.
 	Hide(int postId) => {SUCCESS: success/failure boolean}
 
 ### Galleries
-**Gallery creation and deletion will be done synchronously**
+Gallery creation and deletion will be done synchronously
 
 	Update(int galleryId, string name, string description) => {SUCCESS: success/failure boolean}
 	AddSubmissions(int galleryId, string submissionIds) => {SUCCESS: success/failure boolean}
 	RemoveSubmissions(int galleryId, string submissionIds) => {SUCCESS: success/failure boolean}
 
 ### Groups
-**Group creation and deletion will be done synchronously**
+Group creation and deletion will be done synchronously
 
 	Update(int groupId, string name, string description) => {SUCCESS: success/failure boolean}
-	Add(int groupId, string userIds) => {SUCCESS: success/failure boolean, GROUPCOUNT: new total number of group members}
+	AddMembers(int groupId, string userIds) => {SUCCESS: success/failure boolean, GROUPCOUNT: new total number of group members}
 		# userIds argument example: "[1,4,15,6]"
-	Remove(int groupId, string userIds) => {SUCCESS: success/failure boolean, GROUPCOUNT: new total number of group members}
+	RemoveMembers(int groupId, string userIds) => {SUCCESS: success/failure boolean, GROUPCOUNT: new total number of group members}
 
 ### Submissions
 	Create(string name, string description, string context) => {CONTENT: HTML for new submission}
