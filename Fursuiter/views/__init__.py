@@ -18,6 +18,7 @@ def map_routes(app):
     app.map_connect('home', '/', controller='homecontroller', action='GET_home')
     app.map_connect('login', '/login', controller='homecontroller', action='GET_login', conditions={"method": "GET"})
     app.map_connect('login', '/login', controller='homecontroller', action='POST_login', conditions={"method": "POST"})
+    app.map_connect('logout', '/logout', controller='homecontroller', action='GET_logout')
 
     app.map_connect('register', '/register', controller='userscontroller', action='GET_register', conditions={"method": "GET"})
     app.map_connect('register', '/register', controller='userscontroller', action='POST_register', conditions={"method": "POST"})

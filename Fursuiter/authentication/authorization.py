@@ -14,7 +14,7 @@ class LoginRequired(object):
             else:
                 req = args[1]
             if req.user is None:
-                return HTTPMoved(location=req.route_url(self._route))
+                return HTTPMoved(location=req.url(self._route))
             elif req.user.level < self._level:
                 return HTTPForbidden()
             return func(*args, **kwargs)

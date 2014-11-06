@@ -23,7 +23,7 @@
     </a>
   </li>
   <li>
-    <a href="logout" title="Log out">
+    <a href="${req.url('logout', token=req.session.get_csrf_token())}" title="Log out">
       <span class="glyphicon glyphicon-log-out"></span>
     </a>
   </li>

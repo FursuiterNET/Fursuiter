@@ -1,12 +1,13 @@
 import mimetypes
 import os
-from distill.exceptions import HTTPMoved
+from Fursuiter.logging import getlogger
+from distill.exceptions import HTTPMoved, HTTPForbidden
 
 from passlib.hash import bcrypt
 
 from Fursuiter.sql import Session
 from Fursuiter.sql.ORM import User
-from Fursuiter.authentication import create_valid_session
+from Fursuiter.authentication import create_valid_session, LoginRequired
 
 from distill.renderers import renderer
 
@@ -29,13 +30,20 @@ class HomeController(object):
                 request.session.flash('Invalid username or password', 'error')
                 return self.GET_login(request, response)
             else:
-                create_valid_session(request)
                 request.session['username'] = user.username
                 request.user = user
 
             return HTTPMoved(request.url("home"))
         else:
             return self.GET_login(request, response)
+
+    @LoginRequired()
+    def GET_logout(self, request, response):
+        if 'token' in request.GET and request.GET['token'] == request.session.get_csrf_token():
+            request.session.invalidate()
+            return HTTPMoved(request.url("home"))
+        else:
+            return HTTPForbidden()
 
 
 def static(request, response):
