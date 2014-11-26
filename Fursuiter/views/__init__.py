@@ -30,7 +30,7 @@ def map_routes(app):
 
     app.map_connect('static', '/static/{pathspec:.+}', action=static)
     app.map_connect('media', '/media/:image', controller='mediacontroller', action='media')
-    app.map_connect('user', '/:user', controller='userscontroller', action='user')
+    app.map_connect('user', '/user/:user', controller='userscontroller', action='user')
 
     app.on_except(HTTPNotFound, notfound)
     app.on_except(HTTPForbidden, forbidden)
