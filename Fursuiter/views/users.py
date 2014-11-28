@@ -2,7 +2,7 @@ from passlib.hash import bcrypt
 
 from Fursuiter.authentication import create_valid_session
 from Fursuiter.sql import Session
-from Fursuiter.sql.ORM import User
+from Fursuiter.sql.ORM import User, Character
 from distill.renderers import renderer
 from distill.exceptions import HTTPNotFound, HTTPMoved
 
@@ -10,10 +10,17 @@ from distill.exceptions import HTTPNotFound, HTTPMoved
 class UsersController(object):
     @renderer("users/user.mako")
     def user(self, request, response):
-        user = Session().query(User).filter(User.username == request.matchdict['user']).scalar()
+        session = Session()
+        user = session.query(User).filter(User.username == request.matchdict['user']).scalar()
         if not user:
             raise HTTPNotFound()
-        return {"user": user}
+
+        characters = session.query(Character).filter(
+                Character.user_id == user.id)
+        if not any(characters):
+            characters = []
+
+        return {"user": user, "characters": characters, }
 
     @renderer("users/register.mako")
     def GET_register(self, request, response):

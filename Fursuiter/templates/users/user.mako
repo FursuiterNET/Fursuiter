@@ -1,4 +1,6 @@
 <%inherit file="../base.mako"/>
+<%namespace file="character_well.mako" import="character_well"/>
+
 <div class="col-sm-4 col-md-3">
     <div class="well">
         <div class="identity" style="text-align:center">
@@ -10,10 +12,7 @@
 </div>
 <div class="col-sm-8">
     <h1 style="text-align: center">Characters</h1>
-    <div class="col-sm-3">
-        <div class="well">
-            <img src="/static/demo/full_bg.png" alt="Cooper's Icon" class="img-circle img-responsive center-block">
-            <h4 style="text-align: center">Character Name</h4>
-        </div>
-    </div>
+    % for character in characters:
+    ${character_well(character)}
+    % endfor
 </div>

@@ -8,6 +8,7 @@ def add_controllers(app_):
     from .users import UsersController
     from .controls import UploadController
     from .media import MediaController
+    from .characters import CharactersController
 
     loc = locals().copy()
     del loc['app_']
@@ -31,6 +32,9 @@ def map_routes(app):
     app.map_connect('static', '/static/{pathspec:.+}', action=static)
     app.map_connect('media', '/media/:image', controller='mediacontroller', action='media')
     app.map_connect('user', '/user/:user', controller='userscontroller', action='user')
+
+    app.map_connect('character', '/user/:user/character/:character',
+            controller='characterscontroller', action='character')
 
     app.on_except(HTTPNotFound, notfound)
     app.on_except(HTTPForbidden, forbidden)
