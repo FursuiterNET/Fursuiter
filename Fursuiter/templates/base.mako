@@ -29,7 +29,7 @@
             <input type="text" class="form-control" placeholder="Search" />
           </div>
           <div class="form-group">
-            <button class="btn btn-default btn-block">
+            <button class="btn btn-default btn-block" title="Search">
                 <span class="glyphicon glyphicon-search"></span>
             </button>
           </div>

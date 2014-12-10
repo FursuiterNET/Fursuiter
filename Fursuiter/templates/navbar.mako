@@ -1,8 +1,7 @@
-<!-- This should look at req.user, but it is getting unset for some reason. -->
-%if True:
+%if req.user:
 <ul class="nav navbar-nav">
   <li>
-    <a href="profile">@CopperBadger</a>
+    <a href="profile">@${req.user.username}</a>
   </li>
   <li>
     <a href="upload" title="Upload">

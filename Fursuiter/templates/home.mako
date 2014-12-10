@@ -1,5 +1,6 @@
 <%inherit file="base.mako" />
 <%namespace name="forms" file="forms.mako" />
+%if req.user:
 <div class="col-sm-4 col-md-3">
     <div class="well">
         <div class="identity" style="text-align:center">
@@ -133,3 +134,9 @@
         </div>
     </div>
 </div>
+%else:
+<div class="col-md-6 col-md-offset-3" style="text-align:center;">
+    <div style="margin-bottom:53px;" tabindex="0">A community for fursuit makers, performers, and enthusiasts.</div>
+    <div><a href="/register" role="button" class="btn btn-primary btn-lg">Get started</a></div>
+</div>
+%endif

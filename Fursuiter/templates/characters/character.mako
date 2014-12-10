@@ -4,9 +4,8 @@
         <div class="identity" style="text-align: center;">
             <img src="/static/demo/full_bg.png"
                     alt="Copper's icon"
-                    title="TODO character.name"
-                    class="img-circle img-responsive center-block"
-                    style="border: 6px solid rgba(0,0,0,0.2); max-width: 240px; width: 100%;" />
+                    title="${character.name | h}"
+                    class="img-circle img-responsive center-block identity-img" />
             <h2>${character.name | h}</h2>
             <h4><a href="#">${user.username}</a></h4>
         </div>
