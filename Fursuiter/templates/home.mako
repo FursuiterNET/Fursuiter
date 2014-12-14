@@ -2,38 +2,39 @@
 <%namespace name="forms" file="forms.mako" />
 %if req.user:
 <div class="col-sm-4 col-md-3">
-    <div class="well">
-        <div class="identity" style="text-align:center">
-            <img src="/static/demo/full_bg.png" alt="Copper's Icon" class="img-circle img-responsive center-block" style="border:solid 6px rgba(0,0,0,0.2);max-width:240px;width:100%" />
-            <h2>Copper</h2>
-            <h4>@CopperBadger</h4>
-        </div>
+  <div class="well">
+    <div class="identity" style="text-align:center">
+      <img src="/static/demo/full_bg.png" alt="Copper's Icon" class="img-circle img-responsive center-block" style="border:solid 6px rgba(0,0,0,0.2);max-width:240px;width:100%" />
+      <h2>Copper</h2>
+      <h4>@CopperBadger</h4>
     </div>
+  </div>
 
-    <div class="list-group">
-        <a href="#feed" class="list-group-item">
-            <span class="glyphicon glyphicon-list"></span>
-            Feed
-        </a>
-        <a href="#inbox" class="list-group-item">
-            <span class="pull-right badge">14</span>
-            <span class="glyphicon glyphicon-envelope"></span>
-            Inbox
-        </a>
-        <a href="#profile" class="list-group-item">
-            <span class="glyphicon glyphicon-user"></span>
-            Profile
-        </a>
-        <a href="#settings" class="list-group-item">
-            <span class="glyphicon glyphicon-cog"></span>
-            Settings
-        </a>
-    </div>
+  <div class="list-group">
+    <a href="#feed" class="list-group-item">
+      <span class="glyphicon glyphicon-list"></span>
+        Feed
+    </a>
+    <a href="#inbox" class="list-group-item">
+      <span class="pull-right badge">14</span>
+      <span class="glyphicon glyphicon-envelope"></span>
+        Inbox
+    </a>
+    <a href="#profile" class="list-group-item">
+      <span class="glyphicon glyphicon-user"></span>
+        Profile
+    </a>
+    <a href="#settings" class="list-group-item">
+      <span class="glyphicon glyphicon-cog"></span>
+        Settings
+    </a>
+  </div>
 
-    <p>
-        Copyright &copy; 2014 Fursuiter.net
-    </p>
+  <p>
+    Copyright &copy; 2014 Fursuiter.net
+  </p>
 </div>
+
 <div class="col-sm-8 col-md-9">
     <div class="content">
         <ul class="nav nav-pills nav-justified" style="margin-bottom:6px">
@@ -135,8 +136,123 @@
     </div>
 </div>
 %else:
-<div class="col-md-6 col-md-offset-3" style="text-align:center;">
-    <div style="margin-bottom:53px;" tabindex="0">A community for fursuit makers, performers, and enthusiasts.</div>
-    <div><a href="/register" role="button" class="btn btn-primary btn-lg">Get started</a></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="jumbotron">
+        <h1>
+          Fursuiter.NET
+        </h1>
+        <h3>
+          A community for fursuit makers, performers, and enthusiasts.
+        </h3>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="accordion">
+        <div class="panel panel-success panel-toggleable">
+          <div class="panel-heading">
+            <div class="panel-title">Log In</div>
+          </div>
+          <div class="panel-body">
+            <form class="form-horizontal" role="form" method="POST" action="" name="Login">
+              <div class="form-group">
+                <label for="username" class="control-label col-sm-4">Username</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" placeholder="Username" name="username" id="username" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="password" class="control-label col-sm-4">Password</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" placeholder="Password" name="password" id="password" />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-1">
+                  <label for="rememberLogin" class="control-label">Remember Me</label>
+                  <input type="checkbox" name="rememberLogin" id="rememberLogin" />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <input type="submit" class="form-control btn btn-success" value="Log In" />
+                </div>
+              </div>
+            <form>
+          </div>
+        </div>
+
+        <div class="register panel panel-info panel-toggleable">
+          <div class="panel-heading">
+            <div class="panel-title">New User?</div>
+            Register today!
+          </div>
+          <div class="panel-body" style="display:none;">
+            <%forms:form class_="form-horizontal" role="form" method="POST" action="" name="Register">
+              <div class="form-group">
+                <label class="control-label col-sm-4" for="realname">Real name</label>
+                <div class="col-sm-8">
+                  <input class="form-control" type="text" name="realname" id="realname" placeholder="Real name">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-4" for="email">Email</label>
+                <div class="col-sm-8">
+                  <input class="form-control" type="text" name="email" id="email" placeholder="Email">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-4" for="register_username">Username</label>
+                <div class="col-sm-8">
+                  <input class="form-control" type="text" name="username" id="register_username" placeholder="Username" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-4" for="register_password">Password</label>
+                <div class="col-sm-8">
+                  <input class="form-control" type="password" name="password" id="register_password" placeholder="Password" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-4" for="register_password_confirm">Confirm password</label>
+                <div class="col-sm-8">
+                  <input class="form-control" type="password" name="password_confirm" id="register_password_confirm" placeholder="Confirm Password" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <input type="submit" value="Register" class="form-control btn btn-info" />
+                </div>
+              </div>
+            </%forms:form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<script>
+$(document).ready(function(){
+  $('body').on("click",".accordion .panel-toggleable .panel-heading",function(){
+      $('.panel-shown').removeClass('panel-shown')
+      $(this).parents('.panel').addClass('panel-shown').find('.panel-body').slideDown()
+      $(this).parents('.accordion').find('.panel-toggleable:not(.panel-shown) .panel-body').slideUp()
+    }).on("mouseover",".panel-toggleable .panel-heading",function(){
+      $(this).css({opacity:0.8})
+    }).on("mouseout",".panel-toggleable .panel-heading",function(){
+      $(this).css({opacity:1})
+    }).on("form","submit",function(){
+      // Check form for required fields if client browser does not.
+      if((prob=$(this).find('input[required]').filter(function(){return !$(this).val()}).first()).length){
+        alert($(prob).attr('message')||("Please provide "+$(prob).prop('placeholder')+" input"))
+        return false
+      }
+    })
+  })
+</script>
+
 %endif
