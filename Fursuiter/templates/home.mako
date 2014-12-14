@@ -167,7 +167,7 @@
               <div class="form-group">
                 <label for="password" class="control-label col-sm-4">Password</label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" placeholder="Password" name="password" id="password" />
+                  <input type="password" class="form-control" placeholder="Password" name="password" id="password" />
                 </div>
               </div>
               <div class="form-group">
@@ -179,6 +179,16 @@
               <div class="form-group">
                 <div class="col-sm-12">
                   <input type="submit" class="form-control btn btn-success" value="Log In" />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-12">
+                  <a href="#">I forgot my username</a>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-12">
+                  <a href="#">I forgot my password</a>
                 </div>
               </div>
             <form>
