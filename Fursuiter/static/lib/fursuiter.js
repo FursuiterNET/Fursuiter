@@ -4,7 +4,9 @@ window.fursuiter = {
         ALERT:function(alert){alert(alert)}, //Need to wrap these in closures to counteract Illegal Invocation protection
         LOG:function(message){console.log(message)},
         MESSAGE:showMessage
-    }
+    },
+    spinners: [],
+    requests: {}
 }
 
 /* Serialize all input elements within element 'el' */
@@ -23,14 +25,20 @@ function serialize(el) {
     return o;
 } 
 
-/* Initiate AJAX Request */
+/* Initiate AJAX Request, abort duplicates */
 function ajax(route,params,callback) {
+
+    if((r = window.fursuiter.requests[route]) && !r.isComplete){
+        r.abort()
+    }
+
     callback=callback||handleResponse;
-    $.ajax({
+    return window.fursuiter.requests[route] = $.ajax({
         url:route||"ping",
         type:"POST",
         data:params||{},
         complete:function(xhr){
+            window.fursuiter.requests[route].isComplete = true;
             callback(xhr.responseText);
         }
     })
@@ -47,7 +55,7 @@ function handleResponse(jsonSrc) {
     }
 
     for(k in jo) {
-        if(clos=window.responseBindings[k]) {
+        if(clos=window.fursuiter.responseBindings[k]) {
             return clos(jo[k]);
         } else {
             console.warn("No binding found for \""+k+"\"");
@@ -55,37 +63,30 @@ function handleResponse(jsonSrc) {
     }
 }
 
-/* Display on-screen message to user, message <div> will be appended to any elements with class 'messages' */
+/* 
+    Display on-screen message to user, message <div> will be appended to any
+    elements with class 'messages'
+*/
 function showMessage(message) {
     var m = $("<div>"+message+"&nbsp;</div>").appendTo('.messages');
     var dismiss=function(){$(m).slideUp(function(){$(this).remove();});};
     $('<a href="javascript:void(0)" />').html("(dismiss)").click(dismiss).appendTo(m);
     setTimeout(dismiss,5000);
-} 
+}
 
-/* Code for clock from early design
-$.fn.clock = function () {
-    var hours = $(this).find("#hours");
-    var minutes = $(this).find("#minutes");
-    var seconds = $(this).find("#seconds");
-    var pad = function (n) {
-        return (n < 10) ? ("0" + n) : n;
-    };
-    var update = function () {
-        var date = new Date();
-        hours.text(pad(date.getHours()));
-        minutes.text(pad(date.getMinutes()));
-        seconds.text(pad(date.getSeconds()));
-    };
+/* Shortcut function, get markup for glyphicon with name `ico` */
+function ico(ico){
+    return "<span class='glyphicon glyphicon-"+ico+"'></span>"
+}
 
-    setInterval(update, 500);
-};
-
-$(window).load(function () {
-    $(".clock").clock();
-    $(".nav-toggle").click(function () {
-        $(".nav-menu").toggle();
-        $(".dash-menu").toggle();
-    });
-});
-*/
+/*
+    Make an element spin with the relative speed (default is 1). Returns a
+    closure that stops the element spinning when called.
+ */
+function spin(el,speed){
+    rot = 0
+    window.fursuiter.spinners.push(nt = setInterval(function(){
+        $(el).css({transform:'rotate('+(rot+=(5*(speed||1)))+'deg)'})
+    },50))
+    return function(){clearInterval(nt)}
+}

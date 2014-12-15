@@ -5,44 +5,85 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8">
-        <div class="login">
+        <div class="register">
         
           <div class="panel panel-info">
             <div class="panel-heading">
               <div class="panel-title">Register</div>
             </div>
             <div class="panel-body">
-              <%forms:form class_="form-horizontal" role="form" method="POST" action="" name="Register">
+              <%forms:form class_="form-horizontal registration-form" role="form" method="POST" action="" name="Register">
+
                 <div class="form-group">
-                  <label class="control-label col-sm-3" for="realname">Real name</label>
-                  <div class="col-sm-8">
-                    <input class="form-control" type="text" name="realname" placeholder="Real name">
+                  <div class="row">
+                    <label class="control-label col-sm-3" for="realname">Real name</label>
+                    <div class="col-sm-8">
+                      <input class="form-control" type="text" name="realname" id="realname" placeholder="Real name">
+                    </div>
                   </div>
                 </div>
+
                 <div class="form-group">
-                  <label class="control-label col-sm-3" for="email">Email</label>
-                  <div class="col-sm-8">
-                    <input class="form-control" type="text" name="email" placeholder="Email">
+                  <div class="row">
+                    <label class="control-label col-sm-3" for="email">Email</label>
+                    <div class="col-sm-8">
+                      <input class="form-control" type="text" name="email" id="email" placeholder="Email">
+                    </div>
                   </div>
                 </div>
+
                 <div class="form-group">
-                  <label class="control-label col-sm-3" for="username">Username</label>
-                  <div class="col-sm-8">
-                    <input class="form-control" type="text" name="username" placeholder="Username" required>
+                  <div class="row">
+                    <label class="control-label col-sm-3" for="username">Username</label>
+                    <div class="col-sm-8">
+                      <div class="input-group">
+                        <input class="form-control" type="text" name="username" id="username" placeholder="Username" required>
+                        <div class="input-group-addon" id="username_label">
+                          <span class="glyphicon glyphicon-minus"></span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
+
                 <div class="form-group">
-                  <label class="control-label col-sm-3" for="password">Password</label>
-                  <div class="col-sm-8">
-                    <input class="form-control" type="password" name="password" placeholder="Password" required>
+                  <div class="row">
+                    <label class="control-label col-sm-3" for="password">Password</label>
+                    <div class="col-sm-8">
+                      <div class='input-group'>
+                        <input class="form-control" type="password" name="password" id="password" placeholder="Password" required>
+                        <div class="input-group-addon" id="password_label">
+                          <span class="glyphicon glyphicon-minus"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-9 col-sm-offset-3">
+                      Password Strength: <span id="password_message"></span>
+                    </div>
                   </div>
                 </div>
+
                 <div class="form-group">
-                  <label class="control-label col-sm-3" for="password_confirm">Confirm password</label>
-                  <div class="col-sm-8">
-                    <input class="form-control" type="password" name="password_confirm" placeholder="Password" required>
+                  <div class="row">
+                    <label class="control-label col-sm-3" for="password_confirm">Confirm password</label>
+                    <div class="col-sm-8">
+                      <div class="input-group">
+                        <input class="form-control" type="password" name="password_confirm" id="password_confirm" placeholder="Password" required>
+                        <div class="input-group-addon" id="password_confirm_label">
+                          <span class="glyphicon glyphicon-minus"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-9 col-sm-offset-3">
+                      <span id="password_confirm_message"></span>
+                    </div>
                   </div>
                 </div>
+
                 <div class="form-group">
                   <div class="col-md-3 col-md-offset-8">
                     <button type="submit" class="btn btn-info btn-block">Register</button>
@@ -64,3 +105,5 @@
     </div>
   </div>
 </div>
+
+<script src="/static/lib/registerValidate.js"></script>
