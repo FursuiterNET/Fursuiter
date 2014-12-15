@@ -157,41 +157,48 @@
             <div class="panel-title">Log In</div>
           </div>
           <div class="panel-body">
-            <form class="form-horizontal" role="form" method="POST" action="" name="Login">
+            <%forms:form class_="form-horizontal" role="form" method="POST" action="" name="Login">
+
               <div class="form-group">
-                <label for="username" class="control-label col-sm-4">Username</label>
+                <label for="loginUsername" class="control-label col-sm-4">Username</label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" placeholder="Username" name="username" id="username" />
+                  <input type="text" class="form-control" placeholder="Username" name="username" id="loginUsername" />
                 </div>
               </div>
+
               <div class="form-group">
-                <label for="password" class="control-label col-sm-4">Password</label>
+                <label for="loginPassword" class="control-label col-sm-4">Password</label>
                 <div class="col-sm-8">
-                  <input type="password" class="form-control" placeholder="Password" name="password" id="password" />
+                  <input type="password" class="form-control" placeholder="Password" name="password" id="loginPassword" />
                 </div>
               </div>
+
               <div class="form-group">
                 <div class="col-sm-10 col-sm-offset-1">
                   <label for="rememberLogin" class="control-label">Remember Me</label>
                   <input type="checkbox" name="rememberLogin" id="rememberLogin" />
                 </div>
               </div>
+
               <div class="form-group">
                 <div class="col-sm-12">
                   <input type="submit" class="form-control btn btn-success" value="Log In" />
                 </div>
               </div>
+
               <div class="form-group">
                 <div class="col-md-12">
                   <a href="#">I forgot my username</a>
                 </div>
               </div>
+
               <div class="form-group">
                 <div class="col-md-12">
                   <a href="#">I forgot my password</a>
                 </div>
               </div>
-            <form>
+
+            </%forms:form>
           </div>
         </div>
 
@@ -201,42 +208,66 @@
             Register today!
           </div>
           <div class="panel-body" style="display:none;">
-            <%forms:form class_="form-horizontal" role="form" method="POST" action="" name="Register">
+            <%forms:form class_="form-horizontal registration-form" role="form" method="POST" action="" name="Register">
+
               <div class="form-group">
                 <label class="control-label col-sm-4" for="realname">Real name</label>
                 <div class="col-sm-8">
                   <input class="form-control" type="text" name="realname" id="realname" placeholder="Real name">
                 </div>
               </div>
+
               <div class="form-group">
                 <label class="control-label col-sm-4" for="email">Email</label>
                 <div class="col-sm-8">
                   <input class="form-control" type="text" name="email" id="email" placeholder="Email">
                 </div>
               </div>
+
               <div class="form-group">
-                <label class="control-label col-sm-4" for="register_username">Username</label>
+                <label class="control-label col-sm-4" for="username">Username</label>
                 <div class="col-sm-8">
-                  <input class="form-control" type="text" name="username" id="register_username" placeholder="Username" required>
+                  <div class="input-group">
+                    <input class="form-control" type="text" name="username" id="username" placeholder="Username" required>
+                    <div class="input-group-addon" id="username_label">
+                      <span class="glyphicon glyphicon-minus"></span>
+                    </div>
+                  </div>
                 </div>
               </div>
+
+              <div class="col-sm-8 col-sm-offset-4" id="username_message" style="padding-bottom:16px"></div>
+
               <div class="form-group">
-                <label class="control-label col-sm-4" for="register_password">Password</label>
+                <label class="control-label col-sm-4" for="password">Password</label>
                 <div class="col-sm-8">
-                  <input class="form-control" type="password" name="password" id="register_password" placeholder="Password" required>
+                  <div class='input-group'>
+                    <input class="form-control" type="password" name="password" id="password" placeholder="Password" required>
+                    <div class="input-group-addon" id="password_label">
+                      <span class="glyphicon glyphicon-minus"></span>
+                    </div>
+                  </div>
                 </div>
               </div>
+
               <div class="form-group">
-                <label class="control-label col-sm-4" for="register_password_confirm">Confirm password</label>
+                <label class="control-label col-sm-4" for="password_confirm">Confirm password</label>
                 <div class="col-sm-8">
-                  <input class="form-control" type="password" name="password_confirm" id="register_password_confirm" placeholder="Confirm Password" required>
+                  <div class="input-group">
+                    <input class="form-control" type="password" name="password_confirm" id="password_confirm" placeholder="Confirm Password" required>
+                    <div class="input-group-addon" id="password_confirm_label">
+                      <span class="glyphicon glyphicon-minus"></span>
+                    </div>
+                  </div>
                 </div>
               </div>
+
               <div class="form-group">
                 <div class="col-sm-12">
                   <input type="submit" value="Register" class="form-control btn btn-info" />
                 </div>
               </div>
+
             </%forms:form>
           </div>
         </div>
@@ -264,5 +295,6 @@ $(document).ready(function(){
     })
   })
 </script>
+<script src="/static/lib/registerValidate.js"></script>
 
 %endif

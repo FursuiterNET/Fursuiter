@@ -21,23 +21,17 @@
             <div class="panel-body">
               <%forms:form class_="form-horizontal" role="form" action="" method="POST" name="Login">
                 <div class="form-group">
-                  <label class="control-label col-sm-2" for="username">Username</label>
-                  <div class="col-sm-6">
+                  <label class="control-label col-sm-3" for="username">Username</label>
+                  <div class="col-sm-8">
                     <input type="text" class="form-control" name="username" 
                      id="username" placeholder="Username" autofocus required>
                   </div>
-                  <div class="control-hint col-sm-4">
-                    <a href="#">Forget your login?</a>
-                  </div>
                 </div>
                 <div class="form-group">
-                  <label class="control-label col-sm-2" for="password">Password</label>
-                  <div class="col-sm-6">
+                  <label class="control-label col-sm-3" for="password">Password</label>
+                  <div class="col-sm-8">
                     <input type="password" class="form-control" name="password" 
                      id="password" placeholder="Password" autofocus required>
-                  </div>
-                  <div class="control-hint col-sm-4">
-                    <a href="#">Forget your password?</a>
                   </div>
                 </div>
                 <div class="form-group">
@@ -46,6 +40,18 @@
                   </div>
                 </div>
               </%forms:form>
+
+              <div class="row">
+                <div class="col-sm-8 col-sm-offset-3">
+                  <a href="#">Forget your login?</a>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-8 col-sm-offset-3">
+                  <a href="#">Forget your password?</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>

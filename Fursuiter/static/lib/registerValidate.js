@@ -11,7 +11,8 @@ window._regForm = {
     3: "<strong>Strong</strong>"
   },
   required: "<em>Passwords must be at least six characters long and contain at least one number</em>",
-  noMatch: "Passwords must match",
+  noMatch: "No",
+  match: "Yes!",
   timeout: 0,
   exists: function(name){return "<em>Sorry, username <strong>"+name+"</strong> has already been taken</em>"},
   available: function(name){return "Hooray! <strong>"+name+"</strong> is available!"}
@@ -37,33 +38,44 @@ $(document).ready(function(){
 
   // Check that password and confirmation match
   $('body').on("keyup",".registration-form #password_confirm, .registration-form #password",function(){
-    (par=$(this).parents('.registration-form')).find('#password_confirm_label')
-      .html(ico(mat=par.find('#password_confirm').val()==par.find('#password').val()?'ok':'remove')).end()
-      .find('#password_confirm_message').html(mat?"":window._regForm.noMatch)
+    mat=(con=$('#password_confirm').val())==(pas=$('#password').val())
+    $('#password_confirm_label').html((con&&pas)?ico(mat?'ok':'remove'):ico('minus'))
+    $('#password_confirm_message').html((con&&pas)?window._regForm[mat?'match':'noMatch']:"")
 
   // Validate password strength
   }).on("keyup",".registration-form #password",function(){
-    score = Math.min(evaluatePassword($(this).val()),3)
-    $(this).parents('.form-group')
-      .find('#password_label').html(ico(score?"ok":"remove")).end()
-      .find("#password_message").html(window._regForm.passwordStrength[score])
+    score = Math.min(evaluatePassword(name=$(this).val()),3)
+    if(name){
+      $('#password_label').html(ico(score?"ok":"remove"))
+      $('#password_message').html(window._regForm.passwordStrength[score])
+    } else {
+      $('#password_label').html(ico("minus"))
+      $('#password_message').html("")
+    }
 
   // Verify that given username is available
   }).on("keyup",".registration-form #username",function(){
-    clearTimeout(window._regForm.usernameTimeout)
     name = $(this).val()
-    if(name){
-      window._regForm.usernameTimeout = setTimeout(function(){
-        i = $(ico('cog'));
-        $('#username_label').html(i);
-        s = spin(i)
-        ajax("users/usernameExists",{name:name},function(res){
-          s()
-          $(this).parents('.form-group')
-            .find('#username_label').html(ico((res=res=="true")?'remove':'ok')).end()
-            .find('#username_message').html(window._regForm[res?'exists':'available'](name))
-        })
-      },250)
+    if(name != $(this).attr('data-previous-value')){
+      $(this).attr('data-previous-value',name)
+      clearTimeout(window._regForm.usernameTimeout)
+      $('#username_label').html(ico('minus'))
+      if(name) {
+        window._regForm.usernameTimeout = setTimeout(function(){
+          i = $(ico('cog'));
+          $('#username_label').html(i);
+          s = spin(i)
+          ajax("users/usernameExists",{name:name},function(res){
+            s()
+            $('#username_label').html(ico((res=res=="true")?'remove':'ok'))
+            $('#username_message').show().html(window._regForm[res?'exists':'available'](name))
+          })
+        },750)
+      } else {
+        $('#username_message').html("").hide()
+      }
     }
   })
+
+  $('#username, #password, #password_confirm').trigger('keyup')
 })

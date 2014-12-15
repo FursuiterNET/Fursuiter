@@ -44,6 +44,12 @@
                       </div>
                     </div>
                   </div>
+
+                  <div class="row">
+                    <div class="col-sm-9 col-sm-offset-3">
+                      <span id="username_message"></span>
+                    </div>
+                  </div>
                 </div>
 
                 <div class="form-group">
@@ -70,7 +76,7 @@
                     <label class="control-label col-sm-3" for="password_confirm">Confirm password</label>
                     <div class="col-sm-8">
                       <div class="input-group">
-                        <input class="form-control" type="password" name="password_confirm" id="password_confirm" placeholder="Password" required>
+                        <input class="form-control" type="password" name="password_confirm" id="password_confirm" placeholder="Confirm Password" required>
                         <div class="input-group-addon" id="password_confirm_label">
                           <span class="glyphicon glyphicon-minus"></span>
                         </div>
@@ -79,7 +85,7 @@
                   </div>
                   <div class="row">
                     <div class="col-sm-9 col-sm-offset-3">
-                      <span id="password_confirm_message"></span>
+                      Passwords match: <span id="password_confirm_message"></span>
                     </div>
                   </div>
                 </div>

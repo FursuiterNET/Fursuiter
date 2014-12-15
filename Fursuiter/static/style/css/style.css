@@ -18,6 +18,10 @@
   height: auto;
 }
 
+.panel-body .row {
+  padding:0 8px;
+}
+
 @media (max-width: @screen-xs-max) {
   .media-body {
     min-width: 0px;
