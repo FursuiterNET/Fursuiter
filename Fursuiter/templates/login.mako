@@ -1,15 +1,17 @@
 <%inherit file="base.mako" />
 <%namespace name="forms" file="forms.mako" />
-<% messages = req.session.pop_flash('error') %>
-% if messages is not None:
-    % for error in messages:
-    <div class="error">
-        ${error}
-    </div>
-    % endfor
-% endif
 <div class="col-md-12">
   <div class="container">
+    <% messages = req.session.pop_flash('error') %>
+    % if messages:
+        % for error in messages:
+        <div class="panel panel-warning">
+          <div class="panel-heading">
+              ${error}
+          </div>
+        </div>
+        % endfor
+    % endif
     <div class="row">
       <div class="col-md-8">
         <div class="login">
@@ -35,8 +37,8 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <div class="col-sm-2 col-sm-offset-6">
-                    <button type="submit" class="btn btn-success btn-block">Sign In</button>
+                  <div class="col-sm-3 col-sm-offset-8">
+                    <button type="submit" class="btn btn-success btn-block">Log In</button>
                   </div>
                 </div>
               </%forms:form>

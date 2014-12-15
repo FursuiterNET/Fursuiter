@@ -62,6 +62,10 @@ $(document).ready(function(){
       $('#username_label').html(ico('minus'))
       if(name) {
         window._regForm.usernameTimeout = setTimeout(function(){
+          // Fix sporadic timing issue where name is unset
+          if(!name){
+            name = $('#username').attr('data-previous-value')
+          }
           i = $(ico('cog'));
           $('#username_label').html(i);
           s = spin(i)

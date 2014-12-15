@@ -1,6 +1,6 @@
+%if req.user:
 <%inherit file="base.mako" />
 <%namespace name="forms" file="forms.mako" />
-%if req.user:
 <div class="col-sm-4 col-md-3">
   <div class="well">
     <div class="identity" style="text-align:center">
@@ -137,27 +137,43 @@
 </div>
 %else:
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-8">
-      <div class="jumbotron">
-        <h1>
-          Fursuiter.NET
-        </h1>
-        <h3>
-          A community for fursuit makers, performers, and enthusiasts.
-        </h3>
-      </div>
-    </div>
+<style>
+  .jumbomaster {
+    height:540px;
+    background: transparent url('/static/img/Capture.png') no-repeat top left;
+    background-size: cover;
+    box-shadow: rgba(0,0,0,0.15) 0 8px 0;
+    padding:0 32px;
+    margin:-23px -15px 0 -15px;
+  }
 
-    <div class="col-md-4">
-      <div class="accordion">
-        <div class="panel panel-success panel-toggleable">
+  .all-white * {
+    color: #FFF !important
+  }
+
+  .accordion .panel {
+    box-shadow: rgba(0,0,0,0.1) 4px 4px 0
+  }
+</style>
+
+<div class="jumbomaster">
+  <div class="row">
+    <div class="col-md-11 col-md-offset-1 all-white">
+      <h1>Fursuiter.net</h1>
+      <h3>
+        A community for fursuiter makers, performers, and enthusiasts.
+      </h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 col-md-offset-7">
+      <div class="accordion" style="margin-top:48px">
+        <div class="panel panel-primary panel-toggleable">
           <div class="panel-heading">
-            <div class="panel-title">Log In</div>
+            <div class="panel-title">Welcome back!</div>
           </div>
           <div class="panel-body">
-            <%forms:form class_="form-horizontal" role="form" method="POST" action="" name="Login">
+            <%forms:form class_="form-horizontal" role="form" method="POST" action="/login" name="Login">
 
               <div class="form-group">
                 <label for="loginUsername" class="control-label col-sm-4">Username</label>
@@ -174,15 +190,15 @@
               </div>
 
               <div class="form-group">
-                <div class="col-sm-10 col-sm-offset-1">
-                  <label for="rememberLogin" class="control-label">Remember Me</label>
+                  <label for="rememberLogin" class="control-label col-sm-4">Remember Me</label>
+                <div class="col-sm-8">
                   <input type="checkbox" name="rememberLogin" id="rememberLogin" />
                 </div>
               </div>
 
               <div class="form-group">
                 <div class="col-sm-12">
-                  <input type="submit" class="form-control btn btn-success" value="Log In" />
+                  <input type="submit" class="form-control btn btn-primary" value="Log In" />
                 </div>
               </div>
 
@@ -204,11 +220,10 @@
 
         <div class="register panel panel-info panel-toggleable">
           <div class="panel-heading">
-            <div class="panel-title">New User?</div>
-            Register today!
+            <div class="panel-title">New user? Register right now.</div>
           </div>
           <div class="panel-body" style="display:none;">
-            <%forms:form class_="form-horizontal registration-form" role="form" method="POST" action="" name="Register">
+            <%forms:form class_="form-horizontal registration-form" role="form" method="POST" action="/register" name="Register">
 
               <div class="form-group">
                 <label class="control-label col-sm-4" for="realname">Real name</label>
@@ -276,16 +291,28 @@
   </div>
 </div>
 
+<div class="container" style="margin: 32px auto">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Like Fursuits? So Do We!</h2>
+      <p><strong>Lorem ipsum</strong> dolor sit amet, consectetur adipisicing elit. Provident, asperiores, fuga odio suscipit in impedit placeat et quia illo adipisci eum accusantium sit excepturi voluptate aliquid consequuntur illum nesciunt totam.</p>
+    </div>
+  </div>
+</div>
+
 <script>
 $(document).ready(function(){
   $('body').on("click",".accordion .panel-toggleable .panel-heading",function(){
       $('.panel-shown').removeClass('panel-shown')
       $(this).parents('.panel').addClass('panel-shown').find('.panel-body').slideDown()
       $(this).parents('.accordion').find('.panel-toggleable:not(.panel-shown) .panel-body').slideUp()
+
     }).on("mouseover",".panel-toggleable .panel-heading",function(){
       $(this).css({opacity:0.8})
+
     }).on("mouseout",".panel-toggleable .panel-heading",function(){
       $(this).css({opacity:1})
+
     }).on("form","submit",function(){
       // Check form for required fields if client browser does not.
       if((prob=$(this).find('input[required]').filter(function(){return !$(this).val()}).first()).length){
@@ -293,6 +320,8 @@ $(document).ready(function(){
         return false
       }
     })
+
+    $('#loginUsername').focus()
   })
 </script>
 <script src="/static/lib/registerValidate.js"></script>

@@ -7,12 +7,12 @@
       <div class="col-md-8">
         <div class="register">
         
-          <div class="panel panel-info">
-            <div class="panel-heading">
-              <div class="panel-title">Register</div>
-            </div>
-            <div class="panel-body">
-              <%forms:form class_="form-horizontal registration-form" role="form" method="POST" action="" name="Register">
+          <div class="well">
+            <h2>
+              Register
+            </h2>
+            <div class="well-content">
+              <%forms:form class_="form-horizontal registration-form" role="form" method="POST" action="/resgister" name="Register">
 
                 <div class="form-group">
                   <div class="row">
@@ -113,3 +113,6 @@
 </div>
 
 <script src="/static/lib/registerValidate.js"></script>
+<script>
+  $('.registration-form input[type=text]:visible:first').focus()
+</script>
