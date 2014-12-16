@@ -16,11 +16,11 @@
       <div class="col-md-8">
         <div class="login">
         
-          <div class="panel panel-success">
-            <div class="panel-heading">
-              <div class="panel-title">Log In</div>
-            </div>
-            <div class="panel-body">
+          <div class="well">
+            <h2 class="col-sm-11 col-sm-offset-1">
+              Log In
+            </h2>
+            <div class="well-content">
               <%forms:form class_="form-horizontal" role="form" action="" method="POST" name="Login">
                 <div class="form-group">
                   <label class="control-label col-sm-3" for="username">Username</label>
@@ -38,7 +38,7 @@
                 </div>
                 <div class="form-group">
                   <div class="col-sm-3 col-sm-offset-8">
-                    <button type="submit" class="btn btn-success btn-block">Log In</button>
+                    <button type="submit" class="btn btn-primary btn-block">Log In</button>
                   </div>
                 </div>
               </%forms:form>

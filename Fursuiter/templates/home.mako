@@ -138,17 +138,24 @@
 %else:
 
 <style>
+  .jumbomaster-overlay {
+    height: 540px;
+    position: absolute;
+    background-color: rgba(0,0,0,0.3);
+    width: 100%;
+    margin: -23px -15px 0 -15px;
+  }
+
   .jumbomaster {
     height:540px;
     background: transparent url('/static/img/Capture.png') no-repeat top left;
     background-size: cover;
     box-shadow: rgba(0,0,0,0.15) 0 8px 0;
-    padding:0 32px;
     margin:-23px -15px 0 -15px;
   }
 
-  .all-white * {
-    color: #FFF !important
+  .all-white *, .all-white {
+    color: #FFF !important;
   }
 
   .accordion .panel {
@@ -156,18 +163,35 @@
   }
 </style>
 
+<div class="jumbomaster-overlay"></div>
 <div class="jumbomaster">
-  <div class="row">
-    <div class="col-md-11 col-md-offset-1 all-white">
-      <h1>Fursuiter.net</h1>
-      <h3>
-        A community for fursuiter makers, performers, and enthusiasts.
-      </h3>
+  <div class="container">
+    <div class="row" style="min-height:102px;vertical-align:bottom">
+      <div class="col-sm-12 all-white">
+        <h1>
+          Fursuiter.net
+        </h1>
+        <h3>
+          A community for fursuit makers, performers, and enthusiasts
+        </h3>
+      </div>
     </div>
   </div>
+</div>
+
+<div class="container">
   <div class="row">
-    <div class="col-md-3 col-md-offset-7">
-      <div class="accordion" style="margin-top:48px">
+    <div class="col-md-8 hidden-sm hidden-xs">
+      <h3 style="margin-top:32px;">A community for fursuit makers, performers, and enthusiasts</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut esse et impedit non repudiandae
+        delectus similique amet ullam reprehenderit? Id, distinctio sapiente esse deleniti velit
+        placeat nam quo quia dolorem?
+      </p>
+    </div>
+
+    <div class="col-md-4">
+      <div class="accordion" style="margin-top:-132px">
         <div class="panel panel-primary panel-toggleable">
           <div class="panel-heading">
             <div class="panel-title">Welcome back!</div>
@@ -288,14 +312,11 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-<div class="container" style="margin: 32px auto">
+  </div>
   <div class="row">
-    <div class="col-md-12">
-      <h2>Like Fursuits? So Do We!</h2>
-      <p><strong>Lorem ipsum</strong> dolor sit amet, consectetur adipisicing elit. Provident, asperiores, fuga odio suscipit in impedit placeat et quia illo adipisci eum accusantium sit excepturi voluptate aliquid consequuntur illum nesciunt totam.</p>
+    <div class="col-sm-12">
+      
     </div>
   </div>
 </div>
@@ -305,6 +326,7 @@ $(document).ready(function(){
   $('body').on("click",".accordion .panel-toggleable .panel-heading",function(){
       $('.panel-shown').removeClass('panel-shown')
       $(this).parents('.panel').addClass('panel-shown').find('.panel-body').slideDown()
+        .find('input[type=text]:visible:first').focus()
       $(this).parents('.accordion').find('.panel-toggleable:not(.panel-shown) .panel-body').slideUp()
 
     }).on("mouseover",".panel-toggleable .panel-heading",function(){

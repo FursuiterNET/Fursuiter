@@ -8,7 +8,7 @@
         <div class="register">
         
           <div class="well">
-            <h2>
+            <h2 class="col-sm-11 col-sm-offset-1">
               Register
             </h2>
             <div class="well-content">
@@ -103,7 +103,7 @@
 
       <div class="col-md-4">
         <h4>Already have an account?</h4>
-        <a href="/login" class="btn btn-success">
+        <a href="/login" class="btn btn-primary">
           Login
         </a>
       </div>
