@@ -36,5 +36,9 @@ def map_routes(app):
     app.map_connect('character', '/user/:user/character/:character',
             controller='characterscontroller', action='character')
 
+    app.map_connect('user', '/users/usernameExists',
+            controller='userscontroller', action='POST_namecheck',
+            conditions={"method": "POST"})
+
     app.on_except(HTTPNotFound, notfound)
     app.on_except(HTTPForbidden, forbidden)

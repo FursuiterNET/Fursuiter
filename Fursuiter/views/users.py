@@ -4,7 +4,7 @@ from Fursuiter.authentication import create_valid_session
 from Fursuiter.sql import Session
 from Fursuiter.sql.ORM import User, Character
 from distill.renderers import renderer
-from distill.exceptions import HTTPNotFound, HTTPMoved
+from distill.exceptions import HTTPNotFound, HTTPMoved, HTTPBadRequest
 
 
 class UsersController(object):
@@ -78,3 +78,11 @@ class UsersController(object):
         request.session['username'] = user.username
         request.user = user
         return HTTPMoved(request.url('home'))
+
+    def POST_namecheck(self, request, response):
+        user = Session().query(User).filter(
+                User.username == request.POST["name"]).scalar()
+        if user:
+            # raise HTTPBadRequest()
+            return "true"
+        return request.POST["name"]
