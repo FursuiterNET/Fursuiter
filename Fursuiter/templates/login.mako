@@ -26,14 +26,15 @@
                   <label class="control-label col-sm-3" for="username">Username</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" name="username" 
-                     id="username" placeholder="Username" autofocus required>
+                     id="username" placeholder="Username" required
+                     value="${'' if not 'username' in req.POST else req.POST['username']}">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="control-label col-sm-3" for="password">Password</label>
                   <div class="col-sm-8">
                     <input type="password" class="form-control" name="password" 
-                     id="password" placeholder="Password" autofocus required>
+                     id="password" placeholder="Password" required>
                   </div>
                 </div>
                 <div class="form-group">
@@ -69,3 +70,8 @@
     </div>
   </div>
 </div>
+<script>
+  $(document).ready(function() {
+    $(!$('#username').val()?'#username':'#password').focus()
+  })
+</script>

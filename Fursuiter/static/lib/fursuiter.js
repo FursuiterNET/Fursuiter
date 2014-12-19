@@ -56,11 +56,13 @@ function handleResponse(jsonSrc) {
 
     for(k in jo) {
         if(clos=window.fursuiter.responseBindings[k]) {
-            return clos(jo[k]);
+            clos(jo[k]);
         } else {
             console.warn("No binding found for \""+k+"\"");
         }
     }
+
+    return jo['return'] || undefined
 }
 
 /* 

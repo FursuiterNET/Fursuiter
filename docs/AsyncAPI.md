@@ -24,6 +24,8 @@ responsibility.
 ### User Accounts
 User account creation, editing and deletion ("deactivation") will be done synchronously
 
+	exists(string username) => {EXISTS: boolean True if the username is already registered}
+
 ### Posts
 	Create(string content, int parentId, int CDNReference, JSON privacySettings, string context) => {CONTENT: HTML for post to display}
 	Update(string content, string context) => {CONTENT: HTML for post to display}
@@ -31,6 +33,17 @@ User account creation, editing and deletion ("deactivation") will be done synchr
 		# separate since privacy edits would be priority, should happen as fast and reliably as possible
 	Delete(int postId) => {SUCCESS: success/failure boolean}
 	Hide(int postId) => {SUCCESS: success/failure boolean}
+
+### Feeds
+	Fetch(int cursor) => {CONTENT: HTML to be appended to feed pane, CURSOR: Cursor ID, DONE: boolean saying if there is no more in the feed left to display}
+		# Requests for this function are triggered once when a feed is loaded, and more times
+		# when subsequent content is needed (it's for infinite scroll, in other words).
+		#
+		# feeds are url-directed; requests will be directed to one of the following:
+			- /feeds/popular
+			- /feeds/recent
+			- /feeds/social
+			- /feeds/events
 
 ### Galleries
 Gallery creation and deletion will be done synchronously

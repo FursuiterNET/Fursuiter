@@ -1,140 +1,129 @@
 %if req.user:
 <%inherit file="base.mako" />
 <%namespace name="forms" file="forms.mako" />
-<div class="col-sm-4 col-md-3">
-  <div class="well">
-    <div class="identity" style="text-align:center">
-      <img src="/static/demo/full_bg.png" alt="Copper's Icon" class="img-circle img-responsive center-block" style="border:solid 6px rgba(0,0,0,0.2);max-width:240px;width:100%" />
-      <h2>Copper</h2>
-      <h4>@CopperBadger</h4>
+<div class="row">
+  <div class="container">
+    <div class="col-sm-4 col-md-3">
+      <div class="well">
+        <div class="identity" style="text-align:center">
+          <img src="/static/demo/full_bg.png" alt="Copper's Icon" class="img-circle img-responsive center-block" style="border:solid 6px rgba(0,0,0,0.2);max-width:240px;width:100%" />
+          <h2>${req.user.realname}</h2>
+          <h4>@${req.user.username}</h4>
+        </div>
+      </div>
+
+      <div class="list-group">
+        <a href="#feed" class="list-group-item">
+          <span class="glyphicon glyphicon-list"></span>
+            Feed
+        </a>
+        <a href="#inbox" class="list-group-item">
+          <span class="pull-right badge">14</span>
+          <span class="glyphicon glyphicon-envelope"></span>
+            Inbox
+        </a>
+        <a href="#profile" class="list-group-item">
+          <span class="glyphicon glyphicon-user"></span>
+            Profile
+        </a>
+        <a href="#settings" class="list-group-item">
+          <span class="glyphicon glyphicon-cog"></span>
+            Settings
+        </a>
+      </div>
+
+      <p>
+        Copyright &copy; 2014 Fursuiter.net
+      </p>
     </div>
-  </div>
 
-  <div class="list-group">
-    <a href="#feed" class="list-group-item">
-      <span class="glyphicon glyphicon-list"></span>
-        Feed
-    </a>
-    <a href="#inbox" class="list-group-item">
-      <span class="pull-right badge">14</span>
-      <span class="glyphicon glyphicon-envelope"></span>
-        Inbox
-    </a>
-    <a href="#profile" class="list-group-item">
-      <span class="glyphicon glyphicon-user"></span>
-        Profile
-    </a>
-    <a href="#settings" class="list-group-item">
-      <span class="glyphicon glyphicon-cog"></span>
-        Settings
-    </a>
-  </div>
-
-  <p>
-    Copyright &copy; 2014 Fursuiter.net
-  </p>
-</div>
-
-<div class="col-sm-8 col-md-9">
-    <div class="content">
-        <ul class="nav nav-pills nav-justified" style="margin-bottom:6px">
-            <li><a href="popular">Popular</a></li>
-            <li class="active"><a href="recent">Recent</a></li>
-            <li><a href="social">Social</a></li>
-            <li><a href="events">Groups &amp; Events</a></li>
-        </ul>
-        <div class="media-list">
-            <div class="media well">
-                <a href="user/dreae" class="pull-left user-icon img-responsive">
-                    <img src="/static/demo/avatar.png" alt="Dreae" class="media-object img-rounded img-responsive">
-                </a>
-                <div class="media-body">
-                    <h4 class="media-heading">
-                        <a href="user/dreae">
-                            <strong>Dreae</strong>
-                        </a> updated his status
-                    </h4>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam, quas, ut, dolore et nostrum ipsam veritatis consectetur commodi harum totam necessitatibus magni iusto fugit officia aut vitae qui. Ullam, quas!
-                    </p>
-                </div>
+    <div class="col-sm-8 col-md-9">
+        <div class="content">
+            <ul class="nav nav-pills nav-justified" id="feed-nav" style="margin-bottom:6px">
+                <li>
+                  <a href="#popular" data-feed-id="feed-popular">Popular</a>
+                </li>
+                <li>
+                  <a href="#recent" class="default" data-feed-id="feed-recent">Recent</a>
+                </li>
+                <li>
+                  <a href="#social" data-feed-id="feed-social">Social</a>
+                </li>
+                <li>
+                  <a href="#events" data-feed-id="feed-events">Groups &amp; Events</a>
+                </li>
+            </ul>
+            <div class="feed-pane" id="feed-popular" data-cursor="" data-feed-name="popular">
+              <p>Characters: ${req.user.characters}</p>
+              <p>Email: ${req.user.email}</p>
+              <p>Galleries: ${req.user.galleries}</p>
+              <p>Groups: ${req.user.groups}</p>
+              <p>ID: ${req.user.id}</p>
+              <p>Level: ${req.user.level}</p>
+              <p>Metadata: ${req.user.metadata}</p>
+              <p>Password: ${req.user.password}</p>
+              <p>Realname: ${req.user.realname}</p>
+              <p>Submissions: ${req.user.submissions}</p>
+              <p>Username: ${req.user.username}</p>
             </div>
-
-            <div class="media well">
-                <a href="user/rechner" class="pull-left user-icon">
-                    <img src="/static/demo/rechner.jpg" alt="Rechner Fox" class="media-object img-rounded img-responsive">
-                </a>
-                <div class="media-body">
-                    <h4 class="media-heading">
-                        <a href="user/rechner">
-                            <strong>Rechner</strong>
-                        </a> updated his status
-                    </h4>
-                    <p>
-                        HTML5 and WebM would be the format of choice, with a fallback to mp4/flash if needed.  Flash is going the way of the dinosaur though so we'll want to weigh the options.
-                    </p>
-                    <p>
-                        Many people already upload to Youtube so making it easy to embed videos instead of uploading them outright would be something to look at.
-                    </p>
-                </div>
-            </div>
-
-            <div class="media well">
-                <a href="user/jacktail" class="pull-left user-icon">
-                    <img src="/static/demo/JackTail.jpg" alt="JackTail" class="media-object img-rounded img-responsive">
-                </a>
-                <div class="media-body">
-                    <h4 class="media-heading">
-                        <a href="user/rechner">
-                            <strong>JackTail</strong>
-                        </a> updated his status
-                    </h4>
-                    <p>
-                        Fursuiter.net is underway!
-                    </p>
-                </div>
-            </div>
-
-            <div class="media well">
-                <a href="user/rechner" class="pull-left user-icon">
-                    <img src="/static/demo/rechner.jpg" alt="Rechner Fox" class="media-object img-rounded img-responsive">
-                </a>
-                <div class="media-body">
-                    <h4 class="media-heading">
-                        <a href="user/rechner">
-                            <strong>Rechner</strong>
-                        </a> changed his commission status
-                    </h4>
-                    <span style="font-size:24pt">
-                        <span class="glyphicon glyphicon-star"></span> Open for Commissions!
-                    </span>
-                    <p>
-                        I'm opening 5 commission spots.
-                    </p>
-                </div>
-            </div>
-
-            <div class="media well">
-                <a href="user/grenrir" class="pull-left user-icon">
-                    <img src="/static/demo/grenrir.jpg" alt="Grenrir Hunstman" class="media-object img-rounded img-responsive">
-                </a>
-                <div class="media-body">
-                    <h4 class="media-heading">
-                        <a href="user/rechner">
-                            <strong>Grenrir</strong>
-                        </a> updated his status
-                    </h4>
-                    <p>
-                        Dedicated hosting can be pretty cheap. Since our site is going to be heavily database driven, I would take a REALLY close look at the Terms of Service to make sure there is no limitations/restrictions being put on CPU utilization and disk I/O. Many placed will lure you in with these unlimited packages, but hidden in there would be limitations on CPU and Disk usage.
-                    </p>
-                    <p>
-                        I can take the lead on researching. Dedicated hosting as well as cloud services (like Amzon AWS or Azure) may pay off better in the long run, but we need to do some performance testing to know for sure.
-                    </p>
-                </div>
-            </div>
+            <div class="feed-pane" id="feed-recent" data-cursor="" data-feed-name="recent"></div>
+            <div class="feed-pane" id="feed-social" data-cursor="" data-feed-name="social"></div>
+            <div class="feed-pane" id="feed-events" data-cursor="" data-feed-name="events"></div>
         </div>
     </div>
+  </div>
 </div>
+
+<script>
+
+  feeds = {
+    'popular':{el:$('#feed-popular'),done:0,cursor:0},
+    'recent':{el:$('#feed-recent'),done:0,cursor:0},
+    'social':{el:$('#feed-social'),done:0,cursor:0},
+    'events':{el:$('#feed-events'),done:0,cursor:0}
+  }
+
+  function feed(feedName) {
+    if((pane=feeds[feedName]) && !pane.done) {
+      thresh = ($(pane.el).height() + $(pane.el).offset().top - $(window).height()*2);
+      if($(document).scrollTop() > thresh) {
+        ajax('feeds/'+feedName,{cursor:pane.cursor},function(res) {
+          data = handleResponse(res)
+          if(data) {
+            $(pane.el).append(data.html)
+            pane.cursor = data.cursor
+            pane.done = data.done
+          } else {
+            pane.done=true
+            $(pane.el).append("<div class='well'><h3>Error</h3><p><strong>Oh no!</strong> There was an error retrieving more feed entries.</p></div>")
+          }
+        })
+      }
+    }
+  }
+
+  function updates(feedName) {
+    //TODO: write function to poll server for new posts in feeds
+  }
+
+  $(document).ready(function() {
+
+    $('#feed-nav').on("click","li:not(.active) a",function() {
+      $('#feed-nav .active').removeClass('active')
+      $(this).parents('li:first').addClass('active')
+
+      pane = $('#'+$(this).attr('data-feed-id'))
+      $('.feed-pane').hide()
+      feed($(pane).show().attr('data-feed-name'))
+    })
+
+    $('.feed-pane').hide()
+
+    //Load tab specified in URL hash or within markup
+    {((h=window.location.hash)?($('a[href='+h+']')):($('#feed-nav a.default'))).trigger('click')}
+  })
+</script>
+
 %else:
 
 <style>
