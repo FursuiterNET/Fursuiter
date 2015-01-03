@@ -1,4 +1,4 @@
-# Fursuiter.NET Asynchronous API v0
+# Fursuiter.NET Asynchronous API
 
 ## Notes
 
@@ -44,6 +44,9 @@ User account creation, editing and deletion ("deactivation") will be done synchr
 			- /feeds/recent
 			- /feeds/social
 			- /feeds/events
+
+### Search
+	Search(string q) => {CONTENT: HTML of search results to display in search results}
 
 ### Galleries
 Gallery creation and deletion will be done synchronously

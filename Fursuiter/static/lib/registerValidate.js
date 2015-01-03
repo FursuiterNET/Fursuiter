@@ -53,31 +53,19 @@ $(document).ready(function(){
       $('#password_message').html("")
     }
 
+  })
+
   // Verify that given username is available
-  }).on("keyup",".registration-form #username",function(){
-    name = $(this).val()
-    if(name != $(this).attr('data-previous-value')){
-      $(this).attr('data-previous-value',name)
-      clearTimeout(window._regForm.usernameTimeout)
+  liveInput(".registration-form #username",{
+    route: "user/usernameExists",
+    complete: function(res){
+      $('#username_label').html(ico((res.EXISTS)?'remove':'ok'))
+      $('#username_message').show().html(res.NOTE)
+    },
+    spinWrap: "#username_label",
+    noinput: function(){
+      $('#username_message').html("").hide()
       $('#username_label').html(ico('minus'))
-      if(name) {
-        window._regForm.usernameTimeout = setTimeout(function(){
-          // Fix sporadic timing issue where name is unset
-          if(!name){
-            name = $('#username').attr('data-previous-value')
-          }
-          i = $(ico('cog'));
-          $('#username_label').html(i);
-          s = spin(i)
-          ajax("users/usernameExists",{name:name},function(res){
-            s()
-            $('#username_label').html(ico((res=res=="true")?'remove':'ok'))
-            $('#username_message').show().html(window._regForm[res?'exists':'available'](name))
-          })
-        },750)
-      } else {
-        $('#username_message').html("").hide()
-      }
     }
   })
 
