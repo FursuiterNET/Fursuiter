@@ -8,6 +8,9 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="/static/lib/fursuiter.js"></script>
   <script src="/static/lib/bootstrap.min.js"></script>
+  <%block name="pagetitle">
+  <title>Fursuiter.net</title>
+  </%block>
 </head>
 <body>
   <div class="">

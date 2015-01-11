@@ -1,6 +1,10 @@
 <%inherit file="../base.mako"/>
 <%namespace file="character_well.mako" import="character_well"/>
 
+<%block name="pagetitle">
+<title>${user.username | h} | Fursuiter.net</title>
+</%block>
+
 <div class="col-sm-4 col-md-3">
     <div class="well">
         <div class="identity" style="text-align:center">

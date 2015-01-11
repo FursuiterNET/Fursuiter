@@ -1,5 +1,10 @@
 <%inherit file="base.mako" />
 <%namespace name="forms" file="forms.mako" />
+
+<%block name="pagetitle">
+<title>Login | Fursuiter.net</title>
+</%block>
+
 <div class="col-md-12">
   <div class="container">
     <% messages = req.session.pop_flash('error') %>

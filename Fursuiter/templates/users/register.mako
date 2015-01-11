@@ -1,6 +1,10 @@
 <%inherit file="../base.mako" />
 <%namespace name="forms" file="../forms.mako" />
 
+<%block name="pagetitle">
+<title>Register | Fursuiter.net</title>
+</%block>
+
 <div class="col-md-12">
   <div class="container">
     <div class="row">

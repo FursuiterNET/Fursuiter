@@ -1,4 +1,9 @@
 <%inherit file="../base.mako" />
+
+<%block name="pagetitle">
+<title>${character.name | h} | Fursuiter.net</title>
+</%block>
+
 <div class="col-sm-4 col-md-3">
     <div class="well">
         <div class="identity" style="text-align: center;">

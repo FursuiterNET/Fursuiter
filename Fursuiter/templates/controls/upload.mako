@@ -1,5 +1,10 @@
 <%inherit file="../base.mako"/>
 <%namespace name="forms" file="../forms.mako"/>
+
+<%block name="pagetitle">
+<title>Upload | Fursuiter.net</title>
+</%block>
+
 <div class="centre">
     <div class="login">
         <h1 class="title">Login to Fursuits.NET</h1>
