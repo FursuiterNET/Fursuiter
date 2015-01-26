@@ -37,6 +37,7 @@
       </p>
     </div>
 
+
     <div class="col-sm-8 col-md-9">
         <div class="content">
             <ul class="nav nav-pills nav-justified" id="feed-nav" style="margin-bottom:6px">
@@ -53,6 +54,51 @@
                   <a href="#events" data-feed-id="feed-events">Groups &amp; Events</a>
                 </li>
             </ul>
+            <form action="javascript:void(0)" class="form well well-sm" id="message-form">
+              <div class="form-group">
+                <label for="message-input" class="control-label sr-only">Message</label>
+                <textarea name="message" class="form-control" id="message-input" placeholder="Status Update" rows="3"></textarea>
+              </div>
+              <div class="form-group status-addon-group" data-addon-type="media">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <a class="center-block" style="text-align:center">
+                      <span class="span glyphicon glyphicon-folder-open" style="font-size:64px"></span><br>
+                      Choose Existing
+                    </a>
+                  </div>
+                  <div class="col-xs-6">
+                    <a class="center-block" style="text-align:center">
+                      <span class="span glyphicon glyphicon-upload" style="font-size:64px"></span><br>
+                      Upload
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group status-addon-group" data-addon-type="commission-status">
+                <label for="commission-status-select" class="control-label">Status</label>
+                <select name="commission-status" id="commission-status-select" class="form-control">
+                  <option value="open">Open</option>
+                  <option value="closed">Closed</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <div class="btn-group">
+                  <button class="btn btn-default status-addon-button">
+                    Normal Status
+                  </button>
+                  <button class="btn btn-default status-addon-button" data-addon-type="media">
+                    <span class="glyphicon glyphicon-picture"></span>
+                    Image / Video
+                  </button>
+                  <button class="btn btn-default status-addon-button" data-addon-type="commission-status">
+                    <span class="glyphicon glyphicon-bullhorn"></span>
+                    Commission Status
+                  </button>
+                </div>
+                <button type="submit" class="btn btn-primary pull-right">Post</button>
+              </div>
+            </form>
             <div class="feed-pane" id="feed-popular" data-cursor="" data-feed-name="popular">
               <p>Characters: ${req.user.characters}</p>
               <p>Email: ${req.user.email}</p>
@@ -121,6 +167,24 @@
 
     //Load tab specified in URL hash or within markup
     {((h=window.location.hash)?($('a[href='+h+']')):($('#feed-nav a.default'))).trigger('click')}
+
+    // Bindings for message form and status addons
+    $('#message-form').on("submit",function(){
+      $('#feed-nav [data-feed-id=feed-recent]').click()
+      $(this).find('input, textarea, button').attr('disabled',true)
+      ajax("post","create",function(res){
+        $(res.CONTENT).prependTo('#feed-recent').hide().slideDown()
+        $('#message-form').find('input, textarea, button').attr('disabled',false)
+        $('#message-input').val("")
+      })
+    })
+
+    $('.status-addon-button').on("click",function(){
+      $('.status-addon-group').hide()
+      $('.status-addon-group[data-addon-type='+$(this).attr('data-addon-type')+']').show()
+    })
+
+    $('.status-addon-group').hide()
   })
 </script>
 
@@ -150,6 +214,12 @@
   .accordion .panel {
     box-shadow: rgba(0,0,0,0.1) 4px 4px 0
   }
+
+  .heading-icon {
+    padding:0 32px 12px 0;
+    font-size:96px;
+    float:left;
+  }
 </style>
 
 <div class="jumbomaster-overlay"></div>
@@ -170,13 +240,38 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-8 hidden-sm hidden-xs">
-      <h3 style="margin-top:32px;">A community for fursuit makers, performers, and enthusiasts</h3>
+    <div class="col-md-8 hidden-sm hidden-xs" style="margin-top:64px;">
+
+      <div class="glyphicon glyphicon-picture heading-icon" style="padding-top:0"></div>
+      <h3 style="margin-top:2px">
+        Photos and Videos: It's All About Sharing
+      </h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, quis, delectus, expedita
+        assumenda vitae atque commodi est alias harum obcaecati debitis quia reprehenderit libero
+        non earum. Minima, magnam harum recusandae!
+      </p>
+
+      <p>
+        Tenetur, provident, at, inventore minus sequi culpa consequatur nihil quos aut modi odit
+        suscipit beatae possimus quia doloribus magni recusandae vel! Lorem ipsum dolor sit amet,
+        consectetur adipisicing elit. Deleniti architecto corrupti et id similique dolorem nihil
+        explicabo. Est, odio, aut, accusamus commodi quidem voluptatibus incidunt rem minus quis
+        ca harum!
+      </p>
+
+      <hr class="clearfix">
+      
+      <div class="glyphicon glyphicon-heart heading-icon"></div>
+      <h3>
+        Your Characters have a Story Worth Telling!
+      </h3>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut esse et impedit non repudiandae
         delectus similique amet ullam reprehenderit? Id, distinctio sapiente esse deleniti velit
-        placeat nam quo quia dolorem?
+        placeat nam quo quia dolorem? Lorem ipsum dolor sit amet, consectetur adipisicing elit.
       </p>
+
     </div>
 
     <div class="col-md-4">
