@@ -24,7 +24,14 @@ responsibility.
 ### User Accounts
 User account creation, editing and deletion ("deactivation") will be done synchronously
 
-	exists(string username) => {EXISTS: boolean True if the username is already registered}
+	exists(string username) => {INPUT: the input username, STATUS: integer indicating username status (see below), ARG: argument(s) if needed for the error message}
+
+	Username statuses:
+		0: Username is taken
+		1: Username is available
+		2: Username is reserved (Message will be: "<INPUT> is reserved: <ARG>")
+		3: Username is invalid (Message will be: "<INPUT> is invalid: <ARG>")
+		Any other status: Some other error occurred. ARG will be shown to user if it exists.
 
 ### Posts
 	Create(string content, int parentId, int CDNReference, JSON privacySettings, string context) => {CONTENT: HTML for post to display}
