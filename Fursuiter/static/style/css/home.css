@@ -7,5 +7,5 @@
 }
 
 #content-column {
-	border-left: dashed 1px rgba(0.1);
+	border-left: dashed 1px rgba(0,0,0,0.1) !important;
 }

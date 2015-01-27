@@ -9,6 +9,7 @@ def add_controllers(app_):
     from .controls import UploadController
     from .media import MediaController
     from .characters import CharactersController
+    from .messages import MessagesController
 
     loc = locals().copy()
     del loc['app_']
@@ -39,6 +40,10 @@ def map_routes(app):
     app.map_connect('user', '/users/usernameExists',
             controller='userscontroller', action='POST_namecheck',
             conditions={"method": "POST"})
+
+    app.map_connect('user', '/profile', controller='userscontroller', action='GET_sessionUser')
+
+    app.map_connect('messages', '/messages', controller='messagescontroller', action='messages', conditions={"method":"GET"})
 
     app.on_except(HTTPNotFound, notfound)
     app.on_except(HTTPForbidden, forbidden)

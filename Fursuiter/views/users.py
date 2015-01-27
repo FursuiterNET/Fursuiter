@@ -22,6 +22,9 @@ class UsersController(object):
 
         return {"user": user, "characters": characters, }
 
+    def GET_sessionUser(self, request, response):
+        return "This should direct to the profile of the currently logged-in user"
+
     @renderer("users/register.mako")
     def GET_register(self, request, response):
         if request.user is not None:
