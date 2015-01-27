@@ -2,9 +2,9 @@ from Fursuiter.authentication import create_valid_session, LoginRequired
 
 from distill.renderers import renderer
 
-class MessagesController(object):
+class SettingsController(object):
 	
 	@LoginRequired()
-	@renderer('messages.mako')
-	def messages(self, request, response):
+	@renderer('settings.mako')
+	def GET_settings(self, request, response):
 		return {}

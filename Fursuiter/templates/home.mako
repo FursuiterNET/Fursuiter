@@ -13,7 +13,7 @@
     </div>
 
     <ul class="list-group">
-      <a href="/feed" class="list-group-item">
+      <a href="/" class="list-group-item">
         <span class="glyphicon glyphicon-list"></span>
           Feed
       </a>

@@ -10,6 +10,7 @@ def add_controllers(app_):
     from .media import MediaController
     from .characters import CharactersController
     from .messages import MessagesController
+    from .settings import SettingsController
 
     loc = locals().copy()
     del loc['app_']
@@ -44,6 +45,7 @@ def map_routes(app):
     app.map_connect('user', '/profile', controller='userscontroller', action='GET_sessionUser')
 
     app.map_connect('messages', '/messages', controller='messagescontroller', action='messages', conditions={"method":"GET"})
+    app.map_connect('settings', '/settings', controller='settingscontroller', action='GET_settings')
 
     app.on_except(HTTPNotFound, notfound)
     app.on_except(HTTPForbidden, forbidden)
