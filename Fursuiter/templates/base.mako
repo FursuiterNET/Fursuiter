@@ -14,6 +14,7 @@
 </head>
 <body>
   <div class="container-fluid">
+%if req.user:
     <div class="navbar navbar-default" id="navbar">
       <div class="container" style="padding:2px">
         <div class="navbar-header">
@@ -45,6 +46,9 @@
     <div id="content-root" class="container">
         ${self.body()}
     </div>
+%else:
+  ${self.body()}      
+%endif
     <div class="well" style="min-height:256px;margin-top:128px;">
       <div class="container">
         <div class="row">

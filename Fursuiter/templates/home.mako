@@ -179,7 +179,7 @@
 <div class="jumbomaster-overlay"></div>
 <div class="jumbomaster">
   <div class="container">
-    <div class="row" style="min-height:102px;vertical-align:bottom">
+    <div class="row" style="min-height:102px;vertical-align:bottom;margin-top:1.5em;">
       <div class="col-sm-12 all-white">
         <h1>
           Fursuiter.net
