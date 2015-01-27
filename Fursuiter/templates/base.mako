@@ -13,53 +13,57 @@
   </%block>
 </head>
 <body>
-  <div class="">
+  <div class="container-fluid">
     <div class="navbar navbar-default" id="navbar">
-      <div class="navbar-header">
-        <a href="/" class="navbar-brand" title="Fursuiter.net Home">
-          Fursuiter.net
-        </a>
-        <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-            <span class="glyphicon glyphicon-align-justify"></span>
-        </button>
-      </div>
-      <div class="collapse navbar-collapse" id="navbar-collapse">
-        <div class="pull-right">
-          <%include file="navbar.mako" />
+      <div class="container" style="padding:2px">
+        <div class="navbar-header">
+          <a href="/" class="navbar-brand" title="Fursuiter.net Home">
+            Fursuiter.net
+          </a>
+          <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+              <span class="glyphicon glyphicon-align-justify"></span>
+          </button>
         </div>
-        <form action="javascript:void(0)" class="form-inline navbar-form" role="search">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search" />
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+          <div class="pull-right">
+            <%include file="navbar.mako" />
           </div>
-          <div class="form-group">
-            <button class="btn btn-default btn-block" title="Search">
-                <span class="glyphicon glyphicon-search"></span>
-            </button>
-          </div>
-        </form>
+          <form action="/search" method="GET" class="form-inline navbar-form" role="search">
+            <div class="form-group">
+              <input type="text" name="q" class="form-control" placeholder="Search" />
+            </div>
+            <div class="form-group">
+              <button class="btn btn-default btn-block" title="Search">
+                  <span class="glyphicon glyphicon-search"></span>
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
 
-    <div id="content-root" class="container-fluid">
+    <div id="content-root" class="container">
         ${self.body()}
     </div>
     <div class="well" style="min-height:256px;margin-top:128px;">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="list-group">
-            <a href="#" class="list-group-item">Source on GitHub</a>
-            <a href="http://www.furstre.am/" target="_blank" class="list-group-item">Furstre.am</a>
-            <a href="#" class="list-group-item">Terms of Service</a>
-            <a href="#" class="list-group-item">Acceptable Upload Policy</a>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="list-group">
+              <a href="//github.com/FursuiterNET/Fursuiter" class="list-group-item">Source on GitHub</a>
+              <a href="//www.furstre.am/" target="_blank" class="list-group-item">Furstre.am</a>
+              <a href="#" class="list-group-item">Terms of Service</a>
+              <a href="#" class="list-group-item">Acceptable Upload Policy</a>
+            </div>
           </div>
-        </div>
-        <div class="col-md-8">
-            <p>
-                Created by the Fursuiter.net team
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, facilis, incidunt, odio dolorem expedita cumque ullam quod fugit voluptatum unde laboriosam debitis id at rerum eaque recusandae culpa excepturi ratione! Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, obcaecati, ullam aut necessitatibus architecto dolorem explicabo. Labore, cum necessitatibus saepe non quibusdam excepturi aspernatur fugit laborum ducimus? Reiciendis, sapiente, illum.
-            </p>
+          <div class="col-md-8">
+              <p>
+                  Created by the Fursuiter.net team
+              </p>
+              <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, facilis, incidunt, odio dolorem expedita cumque ullam quod fugit voluptatum unde laboriosam debitis id at rerum eaque recusandae culpa excepturi ratione! Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, obcaecati, ullam aut necessitatibus architecto dolorem explicabo. Labore, cum necessitatibus saepe non quibusdam excepturi aspernatur fugit laborum ducimus? Reiciendis, sapiente, illum.
+              </p>
+          </div>
         </div>
       </div>
     </div>

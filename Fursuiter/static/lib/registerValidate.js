@@ -5,14 +5,14 @@
 
 window._regForm = {
   passwordStrength:{
-    0: "Weak (must be at least six characters long with at least one number)",
-    1: "Fair",
-    2: "Good",
-    3: "<strong>Strong</strong>"
+    0: "<span class='text-muted'>Weak (must be at least six characters long with at least one number)</span>",
+    1: "<span class='text-warning'>Fair</span>",
+    2: "<span class='text-success'>Good</span>",
+    3: "<strong class='text-info'>Strong</strong>"
   },
   required: "<em>Passwords must be at least six characters long and contain at least one number</em>",
   noMatch: "No",
-  match: "Yes!",
+  match: "<span class='text-success'>Yes!</span>",
   timeout: 0,
   exists: function(name){return "<em>Sorry, username <strong>"+name+"</strong> has already been taken</em>"},
   available: function(name){return "Hooray! <strong>"+name+"</strong> is available!"}
