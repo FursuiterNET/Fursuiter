@@ -1,7 +1,7 @@
 %if req.user:
 <ul class="nav navbar-nav">
   <li>
-    <a href="profile">@${req.user.username}</a>
+    <a href="/user/${req.user.username|h}">@${req.user.username}</a>
   </li>
   <li>
     <a href="upload" title="Upload">
@@ -17,8 +17,8 @@
   <li class="separator"></li>
 
   <li>
-    <a href="security" title="Security">
-      <span class="glyphicon glyphicon-lock"></span>
+    <a href="/settings" title="Settings">
+      <span class="glyphicon glyphicon-cog"></span>
     </a>
   </li>
   <li>

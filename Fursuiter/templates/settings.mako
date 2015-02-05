@@ -27,6 +27,26 @@
 			</div>
 		</div>
 	</div>
+    <div class="col-md-8">
+        <h4>Security</h4>
+        <div class="well">
+            <div class="form-group">
+                <label for="settings-passwd-old" class="control-label">Current password</label>
+                <input type="password" name="passwd_old" id="settings-passwd-old" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="settings-passwd-new" class="control-label">New password</label>
+                <input type="password" name="passwd_new" id="settings-passwd-new" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="settings-passwd-new-confirm" class="control-label">Confirm new password</label>
+                <input type="password" name="passwd_new_confirm" id="settings-passwd-new-confirm" class="form-control" />
+            </div>
+            <div class="form-group">
+                <button class="btn btn-default">Change password</button>
+            </div>
+        </div>
+    </div>
 	<div class="col-md-4">
 		<h4>Appearance</h4>
 		<div class="well">

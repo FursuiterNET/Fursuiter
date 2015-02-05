@@ -41,6 +41,8 @@ class HomeController(object):
     def GET_logout(self, request, response):
         if 'token' in request.GET and request.GET['token'] == request.session.get_csrf_token():
             request.session.invalidate()
+            del request.session["username"]
+            del request.user
             return HTTPMoved(request.url("home"))
         else:
             return HTTPForbidden()
