@@ -14,7 +14,10 @@
 </head>
 <body>
   <div class="container-fluid">
-%if req.user:
+%if req.path == "/":
+  ${self.body()}
+%else:
+  %if req.user:
     <div class="navbar navbar-default" id="navbar">
       <div class="container" style="padding:2px">
         <div class="navbar-header">
@@ -42,12 +45,20 @@
         </div>
       </div>
     </div>
-
-    <div id="content-root" class="container">
-        ${self.body()}
+  %else:
+    <div class="navbar navbar-default" id="navbar">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="/" class="navbar-brand" title="Fursuiter.net">
+            Fursuiter.net
+          </a>
+        </div>
+      </div>
     </div>
-%else:
-  ${self.body()}      
+  %endif
+  <div id="content-root" class="container">
+      ${self.body()}
+  </div>
 %endif
     <div class="well" style="min-height:256px;margin-top:128px;">
       <div class="container">
