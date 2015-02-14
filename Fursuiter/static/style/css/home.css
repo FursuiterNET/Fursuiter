@@ -1,3 +1,19 @@
+.user-identity-icon {
+	border:solid 6px rgba(0,0,0,0.2);
+	max-width:240px;
+	width:100%;
+	-webkit-transition: 0.15s ease-out;
+	-o-transition: 0.15s ease-out;
+	transition: 0.15s ease-out;
+}
+
+.user-identity-icon:hover {
+	-webkit-transform: rotate(20deg);
+	-ms-transform: rotate(20deg);
+	-o-transform: rotate(20deg);
+	transform: rotate(20deg);
+}
+
 #feed-nav {
 	margin-bottom: 16px;
 }
