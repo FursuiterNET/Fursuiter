@@ -2,7 +2,7 @@ from distill.application import Distill
 from distill.renderers import JSON
 
 from Fursuiter import sql
-from Fursuiter.sql import ORM
+from Fursuiter.sql import ORM, cleanup_session
 from Fursuiter.authentication import validate_session
 from Fursuiter.config import configure
 from Fursuiter.session import session_factory_from_settings
@@ -19,6 +19,7 @@ def main(**settings):
     # TODO: Refactor subscribers
     app.use(validate_session)
     app.use(sql.start_db_profiling)
+    app.use(cleanup_session, before=False)
 
     app.add_renderer('prettyjson', JSON(indent=4))
 

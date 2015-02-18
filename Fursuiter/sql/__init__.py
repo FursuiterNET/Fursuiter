@@ -53,5 +53,9 @@ def add_db_headers(request, response):
     threadlocal.db_total_time = 0
 
 
+def cleanup_session(request, response):
+    Session().remove()
+
+
 def start_db_profiling(request, response):
     request.add_response_callback(add_db_headers)
