@@ -6,7 +6,9 @@
   <div class="hidden-sm hidden-xs col-md-3" id="identity-column">
     <div class="well">
       <div class="identity" style="text-align:center">
-        <img src="/static/demo/full_bg.png" alt="Copper's Icon" class="img-circle img-responsive center-block" style="border:solid 6px rgba(0,0,0,0.2);max-width:240px;width:100%" />
+        <a href="/profile/">
+          <img src="/static/demo/full_bg.png" alt="Copper's Icon" class="user-identity-icon img-circle img-responsive center-block" />
+        </a>
         <h2>${req.user.realname}</h2>
         <h4>@${req.user.username}</h4>
       </div>
