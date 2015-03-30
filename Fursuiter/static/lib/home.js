@@ -30,17 +30,8 @@ feeds = {
 
   $(document).ready(function() {
 
-    // Binding for theme select
-    $('#theme-menu-toggle').on("click",function(){
-      $('#theme-menu').toggle()
-    })
-    $('#theme-menu a').on("click",function(){
-      $('#stylesheet').attr('href',"//maxcdn.bootstrapcdn.com/bootswatch/3.3.1/"+$(this).attr('data-theme')+"/bootstrap.min.css")
-      sessionStorage.setItem("theme",$(this).attr('data-theme'))
-    })
-
     // Bindings for feed navs
-    $('#feed-nav').on("click","li:not(.active) a",function() {
+    $('#home-content').on("click","#feed-nav li:not(.active) a",function() {
       $('#feed-nav .active').removeClass('active')
       $(this).parents('li:first').addClass('active')
 
@@ -51,11 +42,11 @@ feeds = {
 
     $('.feed-pane').hide()
 
-    //Load tab specified in URL hash or within markup
+    // Load tab specified in URL hash or within markup
     {((h=window.location.hash)?($('a[href='+h+']')):($('#feed-nav a.default'))).trigger('click')}
 
     // Bindings for message form and status addons
-    $('#message-form').on("submit",function(){
+    $('#home-content').on("submit","#message-form",function(){
       $('#feed-nav [data-feed-id=feed-recent]').click()
       $(this).find('input, textarea, button').attr('disabled',true)
       ajax("post","create",function(res){
@@ -71,4 +62,29 @@ feeds = {
     })
 
     $('.status-addon-group').hide()
+
+    // Bindings for pane changer options
+    $('.pane-changer').on('click',function(){
+      self = this;
+      $('.pane-changer.active').removeClass('active')
+      $(this).addClass('active')
+      $('#home-content').animate({'margin-top':'12px',opacity:0},"fast","swing",function(){
+        $(this).css({'margin-top':'-8px'}).animate({opacity:1,'margin-top':'0'},"fast").html("<p>Loading...</p>")
+        $.ajax({
+          url: "/"+$(self).attr('data-target-pane'),
+          type: "GET",
+          data: {headless:1},
+          complete: function(xhr) {
+            res = xhr.responseText;
+            if(res.trim()) {
+              $('#home-content').html(""+res)
+            } else {
+              $('#home-content').html("<h3>Error</h3><p>Uh oh! Looks like there was an error loading this page. Please try again in a bit.</p>");
+            }
+          }
+        })
+      })
+
+      return false;
+    }).filter('.active:first').trigger('click');
   })

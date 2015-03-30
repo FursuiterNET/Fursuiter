@@ -23,6 +23,10 @@ class HomeController(object):
             return HTTPMoved(request.url('home'))
         return {}
 
+    @renderer('feeds.mako')
+    def GET_feeds(self, request, response):
+        return {}
+
     def POST_login(self, request, response):
         if 'username' in request.POST:
             user = Session().query(User).filter(User.username == request.POST['username']).scalar()

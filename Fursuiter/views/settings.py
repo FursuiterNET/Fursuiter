@@ -4,7 +4,7 @@ from distill.renderers import renderer
 
 class SettingsController(object):
     
-    @LoginRequired()
+    # @LoginRequired()
     @renderer('settings.mako')
     def GET_settings(self, request, response):
         return {}

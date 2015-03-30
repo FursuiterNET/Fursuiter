@@ -1,5 +1,4 @@
 %if req.user:
-<%inherit file="base.mako" />
 
 <div class="row">
 	<div class="col-xs-12">

@@ -1,0 +1,26 @@
+.user-identity-icon {
+	border: solid 8px #FFF;
+	width:100%;
+	margin-bottom: 16px;
+}
+
+#user-cover {
+	height: 240px;
+	background: transparent 50% 50% / cover no-repeat;
+	box-shadow: inset 0 -44px rgba(0,0,0,0.4)
+}
+
+#user-cover-content {
+	margin-top:-126px;
+}
+
+#user-cover-title {
+	color: #FFF;
+	display:inline;
+	padding: 4px 8px;
+	text-shadow: 0 0 8px #000;
+}
+
+#user-navbar {
+	margin: 18px 0;
+}

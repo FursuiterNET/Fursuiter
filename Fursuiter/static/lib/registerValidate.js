@@ -57,7 +57,7 @@ $(document).ready(function(){
 
   // Verify that given username is available
   liveInput(".registration-form #username",{
-    route: "user/usernameExists",
+    route: "/users/usernameExists",
     complete: function(res){
       $('#username_label').html(ico((res.EXISTS)?'remove':'ok'))
       $('#username_message').show().html(res.NOTE)

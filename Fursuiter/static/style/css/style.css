@@ -1,3 +1,7 @@
+#content-root {
+  min-height: 640px;
+}
+
 .control-hint {
   margin-bottom: 0px;
   padding-top: 9px;

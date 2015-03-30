@@ -45,7 +45,8 @@ def map_routes(app):
     app.map_connect('user', '/profile', controller='userscontroller', action='GET_sessionUser')
 
     app.map_connect('messages', '/messages', controller='messagescontroller', action='messages', conditions={"method":"GET"})
-    app.map_connect('settings', '/settings', controller='settingscontroller', action='GET_settings')
+    app.map_connect('settings', '/settings', controller='settingscontroller', action='GET_settings', conditions={"method":"GET"})
+    app.map_connect('feeds', '/feeds', controller='homecontroller', action='GET_feeds', conditions={"method":"GET"})
     app.map_connect('notifications', '/notifications', controller='messagescontroller', action='notifications')
 
     app.on_except(HTTPNotFound, notfound)

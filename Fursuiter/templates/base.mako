@@ -3,18 +3,21 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <link rel="stylesheet" href="/static/style/css/bootstrap.min.css">
+  <link rel="stylesheet" id="stylesheet" href="/static/style/css/bootstrap.min.css">
   <link rel="stylesheet" href="/static/style/css/style.css">
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="/static/lib/fursuiter.js"></script>
   <script src="/static/lib/bootstrap.min.js"></script>
+  <script src="/static/lib/themeswitcher.js"></script>
   <%block name="pagetitle">
   <title>Fursuiter.net</title>
+  </%block>
+  <%block name="includes">
   </%block>
 </head>
 <body>
   <div class="container-fluid">
-%if req.path == "/":
+%if not req.user or not req.user.username:
   ${self.body()}
 %else:
   %if req.user:
