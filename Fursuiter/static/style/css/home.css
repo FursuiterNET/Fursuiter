@@ -1,5 +1,4 @@
 .user-identity-icon {
-	border:solid 6px rgba(0,0,0,0.2);
 	max-width:240px;
 	width:100%;
 	-webkit-transition: 0.15s ease-out;
@@ -24,4 +23,16 @@
 
 #identity-column {
 	border-right: dashed 1px rgba(0,0,0,0.1) !important;
+}
+
+#message-form .panel-body {
+	padding: 0;
+}
+
+#message-form .panel-body .form-group {
+	margin-bottom:0;
+}
+
+#message-form .panel-body textarea {
+	border: 0;
 }

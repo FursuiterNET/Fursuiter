@@ -1,7 +1,9 @@
-<form action="javascript:void(0)" class="form well well-sm" id="message-form">
-  <div class="form-group">
-    <label for="message-input" class="control-label sr-only">Message</label>
-    <textarea name="message" class="form-control" id="message-input" placeholder="Status Update" rows="3"></textarea>
+<form action="javascript:void(0)" class="panel panel-default" id="message-form">
+  <div class="panel-body">
+    <div class="form-group">
+      <label for="message-input" class="control-label sr-only">Message</label>
+      <textarea name="message" class="form-control" id="message-input" placeholder="Status Update" rows="3"></textarea>
+    </div>
   </div>
   <!-- <div class="form-group status-addon-group" data-addon-type="media">
     <div class="row">
@@ -26,21 +28,23 @@
       <option value="closed">Closed</option>
     </select>
   </div> -->
-  <div class="form-group">
-    <div class="btn-group">
-      <button type="button" class="btn btn-default status-addon-button">
-        Normal Status
-      </button>
-      <button type="button" class="btn btn-default status-addon-button" data-addon-type="media">
-        <span class="glyphicon glyphicon-picture"></span>
-        Image / Video
-      </button>
-      <button type="button" class="btn btn-default status-addon-button" data-addon-type="commission-status">
-        <span class="glyphicon glyphicon-bullhorn"></span>
-        Commission Status
-      </button>
+  <div class="panel-footer">
+    <div class="form-group">
+      <div class="btn-group">
+        <button type="button" class="btn btn-default status-addon-button">
+          Normal Status
+        </button>
+        <button type="button" class="btn btn-default status-addon-button" data-addon-type="media">
+          <span class="glyphicon glyphicon-picture"></span>
+          Image / Video
+        </button>
+        <button type="button" class="btn btn-default status-addon-button" data-addon-type="commission-status">
+          <span class="glyphicon glyphicon-bullhorn"></span>
+          Commission Status
+        </button>
+      </div>
+      <button type="submit" class="btn btn-primary pull-right">Post</button>
     </div>
-    <button type="submit" class="btn btn-primary pull-right">Post</button>
   </div>
 </form>
 <ul class="nav nav-tabs nav-justified" id="feed-nav">

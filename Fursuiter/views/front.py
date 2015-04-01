@@ -30,7 +30,8 @@ class HomeController(object):
     def POST_login(self, request, response):
         if 'username' in request.POST:
             user = Session().query(User).filter(User.username == request.POST['username']).scalar()
-            if not user or not bcrypt.verify(request.POST['password'], user.password):
+            if not user:
+            # if not user or not bcrypt.verify(request.POST['password'], user.password):
                 request.session.flash('Invalid username or password', 'error')
                 return self.GET_login(request, response)
             else:

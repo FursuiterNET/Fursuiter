@@ -4,35 +4,37 @@
 
 <div class="row">
   <div class="hidden-sm hidden-xs col-md-3" id="identity-column">
-    <div class="well">
-      <div class="identity" style="text-align:center">
-        <a href="/user/${req.user.username}">
-          <img src="/static/demo/full_bg.png" alt="Copper's Icon" class="user-identity-icon img-circle img-responsive center-block" />
-        </a>
-        <h2>${req.user.realname}</h2>
-        <h4>@${req.user.username}</h4>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="identity" style="text-align:center">
+          <a href="/user/${req.user.username}">
+            <img src="/static/demo/full_bg.png" alt="Copper's Icon" class="user-identity-icon img-circle img-responsive center-block" />
+          </a>
+          <h2>${req.user.realname}</h2>
+          <h4>@${req.user.username}</h4>
+        </div>
       </div>
+      <ul class="list-group">
+        <a href="/" class="list-group-item pane-changer active" data-target-pane="feeds">
+          <span class="glyphicon glyphicon-list"></span>
+            Feed
+        </a>
+        <a href="/messages" class="list-group-item pane-changer" data-target-pane="messages">
+          <span class="pull-right badge">14</span>
+          <span class="glyphicon glyphicon-envelope"></span>
+            Inbox
+        </a>
+        <a href="/user/${req.user.username}" class="list-group-item">
+          <span class="glyphicon glyphicon-user"></span>
+            Profile
+        </a>
+        <a href="/settings" class="list-group-item pane-changer" data-target-pane="settings">
+          <span class="glyphicon glyphicon-cog"></span>
+            Settings
+        </a>
+      </ul>
     </div>
 
-    <ul class="list-group">
-      <a href="/" class="list-group-item pane-changer active" data-target-pane="feeds">
-        <span class="glyphicon glyphicon-list"></span>
-          Feed
-      </a>
-      <a href="/messages" class="list-group-item pane-changer" data-target-pane="messages">
-        <span class="pull-right badge">14</span>
-        <span class="glyphicon glyphicon-envelope"></span>
-          Inbox
-      </a>
-      <a href="/user/${req.user.username}" class="list-group-item">
-        <span class="glyphicon glyphicon-user"></span>
-          Profile
-      </a>
-      <a href="/settings" class="list-group-item pane-changer" data-target-pane="settings">
-        <span class="glyphicon glyphicon-cog"></span>
-          Settings
-      </a>
-    </ul>
 
     %if req.user.groups:
       <p>
@@ -46,6 +48,8 @@
         %endfor
       </ul>
     %endif
+
+    <hr>
 
     <p>
       Copyright &copy; 2015 Fursuiter.net
