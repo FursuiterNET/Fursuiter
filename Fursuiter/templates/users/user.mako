@@ -6,6 +6,7 @@
 </%block>
 
 <%block name="includes">
+<script src="/static/lib/user.js"></script>
 <link rel="stylesheet" href="/static/style/css/user.css">
 </%block>
 
@@ -59,9 +60,62 @@
                 </ul>
 
                 <div id="user-character-pane">
-                    % for character in characters:
-                    ${character_well(character)}
-                    % endfor
+                    <div id="user-character-list">
+                        % if user.username == req.user.username:
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="pull-right btn-toolbar">
+                                        <a href="javascript:void(0)" class="btn btn-success" id="new-character-button">
+                                            <span class="glyphicon glyphicon-plus"></span> New Character
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        % endif
+                        % for character in characters:
+                        ${character_well(character)}
+                        % endfor
+                    </div>
+                    % if user.username == req.user.username:
+                    <div id="user-character-editor" style="display:none">
+                        <form class="form-horizontal">
+                            <input type="hidden" id="character-id" class="user-character-editor-input">
+                            <fieldset>
+                                <legend>Edit Character</legend>
+
+                                <div class="form-group">
+                                  <label class="col-sm-2 control-label" for="character-name">Name</label>  
+                                  <div class="col-sm-10">
+                                    <input id="character-name" name="character-name" type="text" placeholder="Character Name" class="form-control input-md user-character-editor-input" required>
+                                  </div>
+                                </div>
+
+                                <div class="form-group">
+                                  <label class="col-sm-2 control-label" for="character-species">Species</label>  
+                                  <div class="col-sm-10">
+                                    <input id="character-species" name="character-species" type="text" placeholder="Character Species" class="form-control input-md user-character-editor-input">
+                                  </div>
+                                </div>
+
+                                <div class="form-group">
+                                  <label class="col-sm-2 control-label" for="character-gender">Gender</label>  
+                                  <div class="col-sm-10">
+                                    <input id="character-gender" name="character-gender" type="text" placeholder="Character Gender" class="form-control input-md user-character-editor-input">
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <div class="col-xs-12">
+                                    <div class="btn-toolbar pull-right">
+                                        <button type="button" id="user-character-editor-cancel" name="user-character-editor-cancel" class="btn btn-default">Cancel</button>
+                                        <button type="submit" id="user-character-editor-submit" name="user-character-editor-submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                  </div>
+                                </div>
+
+                            </fieldset>
+                        </form>
+                    </div>
+                    % endif
                 </div>
             </div>
 

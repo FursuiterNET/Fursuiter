@@ -9,7 +9,7 @@
     </a>
   </li>
   <li>
-    <a href="notifications" title="Notifications">
+    <a href="/#notifications" title="Notifications">
       <span class="glyphicon glyphicon-globe"></span>
     </a>
   </li>
@@ -17,7 +17,7 @@
   <li class="separator"></li>
 
   <li>
-    <a href="/settings" title="Settings">
+    <a href="/#settings" class="pane-changer" data-target-pane="settings" title="Settings">
       <span class="glyphicon glyphicon-cog"></span>
     </a>
   </li>

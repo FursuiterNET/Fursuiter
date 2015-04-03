@@ -16,6 +16,7 @@
   </%block>
 </head>
 <body>
+  <div class="messages" id="global-message-wrapper"></div>
   <div class="container-fluid">
 %if not req.user or not req.user.username:
   ${self.body()}

@@ -31,22 +31,16 @@ feeds = {
   $(document).ready(function() {
 
     // Bindings for feed navs
-    $('#home-content').on("click","#feed-nav li:not(.active) a",function() {
+    $('body').on("click","#feed-nav li:not(.active) a",function() {
       $('#feed-nav .active').removeClass('active')
       $(this).parents('li:first').addClass('active')
 
       pane = $('#'+$(this).attr('data-feed-id'))
       $('.feed-pane').hide()
       feed($(pane).show().attr('data-feed-name'))
-    })
-
-    $('.feed-pane').hide()
-
-    // Load tab specified in URL hash or within markup
-    {((h=window.location.hash)?($('a[href='+h+']')):($('#feed-nav a.default'))).trigger('click')}
 
     // Bindings for message form and status addons
-    $('#home-content').on("submit","#message-form",function(){
+    }).on("submit","#message-form",function(){
       $('#feed-nav [data-feed-id=feed-recent]').click()
       $(this).find('input, textarea, button').attr('disabled',true)
       ajax("post","create",function(res){
@@ -54,14 +48,14 @@ feeds = {
         $('#message-form').find('input, textarea, button').attr('disabled',false)
         $('#message-input').val("")
       })
-    })
-
-    $('.status-addon-button').on("click",function(){
+    }).on("click",".status-addon-button",function(){
       $('.status-addon-group').hide()
       $('.status-addon-group[data-addon-type='+$(this).attr('data-addon-type')+']').show()
     })
 
+    $('.feed-pane').hide()
     $('.status-addon-group').hide()
+
 
     // Bindings for pane changer options
     $('.pane-changer').on('click',function(){
@@ -84,7 +78,11 @@ feeds = {
           }
         })
       })
+    });
 
-      return false;
-    }).filter('.active:first').trigger('click');
+    // Load tab specified in URL hash or within markup
+    if(tgt=$('a[href="'+(window.location.hash||"#feeds")+'"]')){
+      $(tgt).trigger('click')
+    }
+    $('#feed-nav a.default').click(); // Active default marked feed if present
   })

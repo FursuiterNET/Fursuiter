@@ -38,6 +38,12 @@
   border-radius: 0 !important;
 }
 
+#global-message-wrapper {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+}
+
 @media (max-width: @screen-xs-max) {
   .media-body {
     min-width: 0px;

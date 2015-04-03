@@ -15,11 +15,11 @@
         </div>
       </div>
       <ul class="list-group">
-        <a href="/" class="list-group-item pane-changer active" data-target-pane="feeds">
+        <a href="#feeds" class="list-group-item pane-changer active" data-target-pane="feeds">
           <span class="glyphicon glyphicon-list"></span>
             Feed
         </a>
-        <a href="/messages" class="list-group-item pane-changer" data-target-pane="messages">
+        <a href="#messages" class="list-group-item pane-changer" data-target-pane="messages">
           <span class="pull-right badge">14</span>
           <span class="glyphicon glyphicon-envelope"></span>
             Inbox
@@ -28,7 +28,7 @@
           <span class="glyphicon glyphicon-user"></span>
             Profile
         </a>
-        <a href="/settings" class="list-group-item pane-changer" data-target-pane="settings">
+        <a href="#settings" class="list-group-item pane-changer" data-target-pane="settings">
           <span class="glyphicon glyphicon-cog"></span>
             Settings
         </a>
