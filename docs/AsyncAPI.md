@@ -33,6 +33,13 @@ User account creation, editing and deletion ("deactivation") will be done synchr
 		3: Username is invalid (Message will be: "<INPUT> is invalid: <ARG>")
 		Any other status: Some other error occurred. ARG will be shown to user if it exists.
 
+### Characters
+
+	get(int characterId) => {CONTENT: {<JSON of character fields, including ID>}}
+	create(string name, string species, string gender) => {SUCCESS: success/failure boolean}
+	update(int characterId, string name, string species, string gender) => {SUCCESS: success/failure boolean}
+	delete(int characterId) => {SUCCESS: success/failure boolean}
+
 ### Posts
 	Create(string content, int parentId, int CDNReference, JSON privacySettings, string context) => {CONTENT: HTML for post to display}
 	Update(string content, string context) => {CONTENT: HTML for post to display}
