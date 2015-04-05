@@ -33,7 +33,7 @@
       <div class="btn-group">
         <button type="button" class="btn btn-default status-addon-button">
           Normal Status
-        </buttodn>
+        </button>
         <button type="button" class="btn btn-default status-addon-button" data-addon-type="media">
           <span class="glyphicon glyphicon-picture"></span>
           Image / Video
