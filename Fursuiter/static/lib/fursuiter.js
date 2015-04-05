@@ -26,23 +26,38 @@ function serialize(el) {
   return o;
 } 
 
-/* Initiate AJAX Request, abort duplicates */
-function ajax(route,params,callback) {
+/* [Private] Initiate AJAX Request, abort duplicates */
+function _ajax(options) {
 
-  if((r = window.fursuiter.requests[route]) && !r.isComplete){
+  options.route=options.route||"ping"
+  if((r = window.fursuiter.requests[options.route]) && !r.isComplete){
     r.abort()
   }
 
-  callback=callback||handleResponse;
-  return window.fursuiter.requests[route] = $.ajax({
-    url:route||"ping",
-    type:"POST",
-    data:params||{},
+  options.callback=options.callback||handleResponse;
+  return window.fursuiter.requests[options.route] = $.ajax({
+    url:options.route,
+    type:options.type||"POST",
+    data:options.params||{},
     complete:function(xhr){
-      window.fursuiter.requests[route].isComplete = true;
-      callback(handleResponse(xhr.responseText));
+      window.fursuiter.requests[options.route].isComplete = true;
+      if(options.handleResponse===false) {
+        options.callback(xhr.responseText)
+      } else {
+        options.callback(handleResponse(xhr.responseText));
+      }
     }
   })
+}
+
+/* Standard AJAX request */
+function ajax(route,params,callback){
+  return _ajax({route:route,params:params,callback:callback,type:"POST",handleResponse:true})
+}
+
+/* AJAX for unencapsulated markup grab */
+function aget(url,params,callback) {
+  return _ajax({route:url,params:params,callback:callback,type:"GET",handleResponse:false})
 }
 
 /* Handle AJAX responses (responses should be in properly-formatted JSON) */

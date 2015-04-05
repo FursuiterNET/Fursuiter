@@ -2,6 +2,14 @@
   min-height: 640px;
 }
 
+.img-tiny {
+  width: 24px;
+}
+
+#hamburger-nav {
+  margin: 0;
+}
+
 .control-hint {
   margin-bottom: 0px;
   padding-top: 9px;

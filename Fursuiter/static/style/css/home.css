@@ -17,10 +17,6 @@
 	margin-bottom: 16px;
 }
 
-#feed-nav a {
-	margin: 0 2px !important;
-}
-
 #identity-column {
 	border-right: dashed 1px rgba(0,0,0,0.1) !important;
 }

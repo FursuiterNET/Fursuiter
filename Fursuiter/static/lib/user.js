@@ -33,5 +33,8 @@ $(document).ready(function(){
 
     $('body').on("click",".character-edit-button",function(){
         showCharacterEditor($(this).attr('data-character-id'))
+    }).on("click","#user-navbar a",function(e){
+        e.preventDefault();
+        $(this).tab('show');
     })
 })

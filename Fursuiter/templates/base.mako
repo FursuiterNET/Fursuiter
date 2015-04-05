@@ -24,29 +24,7 @@
   %if req.user:
     <div class="navbar navbar-default" id="navbar">
       <div class="container" style="padding:2px">
-        <div class="navbar-header">
-          <a href="/" class="navbar-brand" title="Fursuiter.net Home">
-            Fursuiter.net
-          </a>
-          <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-              <span class="glyphicon glyphicon-align-justify"></span>
-          </button>
-        </div>
-        <div class="collapse navbar-collapse" id="navbar-collapse">
-          <div class="pull-right">
-            <%include file="navbar.mako" />
-          </div>
-          <form action="/search" method="GET" class="form-inline navbar-form" role="search">
-            <div class="form-group">
-              <input type="text" name="q" class="form-control" placeholder="Search" />
-            </div>
-            <div class="form-group">
-              <button class="btn btn-default btn-block" title="Search">
-                  <span class="glyphicon glyphicon-search"></span>
-              </button>
-            </div>
-          </form>
-        </div>
+        <%include file="navbar.mako" />
       </div>
     </div>
   %else:
