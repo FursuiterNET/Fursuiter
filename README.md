@@ -1,11 +1,13 @@
 Fursuiter
 =========
 
-Fursuiter.net repo
+The source of [Fursuiter.net](http://fursuiter.net), a social network for
+fursuit makers, performers, and enthusiasts.
 
 Tech
 ====
 
+* MySQL
 * [Distill](https://github.com/Dreae/Distill) - A web framework for Python.
 * [Bootstrap](http://getbootstrap.com) - A frontend library in LESS and JQuery.
 
@@ -16,7 +18,17 @@ Developers: Getting Started
 Prerequisites
 -------------
 
-Install MySQL (`mysql-server`) and [Redis](http://redis.io).
+Package dependencies:
+
+* python-dev
+* mysql-server
+* redis-server
+
+Python package dependencies:
+
+* setuptools
+* pymysql
+* py-bcrypt
 
 Create a database `fursuiter`. Grant a user full access on it. You can use any
 username and password, as long as you change it in your local copy of
@@ -25,7 +37,9 @@ username and password, as long as you change it in your local copy of
 Running
 -------
 
-    python setup.py build
+    python setup.py develop
     cp config.ini.example config.ini
+    # If you specified a different user/password for MySQL,
+    # change it in config.ini here.
     python run.py
 
