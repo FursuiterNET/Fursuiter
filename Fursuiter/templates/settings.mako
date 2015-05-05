@@ -7,6 +7,7 @@
 </div>
 
 <form action="settings" method="POST" class="form">
+	<input type="hidden" name="user_id" value="${req.user.id}">
 	<div class="col-md-8">
 		<h4>Personal Information</h4>
 		<div class="well">
@@ -21,6 +22,13 @@
 					<div class="form-group">
 						<label for="settings-user-email" class="control-label">Email Address</label>
 						<input type="text" name="email" id="settings-user-email" class="form-control" value="${req.user.email}" />
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="form-group">
+						<button type="submit" class="btn btn-default">Update</button>
 					</div>
 				</div>
 			</div>

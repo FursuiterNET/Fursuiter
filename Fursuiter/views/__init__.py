@@ -46,6 +46,7 @@ def map_routes(app):
 
     app.map_connect('messages', '/messages', controller='messagescontroller', action='messages', conditions={"method":"GET"})
     app.map_connect('settings', '/settings', controller='settingscontroller', action='GET_settings', conditions={"method":"GET"})
+    app.map_connect('settings', '/settings', controller='settingscontroller', action='POST_settings', conditions={"method":"POST"})
     app.map_connect('feeds', '/feeds', controller='homecontroller', action='GET_feeds', conditions={"method":"GET"})
     app.map_connect('notifications', '/notifications', controller='messagescontroller', action='notifications')
 
