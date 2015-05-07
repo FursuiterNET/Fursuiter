@@ -14,7 +14,13 @@
 }
 
 #feed-nav {
-	margin-bottom: 16px;
+	
+}
+
+#feed-content {
+	border-top: 0;
+	border-radius: 0;
+	padding: 12px;
 }
 
 #identity-column {

@@ -3,10 +3,9 @@
     Fursuiter.net
   </a>
   <div class="btn-group pull-right visible-xs">
-    <button href="/user/${req.user.username|h}" class="btn btn-default navbar-btn">
-      <!-- <img src="/static/demo/copperbadger.png" class="img-tiny"> -->
+    <a href="/user/${req.user.username|h}" class="btn btn-default navbar-btn">
       <strong>~${req.user.username|h}</strong>
-    </button>
+    </a>
     <button class="btn btn-default navbar-btn" data-toggle="collapse" data-target="#navbar-collapse">
         <span class="glyphicon glyphicon-align-justify"></span>
     </button>

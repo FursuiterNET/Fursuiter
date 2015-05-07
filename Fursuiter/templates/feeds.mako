@@ -64,7 +64,7 @@
       </li>
   </ul>
 
-  <div class="tab-content">
+  <div class="tab-content panel panel-default" id="feed-content">
     <div class="feed-pane tab-pane active" id="popular" data-cursor="">
       <p>Characters: ${req.user.characters}</p>
       <p>Email: ${req.user.email}</p>

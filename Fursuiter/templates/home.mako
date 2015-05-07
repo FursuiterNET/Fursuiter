@@ -20,7 +20,7 @@
             Feed
         </a>
         <a href="#messages" class="list-group-item pane-changer" data-target-pane="messages">
-          <span class="pull-right badge">14</span>
+          <span class="pull-right badge"></span> <!-- req.user.newMessageCount will fill here -->
           <span class="glyphicon glyphicon-envelope"></span>
             Inbox
         </a>
