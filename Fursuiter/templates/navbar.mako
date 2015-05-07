@@ -2,9 +2,15 @@
   <a href="/" class="navbar-brand" title="Fursuiter.net Home">
     Fursuiter.net
   </a>
-  <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-      <span class="glyphicon glyphicon-align-justify"></span>
-  </button>
+  <div class="btn-group pull-right visible-xs">
+    <button href="/user/${req.user.username|h}" class="btn btn-default navbar-btn">
+      <!-- <img src="/static/demo/copperbadger.png" class="img-tiny"> -->
+      <strong>~${req.user.username|h}</strong>
+    </button>
+    <button class="btn btn-default navbar-btn" data-toggle="collapse" data-target="#navbar-collapse">
+        <span class="glyphicon glyphicon-align-justify"></span>
+    </button>
+  </div>
 </div>
 <div class="collapse navbar-collapse" id="navbar-collapse">
   <div class="hidden-xs">
@@ -61,11 +67,8 @@
   </div> <!-- </.hidden-xs> -->
 
   <!-- Mobile hamburger contents -->
+  %if req.user:
   <ul class="list-group visible-xs" id="hamburger-nav">
-    <a href="/user/${req.user.username|h}" class="list-group-item">
-      <img src="/static/demo/copperbadger.png" class="img-tiny">
-      <strong>~${req.user.username|h}</strong>
-    </a>
     <a href="" class="list-group-item">
       <span class="glyphicon glyphicon-upload"></span> Upload
     </a>
@@ -79,4 +82,5 @@
       <span class="glyphicon glyphicon-log-out"></span> Log Out
     </a>
   </ul>
+  %endif
 </div>

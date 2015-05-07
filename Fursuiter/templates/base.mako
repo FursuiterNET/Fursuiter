@@ -22,7 +22,7 @@
   ${self.body()}
 %else:
   %if req.user:
-    <div class="navbar navbar-default" id="navbar">
+    <div class="navbar navbar-default navbar-static-top" id="navbar">
       <div class="container" style="padding:2px">
         <%include file="navbar.mako" />
       </div>

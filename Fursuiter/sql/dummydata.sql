@@ -1,13 +1,15 @@
+-- Dummy account for testing, all passwords = "password"
+
 INSERT INTO fursuiter_users
 	(username,password,email,realname)
 VALUES
-	('copperbadger','$2a$04$XzRubrJWCj/pgAIk7.33TeRitB82GeAb7dBMvXxKLzvyL9iKMzYui','badger@fursuiter.net','Copper Badger'),
-	('rechner','$2a$04$XzRubrJWCj/pgAIk7.33TeRitB82GeAb7dBMvXxKLzvyL9iKMzYui','fox@fursuiter.net','Rechner Fox'),
-	('jacktail','$2a$04$XzRubrJWCj/pgAIk7.33TeRitB82GeAb7dBMvXxKLzvyL9iKMzYui','jack@fursuiter.net','Jack Tail'),
-	('dreae','$2a$04$XzRubrJWCj/pgAIk7.33TeRitB82GeAb7dBMvXxKLzvyL9iKMzYui','otter@fursuiter.net','Dreae Otter'),
-	('mankeulv','$2a$04$XzRubrJWCj/pgAIk7.33TeRitB82GeAb7dBMvXxKLzvyL9iKMzYui','yote@fursuiter.net','Mankelv Coyote'),
-	('insomnicon','$2a$04$XzRubrJWCj/pgAIk7.33TeRitB82GeAb7dBMvXxKLzvyL9iKMzYui','insomnicon@fursuiter.net','Insomnicon Fuzzy'),
-	('testuser','$2a$04$XzRubrJWCj/pgAIk7.33TeRitB82GeAb7dBMvXxKLzvyL9iKMzYui','test@fursuiter.net','Test User');
+	('copperbadger','$2a$10$n2nfbzpomVDvdOgOqpmC8.PD3sxurRMf9Zya6nnntUyVqi6hAO1IS','badger@fursuiter.net','Copper Badger'),
+	('rechner','$2a$10$n2nfbzpomVDvdOgOqpmC8.PD3sxurRMf9Zya6nnntUyVqi6hAO1IS','fox@fursuiter.net','Rechner Fox'),
+	('jacktail','$2a$10$n2nfbzpomVDvdOgOqpmC8.PD3sxurRMf9Zya6nnntUyVqi6hAO1IS','jack@fursuiter.net','Jack Tail'),
+	('dreae','$2a$10$n2nfbzpomVDvdOgOqpmC8.PD3sxurRMf9Zya6nnntUyVqi6hAO1IS','otter@fursuiter.net','Dreae Otter'),
+	('mankeulv','$2a$10$n2nfbzpomVDvdOgOqpmC8.PD3sxurRMf9Zya6nnntUyVqi6hAO1IS','yote@fursuiter.net','Mankelv Coyote'),
+	('insomnicon','$2a$10$n2nfbzpomVDvdOgOqpmC8.PD3sxurRMf9Zya6nnntUyVqi6hAO1IS','insomnicon@fursuiter.net','Insomnicon Fuzzy'),
+	('testuser','$2a$10$n2nfbzpomVDvdOgOqpmC8.PD3sxurRMf9Zya6nnntUyVqi6hAO1IS','test@fursuiter.net','Test User');
 
 INSERT INTO fursuiter_characters
 	(user_id,name,gender,species)

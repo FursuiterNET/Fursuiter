@@ -42,8 +42,13 @@
   cursor: pointer;
 }
 
-.navbar {
+#navbar {
   border-radius: 0 !important;
+  margin: 0 -15px 8px -15px;
+}
+
+#navbar .navbar-header {
+  margin: 0 15px;
 }
 
 #global-message-wrapper {
