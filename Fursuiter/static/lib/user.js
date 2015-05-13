@@ -37,4 +37,9 @@ $(document).ready(function(){
         e.preventDefault();
         $(this).tab('show');
     })
+    if(window.location.href.indexOf('#') !== -1) {
+        var fragment = window.location.href.substring(
+                window.location.href.indexOf('#'));
+        $('a[href="' + fragment + '"]').tab('show');
+    }
 })

@@ -22,8 +22,18 @@ class UsersController(object):
 
         return {"user": user, "characters": characters, }
 
+    @renderer("users/user.mako")
     def GET_sessionUser(self, request, response):
-        return "This should direct to the profile of the currently logged-in user"
+        session = Session()
+        user = session.query(User).filter(
+                User.username == request.session["username"]).scalar()
+        if not user:
+            raise HTTPNotFound()
+        characters = session.query(Character).filter(
+                Character.user_id == user.id)
+        if not any(characters):
+            characters = []
+        return {"user": user, "characters": characters, }
 
     @renderer("users/register.mako")
     def GET_register(self, request, response):

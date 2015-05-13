@@ -37,6 +37,9 @@ def map_routes(app):
 
     app.map_connect('character', '/user/:user/character/:character',
             controller='characterscontroller', action='character')
+    app.map_connect('character', '/user/:user/characters/create',
+            controller='characterscontroller', action='create_character',
+            conditions={"method":"POST"})
 
     app.map_connect('user', '/users/usernameExists',
             controller='userscontroller', action='POST_namecheck',

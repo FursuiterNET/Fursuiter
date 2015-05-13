@@ -88,7 +88,7 @@
                             </div>
                             % if user.username == req.user.username:
                             <div id="user-character-editor" style="display:none">
-                                <form class="form-horizontal">
+                                <form class="form-horizontal" method="POST" action="/user/${user.username|h}/characters/create">
                                     <input type="hidden" id="character-id" class="user-character-editor-input">
                                     <fieldset>
                                         <legend>Edit Character</legend>
