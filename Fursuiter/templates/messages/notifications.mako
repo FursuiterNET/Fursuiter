@@ -1,7 +1,7 @@
 %if True:
 # %if req.preview:
 
-<%inherit file="base.mako" />
+<%inherit file="../base.mako" />
 <link rel="stylesheet" href="/static/style/css/notifications.css">
 
 <p>

@@ -1,6 +1,7 @@
+<%inherit file="../base.mako" />
 %if req.user:
 
-Hooray, I got it to work! ^^
+Bark bark!
 
 %else:
 
