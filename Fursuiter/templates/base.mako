@@ -10,7 +10,7 @@
   <script src="/static/lib/bootstrap.min.js"></script>
   <script src="/static/lib/themeswitcher.js"></script>
   <%block name="pagetitle">
-  <title>Fursuiter.net</title>
+    <title>Fursuiter.net</title>
   </%block>
   <%block name="includes">
   </%block>
@@ -21,25 +21,9 @@
 %if not req.user or not req.user.username:
   ${self.body()}
 %else:
-  %if req.user:
-    <div class="navbar navbar-default navbar-static-top" id="navbar">
-      <div class="container" style="padding:2px">
-        <%include file="navbar.mako" />
-      </div>
-    </div>
-  %else:
-    <div class="navbar navbar-default" id="navbar">
-      <div class="container">
-        <div class="navbar-header">
-          <a href="/" class="navbar-brand" title="Fursuiter.net">
-            Fursuiter.net
-          </a>
-        </div>
-      </div>
-    </div>
-  %endif
+  <%include file="navbar.mako" />
   <div id="content-root" class="container">
-      ${self.body()}
+    ${self.body()}
   </div>
 %endif
     <div class="well" style="min-height:256px;margin-top:128px;">

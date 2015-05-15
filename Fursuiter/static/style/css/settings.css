@@ -1,0 +1,7 @@
+/* Styles for settings pages */
+
+#settings-menu .option-title {
+	margin-top: 0;
+	display: block;
+	font-size: larger;
+}

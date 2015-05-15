@@ -1,3 +1,4 @@
+<%inherit file="base.mako" />
 <%block name="includes">
   <script src="/static/lib/home.public.js"></script>
   <script src="/static/lib/registerValidate.js"></script>

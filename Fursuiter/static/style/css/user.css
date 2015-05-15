@@ -7,18 +7,23 @@
 #user-cover {
 	height: 240px;
 	background: transparent 50% 50% / cover no-repeat;
-	box-shadow: inset 0 -44px rgba(0,0,0,0.4)
 }
 
 #user-cover-content {
-	margin-top:-126px;
+}
+
+#user-identity-column {
+	position: relative;
+	top: -196px;
 }
 
 #user-cover-title {
-	color: #FFF;
 	display:inline;
 	padding: 4px 8px;
-	text-shadow: 0 0 8px #000;
+}
+
+#user-content-column {
+
 }
 
 #user-navbar {

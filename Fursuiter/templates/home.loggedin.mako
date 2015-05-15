@@ -1,5 +1,4 @@
 <%inherit file="base.mako" />
-<%namespace name="forms" file="forms.mako" />
 
 <%block name="includes">
   <script src="/static/lib/home.loggedin.js"></script>
@@ -7,16 +6,9 @@
 </%block>
 
 <div class="row">
-  <div class="hidden-sm hidden-xs col-md-3" id="identity-column">
-    <div class="panel panel-default">
-      <ul class="list-group">
-        <a href="/user/${req.user.username}" class="list-group-item">
-          <img src="/static/demo/${req.user.username}.png" alt="" class="user-icon pull-left img-rounded img-responsive" />
-          <strong>${req.user.realname}</strong><br>
-          ${req.user.username}
-        </a>
-      </ul>
-    </div>
+  <div class="hidden-xs col-sm-3" id="identity-column">
+    
+    <%include file="users/userbadge.mako" />
 
     <p class="home-button-group-title">
       Feeds
@@ -62,6 +54,8 @@
       </ul>
     %endif
 
+    <div class="advertisement"></div>
+
     <hr>
 
     <p>
@@ -70,9 +64,14 @@
   </div>
 
 
-  <div class="col-md-7 col-sm-12" id="content-column">
+  <div class="col-md-7 col-sm-9 col-xs-12" id="content-column">
       <div class="content" id="home-content">
-          <%include file="feeds.mako" />
+          <%include file="feeds/feeds.mako" />
       </div>
+  </div>
+
+  <div class="col-md-2 col-xs-12" id="ad-column">
+    <div class="advertisement"></div>
+    <div class="advertisement"></div>
   </div>
 </div>

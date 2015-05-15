@@ -1,4 +1,7 @@
 %if req.user:
+  <div class="visible-xs">
+    <%include file="../users/userbadge.mako" />
+  </div>
   <form action="javascript:void(0)" class="panel panel-default" id="message-form">
     <div class="panel-body">
       <div class="form-group">
@@ -50,7 +53,7 @@
   </form>
 
   <div role="tabpanel">
-    <ul class="nav nav-tabs nav-justified visible-xs" id="feed-nav" data-tabs="tabs">
+    <ul class="nav nav-tabs visible-xs" id="feed-nav" data-tabs="tabs">
         <li role="presentation">
           <a href="javascript:void(0)" class="feed-trigger default" data-target-feed="popular" data-toggle="tab">Popular</a>
         </li>

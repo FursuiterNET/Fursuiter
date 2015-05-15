@@ -4,7 +4,7 @@
 		<div class="panel-heading">
 			<div class="post-heading">
 				<a href="/user/${p['loweruser']}" class="pull-left">
-					<img src="/static/demo/${p['loweruser']}.png" alt="${p['realuser']}'s Avatar" class="user-icon img-rounded">
+					<img src="/static/demo/avatar/${p['loweruser']}.png" alt="${p['realuser']}'s Avatar" class="user-icon img-rounded">
 				</a>
 				<div class="btn-toolbar pull-right">
 					<a href="javascript:void(0)" class="btn btn-sm btn-default">

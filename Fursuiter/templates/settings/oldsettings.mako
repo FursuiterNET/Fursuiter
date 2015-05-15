@@ -1,12 +1,10 @@
-%if req.user:
-<%inherit file="base.mako" />
-
+<!-- Old settings template for reference -->
 <div class="row">
 	<div class="col-xs-12">
 		<h2>User Settings</h2>
+
 	</div>
 </div>
-
 <form action="settings" method="POST" class="form">
 	<input type="hidden" name="user_id" value="${req.user.id}">
 	<div class="col-md-8">
@@ -86,9 +84,3 @@
 		</div>
 	</div>
 </form>
-
-%else:
-
-Not logged in!
-
-%endif
