@@ -30,58 +30,46 @@
       </select>
     </div>
     <div class="panel-footer">
-      <div class="form-group">
+      <div class="form-group" style="margin-bottom:0">
         <div class="btn-group">
-          <button type="button" class="btn btn-default status-addon-button">
+          <button type="button" class="btn btn-sm btn-default status-addon-button">
             Normal Status
           </button>
-          <button type="button" class="btn btn-default status-addon-button" data-addon-type="media">
+          <button type="button" class="btn btn-sm btn-default status-addon-button" data-addon-type="media">
             <span class="glyphicon glyphicon-picture"></span>
             Image / Video
           </button>
-          <button type="button" class="btn btn-default status-addon-button" data-addon-type="commission-status">
+          <button type="button" class="btn btn-sm btn-default status-addon-button" data-addon-type="commission-status">
             <span class="glyphicon glyphicon-bullhorn"></span>
             Commission Status
           </button>
         </div>
-        <button type="submit" class="btn btn-primary pull-right">Post</button>
+        <button type="submit" class="btn btn-sm btn-primary pull-right">Post</button>
       </div>
     </div>
   </form>
 
   <div role="tabpanel">
-    <ul class="nav nav-tabs nav-justified" id="feed-nav" data-tabs="tabs">
-        <li role="presentation" class="active">
-          <a href="#popular" data-toggle="tab">Popular</a>
+    <ul class="nav nav-tabs nav-justified visible-xs" id="feed-nav" data-tabs="tabs">
+        <li role="presentation">
+          <a href="javascript:void(0)" class="feed-trigger default" data-target-feed="popular" data-toggle="tab">Popular</a>
         </li>
         <li role="presentation">
-          <a href="#recent" data-toggle="tab">Recent</a>
+          <a href="javascript:void(0)" class="feed-trigger" data-target-feed="recent" data-toggle="tab">Recent</a>
         </li>
         <li role="presentation">
-          <a href="#social" data-toggle="tab">Social</a>
+          <a href="javascript:void(0)" class="feed-trigger" data-target-feed="social" data-toggle="tab">Social</a>
         </li>
         <li role="presentation">
-          <a href="#events" data-toggle="tab">Groups &amp; Events</a>
+          <a href="javascript:void(0)" class="feed-trigger" data-target-feed="events" data-toggle="tab">Groups &amp; Events</a>
         </li>
     </ul>
 
-    <div class="tab-content panel panel-default" id="feed-content">
-      <div class="feed-pane tab-pane active" id="popular" data-cursor="">
-        <p>Characters: ${req.user.characters}</p>
-        <p>Email: ${req.user.email}</p>
-        <p>Galleries: ${req.user.galleries}</p>
-        <p>Groups: ${req.user.groups}</p>
-        <p>ID: ${req.user.id}</p>
-        <p>Level: ${req.user.level}</p>
-        <p>Metadata: ${req.user.metadata}</p>
-        <p>Password: ${req.user.password}</p>
-        <p>Realname: ${req.user.realname}</p>
-        <p>Submissions: ${req.user.submissions}</p>
-        <p>Username: ${req.user.username}</p>
-      </div>
-      <div class="feed-pane tab-pane" id="recent" data-cursor=""></div>
-      <div class="feed-pane tab-pane" id="social" data-cursor=""></div>
-      <div class="feed-pane tab-pane" id="events" data-cursor=""></div>
+    <div class="tab-content" id="feed-content">
+      <div class="feed-pane tab-pane active" id="feed-popular" data-cursor=""></div>
+      <div class="feed-pane tab-pane" id="feed-recent" data-cursor=""></div>
+      <div class="feed-pane tab-pane" id="feed-social" data-cursor=""></div>
+      <div class="feed-pane tab-pane" id="feed-events" data-cursor=""></div>
     </div>
   </div>
 %else:

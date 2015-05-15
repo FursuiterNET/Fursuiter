@@ -19,22 +19,27 @@
         </div>
       </div>
       <ul class="list-group">
-        <a href="/feeds" class="list-group-item active">
-          <span class="glyphicon glyphicon-list"></span>
-            Feed
+        <a href="javascript:void(0)" class="list-group-item feed-trigger default active" data-target-feed="popular">
+          <span class="glyphicon glyphicon-star"></span> Popular
         </a>
+        <a href="javascript:void(0)" class="list-group-item feed-trigger" data-target-feed="recent">
+          <span class="glyphicon glyphicon-list-alt"></span> Recent
+        </a>
+        <a href="javascript:void(0)" class="list-group-item feed-trigger" data-target-feed="social">
+          <span class="glyphicon glyphicon-comment"></span> Social
+        </a>
+        <a href="javascript:void(0)" class="list-group-item feed-trigger" data-target-feed="events">
+          <span class="glyphicon glyphicon-calendar"></span> Groups &amp; Events
+        </a>
+      </ul>
+    </div>
+
+    <div class="panel panel-default">
+      <ul class="list-group">
         <a href="/messages" class="list-group-item">
-          <span class="pull-right badge"></span> <!-- req.user.newMessageCount will fill here -->
+          <span class="pull-right badge">2</span> <!-- req.user.newMessageCount will fill here -->
           <span class="glyphicon glyphicon-envelope"></span>
             Inbox
-        </a>
-        <a href="/user/${req.user.username}" class="list-group-item">
-          <span class="glyphicon glyphicon-user"></span>
-            Profile
-        </a>
-        <a href="/settings" class="list-group-item">
-          <span class="glyphicon glyphicon-cog"></span>
-            Settings
         </a>
       </ul>
     </div>

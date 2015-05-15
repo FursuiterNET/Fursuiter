@@ -1,19 +1,25 @@
 function initializeFeeds() {
+
   window.fursuiter.feeds = {
-    'popular':{el:$('#popular'),done:0,cursor:0},
-    'social':{el:$('#social'),done:0,cursor:0},
-    'recent':{el:$('#recent'),done:0,cursor:0},
-    'events':{el:$('#events'),done:0,cursor:0}
+    // (Done is truthy when feed has no more content to display)
+    'popular':{el:$('#feed-popular'),done:0,cursor:0},
+    'social':{el:$('#feed-social'),done:0,cursor:0},
+    'recent':{el:$('#feed-recent'),done:0,cursor:0},
+    'events':{el:$('#feed-events'),done:0,cursor:0}
   }
 }
 
+/* Fetch latest feed content */
 function feed(feedName) {
   if((pane=window.fursuiter.feeds[feedName]) && !pane.done) {
+
+    // Scrolling threshold; if user scrolls past this, more feed is requested
     thresh = ($(pane.el).height() + ($(pane.el).position().top) - $(window).height()*2);
+    
     if($(document).scrollTop() > thresh) {
-      ajax('feeds/'+feedName,{cursor:pane.cursor},function(data) {
+      aget('feeds/'+feedName,{cursor:pane.cursor},function(data) {
         if(data) {
-          $(pane.el).append(data.html)
+          $(pane.el).append(data)
           pane.cursor = data.cursor
           pane.done = data.done
         } else {
@@ -32,10 +38,15 @@ function updates(feedName) {
 $(document).ready(function() {
 
   // Bindings for feed navs
-  $('body').on("click","#feed-nav li:not(.active) a",function(e) {
+  $('body').on("click","a.feed-trigger",function(e) {
     e.preventDefault();
-    feed($(this).attr('href').replace('#',''))
-    $(this).tab('show')
+    feedName = $(this).attr('data-target-feed')
+    feed(feedName)
+    $('.feed-pane').hide()
+    $('#feed-'+feedName).show()
+
+    $('.feed-trigger.active').removeClass('active')
+    $('[data-target-feed="'+feedName+'"]').addClass("active")
 
   // Bindings for message form and status addons
   }).on("submit","#message-form",function(){
@@ -55,8 +66,8 @@ $(document).ready(function() {
   $('.status-addon-group').hide()
 
 
-  // Bindings for pane changer options
-  $('.pane-changer').on('click',function(){
+  // Bindings for pane changer options (Not using pane changers anymore)
+  /*$('.pane-changer').on('click',function(){
     self = this;
 
     $('.pane-changer.active').removeClass('active')
@@ -72,11 +83,15 @@ $(document).ready(function() {
         }
       })
     })
-  });
+  });*/
 
-  // Load tab specified in URL hash or within markup
-  if(tgt=$('a[href="'+(window.location.hash||"#feeds")+'"]')){
+  // Initialize feed objects
+  initializeFeeds();
+
+  // Load tab specified in URL hash or within markup (not using pane changers anymore)
+  /*if(tgt=$('a[href="'+(window.location.hash||"")+'"]')){
     $(tgt).trigger('click')
-  }
-  $('#feed-nav a.default').click(); // Active default marked feed if present
+  }*/
+
+  $('a.feed-trigger.default:first').click(); // Active default marked feed if present
 })
