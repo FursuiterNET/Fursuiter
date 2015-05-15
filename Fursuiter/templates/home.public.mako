@@ -63,7 +63,7 @@
             <div class="panel-title">Welcome back!</div>
           </div>
           <div class="panel-body">
-            <%forms:form class_="form-horizontal" role="form" method="POST" action="/login" name="Login">
+            <form class="form-horizontal" role="form" method="POST" action="/login" name="Login">
 
               <div class="form-group">
                 <label for="loginUsername" class="control-label col-sm-4">Username</label>
@@ -104,7 +104,7 @@
                 </div>
               </div>
 
-            </%forms:form>
+            </form>
           </div>
         </div>
 
@@ -113,7 +113,7 @@
             <div class="panel-title">New user? Register right now.</div>
           </div>
           <div class="panel-body" style="display:none;">
-            <%forms:form class_="form-horizontal registration-form" role="form" method="POST" action="/register" name="Register">
+            <form class_="form-horizontal registration-form" role="form" method="POST" action="/register" name="Register">
 
               <div class="form-group">
                 <label class="control-label col-sm-4" for="realname">Real name</label>
@@ -173,7 +173,7 @@
                 </div>
               </div>
 
-            </%forms:form>
+            </form>
           </div>
         </div>
       </div>

@@ -9,15 +9,19 @@
 <div class="row">
   <div class="hidden-sm hidden-xs col-md-3" id="identity-column">
     <div class="panel panel-default">
-      <div class="panel-body">
-        <div class="identity" style="text-align:center">
-          <a href="/user/${req.user.username}">
-            <img src="/static/demo/full_bg.png" alt="Copper's Icon" class="user-identity-icon img-circle img-responsive center-block" />
-          </a>
-          <h2>${req.user.realname}</h2>
-          <h4>@${req.user.username}</h4>
-        </div>
-      </div>
+      <ul class="list-group">
+        <a href="/user/${req.user.username}" class="list-group-item">
+          <img src="/static/demo/${req.user.username}.png" alt="" class="user-icon pull-left img-rounded img-responsive" />
+          <strong>${req.user.realname}</strong><br>
+          ${req.user.username}
+        </a>
+      </ul>
+    </div>
+
+    <p class="home-button-group-title">
+      Feeds
+    </p>
+    <div class="panel panel-primary">
       <ul class="list-group">
         <a href="javascript:void(0)" class="list-group-item feed-trigger default active" data-target-feed="popular">
           <span class="glyphicon glyphicon-star"></span> Popular
@@ -46,7 +50,7 @@
 
 
     %if req.user.groups:
-      <p>
+      <p class="home-button-group-title">
         Groups
       </p>
       <ul class="list-group">
@@ -66,7 +70,7 @@
   </div>
 
 
-  <div class="col-md-9 col-sm-12" id="content-column">
+  <div class="col-md-7 col-sm-12" id="content-column">
       <div class="content" id="home-content">
           <%include file="feeds.mako" />
       </div>

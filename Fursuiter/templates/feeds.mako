@@ -29,7 +29,7 @@
         <option value="closed">Closed</option>
       </select>
     </div>
-    <div class="panel-footer">
+    <div class="panel-footer control-footer">
       <div class="form-group" style="margin-bottom:0">
         <div class="btn-group">
           <button type="button" class="btn btn-sm btn-default status-addon-button">

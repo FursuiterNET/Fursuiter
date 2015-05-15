@@ -17,7 +17,7 @@
         <div class="row" id="user-cover-content">
             <div class="col-sm-3 hidden-xs">
                 <a href="/user/${user.username}">
-                  <img src="/static/demo/${user.username}.png" alt="${user.realname}'s Icon" class="user-identity-icon img-circle img-responsive" />
+                  <img src="/static/demo/${user.username}.png" alt="${user.realname}'s Icon" class="user-identity-icon img-rounded img-responsive" />
                 </a>
 
                 %if req.user.username != user.username:

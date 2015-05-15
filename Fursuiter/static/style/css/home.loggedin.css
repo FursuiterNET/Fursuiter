@@ -21,8 +21,12 @@
 	padding-top: 16px;
 }
 
-.feed-icon {
-	width: 42px;
+.control-footer {
+	
+}
+
+.control-footer button {
+	
 }
 
 #identity-column {
@@ -30,7 +34,7 @@
 }
 
 #identity-column .list-group-item {
-	padding: 10px 18px;
+	
 }
 
 #message-form .panel-body {
