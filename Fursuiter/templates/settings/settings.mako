@@ -24,6 +24,6 @@
 
 %else:
 
-Not logged in!
+<%include file="../notlogged.mako" />
 
 %endif
