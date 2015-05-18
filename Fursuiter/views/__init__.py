@@ -12,6 +12,7 @@ def add_controllers(app_):
     from .messages import MessagesController
     from .settings import SettingsController
     from .feeds import FeedsController
+    from .gallery import GalleryController
 
     loc = locals().copy()
     del loc['app_']
@@ -64,6 +65,9 @@ def map_routes(app):
     app.map_connect('settingsaccount','/settings/account', controller='settingscontroller', action='GET_account', conditions={"method":"GET"})
     app.map_connect('settingsprofile','/settings/profile', controller='settingscontroller', action='GET_profile', conditions={"method":"GET"})
     app.map_connect('settingsprivacy','/settings/privacy', controller='settingscontroller', action='GET_privacy', conditions={"method":"GET"})
+
+    # Gallery Pages
+    app.map_connect('samplegallery', '/gallery', controller='gallerycontroller', action='GET_sampleGallery', conditions={"METHOD":"GET"})
 
     app.on_except(HTTPNotFound, notfound)
     app.on_except(HTTPForbidden, forbidden)

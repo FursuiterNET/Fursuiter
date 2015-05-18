@@ -1,5 +1,38 @@
+#leftbar {
+  display: inline-block;
+  width: 264px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 96px 6px 0 6px;
+  z-index: 5;
+  margin-left: -264px;
+}
+
 #content-root {
-  min-height: 640px;
+  margin-top: 96px;
+  margin-left: inherit;
+  max-width: 1232px;
+  min-width: 640px;
+}
+
+#leftbar.leftbar-visible {
+  margin-left: 0;
+}
+
+@media (min-width: 992px) {
+
+  #content-root.leftbar-visible {
+    margin-left: 264px;
+  }
+
+}
+
+@media (max-width: 991px) {
+  #leftbar {
+    margin-left: -264px;
+  }
 }
 
 .img-tiny {
@@ -46,6 +79,9 @@
   border-radius: 0 !important;
   margin-left: -15px;
   margin-right: -15px;
+  z-index: 10;
+  position: fixed;
+  width: 100%;
 }
 
 #navbar .navbar-header {

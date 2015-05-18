@@ -92,22 +92,28 @@ function showMessage(message) {
   setTimeout(dismiss,5000);
 }
 
+
+
 /* Shortcut function, get markup for glyphicon with name `ico` */
 function ico(ico){
   return "<span class='glyphicon glyphicon-"+ico+"'></span>"
+}
+
+function toggleLeftbar() {
+  $('#leftbar, #content-root').toggleClass('leftbar-visible')
 }
 
 /*
   Make an element spin with the relative speed (default is 1). Returns a
   closure that stops the element spinning when called.
  */
-function spin(el,speed){
+/*function spin(el,speed){
   rot = 0
   window.fursuiter.spinners.push(nt = setInterval(function(){
     $(el).css({transform:'rotate('+(rot+=(5*(speed||1)))+'deg)'})
   },50))
   return function(){clearInterval(nt)}
-}
+}*/
 
 /*
   Bind AJAX to element that will fire 0.75 seconds after the last keyup,
@@ -160,11 +166,14 @@ function liveInput(target,par) {
 }
 
 $(document).ready(function(){
-  //Apply binding to search box
+  // Apply binding to search box
   liveInput("#search-input",{
     route: "search",
     complete: function(res){$('#search-results').html(res.CONTENT)},
     onfire: function(){$('#search-results').html("Searching...").show()},
     noinput: function(){$('#search-results').html("").hide()}
   })
+
+  // Apply toggle to leftbar toggles
+  $('.leftbar-toggle').on("click",toggleLeftbar)
 })

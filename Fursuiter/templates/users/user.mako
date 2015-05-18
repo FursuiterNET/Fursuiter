@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/static/style/css/user.css">
 </%block>
 
-<div class="panel">
+<div class="panel panel-default">
     <div class="panel-heading" id="user-cover" style="background-image:url('/static/demo/defaultCover.png')">
     </div>
     <div class="panel-body">

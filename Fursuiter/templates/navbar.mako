@@ -11,6 +11,11 @@
         <a href="/" class="navbar-brand" title="Fursuiter.net Home">
           Fursuiter.net
         </a>
+        <span class="navbar-text">
+          <a href="javascript:void(0)" title="Toggle User Panel" class="navbar-left navbar-link leftbar-toggle">
+            <span class="glyphicon glyphicon-th-list"></span>
+          </a>
+        </span>
         <div class="btn-group pull-right visible-xs">
           <a href="/user/${req.user.username|h}" class="btn btn-default navbar-btn">
             <strong>~${req.user.username|h}</strong>

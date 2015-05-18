@@ -6,9 +6,7 @@
 </%block>
 
 <div class="row">
-  <div class="hidden-xs col-sm-3" id="identity-column">
-    
-    <%include file="users/userbadge.mako" />
+  <div class="hidden-xs col-sm-3 col-md-4 col-lg-3" id="identity-column">
 
     <p class="home-button-group-title">
       Feeds
@@ -26,16 +24,6 @@
         </a>
         <a href="javascript:void(0)" class="list-group-item feed-trigger" data-target-feed="events">
           <span class="glyphicon glyphicon-calendar"></span> Groups &amp; Events
-        </a>
-      </ul>
-    </div>
-
-    <div class="panel panel-default">
-      <ul class="list-group">
-        <a href="/messages" class="list-group-item">
-          <span class="pull-right badge">2</span> <!-- req.user.newMessageCount will fill here -->
-          <span class="glyphicon glyphicon-envelope"></span>
-            Inbox
         </a>
       </ul>
     </div>
@@ -64,13 +52,13 @@
   </div>
 
 
-  <div class="col-md-7 col-sm-9 col-xs-12" id="content-column">
+  <div class="col-lg-7 col-md-8 col-sm-9 col-xs-12" id="content-column">
       <div class="content" id="home-content">
           <%include file="feeds/feeds.mako" />
       </div>
   </div>
 
-  <div class="col-md-2 col-xs-12" id="ad-column">
+  <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12" id="ad-column">
     <div class="advertisement"></div>
     <div class="advertisement"></div>
   </div>

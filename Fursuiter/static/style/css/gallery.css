@@ -1,0 +1,12 @@
+.masonry-target {
+	border: solid rgba(255,255,255,0.1);
+	border-width: 1px 0 0 1px;
+}
+
+.quarter-width {
+	width: 25%;
+}
+
+.half-width: {
+	width: 50%;
+}

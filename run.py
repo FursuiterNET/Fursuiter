@@ -30,11 +30,11 @@ if __name__ == '__main__':
         if DEBUG is not None and DEBUG.lower() == "true":
             from werkzeug.debug import DebuggedApplication
             application = DebuggedApplication(application, evalex=True)
-        run_simple('localhost', 5000, application, use_reloader=DEBUG)
+        run_simple('0.0.0.0', 8000, application, use_reloader=DEBUG)
         
     except ImportError:
         from wsgiref.simple_server import make_server, WSGIServer
         class ThreadedWSGIServer(ThreadingMixIn, WSGIServer):
             pass
-        server = make_server('', 5000, application, server_class=ThreadedWSGIServer)
+        server = make_server('', 8000, application, server_class=ThreadedWSGIServer)
         server.serve_forever()

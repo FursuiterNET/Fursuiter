@@ -7,7 +7,7 @@ $(document).ready(function(){
 	$('<div id="theme-selector">').prependTo('body')
 		.html('<div class="btn-group dropup">' +
 			'<button class="btn btn-info dropdown-toggle" id="theme-list-toggle" data-toggle="dropdown" aria-expanded="false">' +
-				'Select Theme ' +
+				'<span class="visible-xs">X-Small</span><span class="visible-sm">Small</span><span class="visible-md">Medium</span><span class="visible-lg">Large</span>' +
 				'<span class="caret"></span>' +
 				'<span class="sr-only">Toggle Dropdown</span>' +
 			'</button>' +
