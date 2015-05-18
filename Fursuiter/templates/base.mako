@@ -9,6 +9,7 @@
   <script src="/static/lib/fursuiter.js"></script>
   <script src="/static/lib/bootstrap.min.js"></script>
   <script src="/static/lib/themeswitcher.js"></script>
+  <script src="/static/lib/js.cookie.min.js"></script>
   <%block name="pagetitle">
     <title>Fursuiter.net</title>
   </%block>

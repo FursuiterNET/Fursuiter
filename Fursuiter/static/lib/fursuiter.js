@@ -101,6 +101,7 @@ function ico(ico){
 
 function toggleLeftbar() {
   $('#leftbar, #content-root').toggleClass('leftbar-visible')
+  Cookies.set('leftbar-visible',$('#leftbar').is('.leftbar-visible'))
 }
 
 /*
@@ -174,6 +175,10 @@ $(document).ready(function(){
     noinput: function(){$('#search-results').html("").hide()}
   })
 
-  // Apply toggle to leftbar toggles
+  // Apply binding to leftbar toggles, initialize leftbar visibility
   $('.leftbar-toggle').on("click",toggleLeftbar)
+
+  if(Cookies.get('leftbar-visible')=="true"){
+    toggleLeftbar()
+  }
 })

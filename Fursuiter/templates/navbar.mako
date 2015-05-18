@@ -67,7 +67,7 @@
             </ul>      
             %endif
           </div>
-          <form action="/search" method="GET" class="form-inline navbar-form hidden-xs" role="search">
+          <form action="/search" method="GET" class="form-inline navbar-form hidden-sm hidden-xs" role="search">
             <div class="form-group">
               <input type="text" name="q" class="form-control" placeholder="Search" />
             </div>
