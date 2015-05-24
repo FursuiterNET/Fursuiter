@@ -53,11 +53,16 @@ User account creation, editing and deletion ("deactivation") will be done synchr
 		# Requests for this function are triggered once when a feed is loaded, and more times
 		# when subsequent content is needed (it's for infinite scroll, in other words).
 		#
-		# feeds are url-directed; requests will be directed to one of the following:
-			- /feeds/popular
-			- /feeds/recent
-			- /feeds/social
+		# feeds are url-directed; requests will be directed to one of the following
+:			- /feeds/featured
+			- /feeds/friends
+			- /feeds/following
+			- /feeds/following-photos
+			- /feeds/following-art
+			- /feeds/following-journals
 			- /feeds/events
+			- /feeds/groups
+			- /feeds/network
 
 ### Search
 	Search(string q) => {CONTENT: HTML of search results to display in search results}
