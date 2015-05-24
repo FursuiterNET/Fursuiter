@@ -42,8 +42,8 @@ All specs are open to negotiation.
 * `boolean isSessionUser` (true if the logged in user is the same as the one being requrested),
 * `string userContent` (user's formatted page content, will be HTML produced by CKEditor),
 * `int isSessionFriend` (value according to following conditions)
-    0 - Not friends
-    1 - Friend request is pending, initiated by session user (ie, "You have sent a friend request to this person, waiting for them to respond")
-    2 - Friend request is pending, initiated by requested user (ie, "This person wants to be friends with you")
-    3 - Friends
+    * 0 - Not friends
+    * 1 - Friend request is pending, initiated by session user (ie, "You have sent a friend request to this person, waiting for them to respond")
+    * 2 - Friend request is pending, initiated by requested user (ie, "This person wants to be friends with you")
+    * 3 - Friends
 * `boolean isSessionFollow` (true if the session use follows the requested user)
