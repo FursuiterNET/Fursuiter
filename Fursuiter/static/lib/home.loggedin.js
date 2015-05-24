@@ -45,8 +45,8 @@ $(document).ready(function() {
     $('.feed-pane').hide()
     $('#feed-'+feedName).show()
 
-    $('.feed-trigger.active').removeClass('active')
-    $('[data-target-feed="'+feedName+'"]').addClass("active")
+    $('.feed-trigger.active').removeClass('active').parent('li').removeClass('active')
+    $('[data-target-feed="'+feedName+'"]').addClass("active").parent('li').addClass('active')
 
   // Bindings for message form and status addons
   }).on("submit","#message-form",function(){

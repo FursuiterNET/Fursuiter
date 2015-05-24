@@ -23,9 +23,6 @@
   ${self.body()}
 %else:
   <%include file="navbar.mako" />
-  <div class="well" id="leftbar">
-    <%include file="leftbar.mako" />
-  </div>
   <div id="content-root" class="container-fluid">
     ${self.body()}
     <div class="row well">
@@ -46,6 +43,9 @@
           </p>
       </div>
     </div>
+  </div>
+  <div class="well" id="leftbar">
+    <%include file="leftbar.mako" />
   </div>
 %endif
 </body>

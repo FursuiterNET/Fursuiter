@@ -52,19 +52,43 @@
     </div>
   </form>
 
+
   <div role="tabpanel">
-    <ul class="nav nav-tabs visible-xs" id="feed-nav" data-tabs="tabs">
+    <ul class="nav nav-tabs hidden-lg" id="feed-nav" data-tabs="tabs">
         <li role="presentation">
-          <a href="javascript:void(0)" class="feed-trigger default" data-target-feed="popular" data-toggle="tab">Popular</a>
+          <a href="javascript:void(0)" class="feed-trigger default" data-target-feed="featured">
+            <span class="glyphicon glyphicon-home"></span> Featured
+          </a>
         </li>
+
         <li role="presentation">
-          <a href="javascript:void(0)" class="feed-trigger" data-target-feed="recent" data-toggle="tab">Recent</a>
+          <a href="javascript:void(0)" class="feed-trigger" data-target-feed="friends">
+            <span class="glyphicon glyphicon-user"></span> Friends
+          </a>
         </li>
+
         <li role="presentation">
-          <a href="javascript:void(0)" class="feed-trigger" data-target-feed="social" data-toggle="tab">Social</a>
+          <a href="javascript:void(0)" class="feed-trigger" data-target-feed="following">
+            <span class="glyphicon glyphicon-star"></span> Following
+          </a>
         </li>
+
         <li role="presentation">
-          <a href="javascript:void(0)" class="feed-trigger" data-target-feed="events" data-toggle="tab">Groups &amp; Events</a>
+          <a href="javascript:void(0)" class="feed-trigger" data-target-feed="events">
+            <span class="glyphicon glyphicon-calendar"></span> Events
+          </a>
+        </li>
+
+        <li role="presentation">
+          <a href="javascript:void(0)" class="feed-trigger" data-target-feed="groups">
+            <span class="glyphicon glyphicon-th-large"></span> Groups
+          </a>
+        </li>
+
+        <li role="presentation">
+          <a href="javascript:void(0)" class="feed-trigger" data-target-feed="network">
+            <span class="glyphicon glyphicon-globe"></span> Network
+          </a>
         </li>
     </ul>
 

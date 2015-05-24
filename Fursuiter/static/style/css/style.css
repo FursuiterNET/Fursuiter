@@ -1,38 +1,7 @@
-#leftbar {
-  display: inline-block;
-  width: 264px;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  padding: 96px 6px 0 6px;
-  z-index: 5;
-  margin-left: -264px;
-}
-
 #content-root {
   margin-top: 96px;
-  margin-left: inherit;
+  margin-right: inherit;
   max-width: 1232px;
-  min-width: 640px;
-}
-
-#leftbar.leftbar-visible {
-  margin-left: 0;
-}
-
-@media (min-width: 992px) {
-
-  #content-root.leftbar-visible {
-    margin-left: 264px;
-  }
-
-}
-
-@media (max-width: 991px) {
-  #leftbar {
-    margin-left: -264px;
-  }
 }
 
 .img-tiny {
@@ -113,6 +82,46 @@
   }
   
   .user-icon {
+    width: 100%;
+  }
+}
+
+
+
+/* Leftbar styles */
+
+#leftbar {
+  display: inline-block;
+  width: 264px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 96px 6px 0 6px;
+  z-index: 5;
+  margin-left: -264px;
+}
+
+#leftbar.leftbar-visible {
+  margin-left: 0;
+}
+
+@media (min-width: 992px) {
+
+  #content-root.leftbar-visible {
+    margin-left: 264px;
+  }
+
+}
+
+@media (max-width: 991px) {
+  #leftbar {
+    margin-left: -264px;
+  }
+}
+
+@media (max-width: 552px) {
+  #leftbar.leftbar-visible {
     width: 100%;
   }
 }

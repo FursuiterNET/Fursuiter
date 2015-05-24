@@ -20,7 +20,12 @@ class UsersController(object):
         if not any(characters):
             characters = []
 
-        return {"user": user, "characters": characters, }
+        # [API-TODO] Please provide fields defined in /docs/SyncAPI.md
+        return {
+            "username": user,
+            "userid": 0,
+            "characters": characters,
+        }
 
     @renderer("users/user.mako")
     def GET_sessionUser(self, request, response):
