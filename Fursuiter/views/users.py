@@ -21,7 +21,7 @@ class UsersController(object):
             characters = []
 
         cover_url = None
-        if user.profile_settings.cover_image:
+        if user.profile_settings and user.profile_settings.cover_image:
             cover_url = user.profile_settings.cover_image.mediafile.get_url(request)
 
         # [API-TODO] Please provide fields defined in /docs/SyncAPI.md
