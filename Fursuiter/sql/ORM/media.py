@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, ForeignKey, String, DateTime, PrimaryKeyConstraint
 from sqlalchemy.orm import relationship, backref
 from Fursuiter.sql import DecBase
+from Fursuiter.storageengine import StorageEngine
 
 
 class MediaFile(DecBase):
@@ -16,3 +17,6 @@ class MediaFile(DecBase):
         self.submission_id = submission_id
         self.file_id = file_id
         self.mimetype = mimetype
+
+    def get_url(self, request):
+        return StorageEngine().get_url(request, "/media/%s" % self.file_id)

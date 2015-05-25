@@ -2,7 +2,7 @@ from passlib.hash import bcrypt
 
 from Fursuiter.authentication import create_valid_session
 from Fursuiter.sql import Session
-from Fursuiter.sql.ORM import User, Character
+from Fursuiter.sql.ORM import User, Character, Profile
 from distill.renderers import renderer
 from distill.exceptions import HTTPNotFound, HTTPMoved, HTTPBadRequest
 
@@ -16,26 +16,31 @@ class UsersController(object):
             raise HTTPNotFound()
 
         characters = session.query(Character).filter(
-                Character.user_id == user.id)
+            Character.user_id == user.id)
         if not any(characters):
             characters = []
+
+        cover_url = None
+        if user.profile_settings.cover_image:
+            cover_url = user.profile_settings.cover_image.mediafile.get_url(request)
 
         # [API-TODO] Please provide fields defined in /docs/SyncAPI.md
         return {
             "user": user,
             "userid": 0,
-            "characters": characters
+            "characters": characters,
+            "userCoverImageURL": cover_url
         }
 
     @renderer("users/user.mako")
     def GET_sessionUser(self, request, response):
         session = Session()
         user = session.query(User).filter(
-                User.username == request.session["username"]).scalar()
+            User.username == request.session["username"]).scalar()
         if not user:
             raise HTTPNotFound()
         characters = session.query(Character).filter(
-                Character.user_id == user.id)
+            Character.user_id == user.id)
         if not any(characters):
             characters = []
         return {"user": user, "characters": characters, }
@@ -60,35 +65,38 @@ class UsersController(object):
         # Check that all required fields (username, password and confirmation
         # of password) are present.
         if not all([item in request.POST for item in
-                ('username', 'password', 'password_confirm')]):
+                    ('username', 'password', 'password_confirm')]):
             request.session.flash('Please fill in all required fields.',
-                    'error')
+                                  'error')
             return self.GET_register(request, response)
 
         # Check that the password is confirmed to be correct.
         if request.POST['password'] != request.POST['password_confirm']:
             request.session.flash(
-                    ('Password and confirmation are not the same. '
-                    'Please try again.'),
-                    'error')
+                ('Password and confirmation are not the same. '
+                 'Please try again.'),
+                'error')
             return self.GET_register(request, response)
 
         # Check that the username has not already been taken.
         existing_user = Session().query(User).filter(
-                User.username == request.POST['username']).scalar()
+            User.username == request.POST['username']).scalar()
         if existing_user:
             request.session.flash('Username is already taken, sorry.',
-                    'error')
+                                  'error')
             return self.GET_register(request, response)
 
         # Create the user.
-        user = User(username = request.POST['username'],
-                password = bcrypt.encrypt(request.POST['password']),
-                email = request.POST['email'] if 'email' in request.POST else None,
-                realname = request.POST['realname'] if 'realname' in request.POST else None,
-                level = 1)
+        user = User(username=request.POST['username'],
+                    password=bcrypt.encrypt(request.POST['password']),
+                    email=request.POST['email'] if 'email' in request.POST else None,
+                    realname=request.POST['realname'] if 'realname' in request.POST else None,
+                    level=1)
         session = Session()
         session.add(user)
+        session.commit()
+
+        session.add(Profile(user.id))
         session.commit()
 
         # Redirect to home page.
@@ -99,7 +107,7 @@ class UsersController(object):
 
     def POST_namecheck(self, request, response):
         user = Session().query(User).filter(
-                User.username == request.POST["name"]).scalar()
+            User.username == request.POST["name"]).scalar()
         if user:
             # raise HTTPBadRequest()
             return "true"

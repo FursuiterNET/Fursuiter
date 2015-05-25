@@ -1,6 +1,8 @@
 from distill.exceptions import HTTPMoved, HTTPForbidden
 from distill.request import Request
+import logging
 
+logger = logging.getLogger(__name__)
 
 class LoginRequired(object):
     def __init__(self, level_required=0, redirect_route='login'):
@@ -14,6 +16,7 @@ class LoginRequired(object):
             else:
                 req = args[1]
             if req.user is None:
+                logger.debug("No user on req %s" % req)
                 return HTTPMoved(location=req.url(self._route))
             elif req.user.level < self._level:
                 return HTTPForbidden()

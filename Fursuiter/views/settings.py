@@ -1,28 +1,28 @@
+from distill.exceptions import HTTPErrorResponse
 from Fursuiter.authentication import create_valid_session, LoginRequired
 from Fursuiter.sql import Session
 from Fursuiter.sql.ORM import User
 
 from distill.renderers import renderer
 
+
 class SettingsController(object):
-    
     # @LoginRequired()
     @renderer('settings/account.mako')
     def GET_settings(self, request, response):
-        return {"category":"account"}
+        return {"category": "account"}
 
     @renderer('settings/account.mako')
     def GET_account(self, request, response):
-        return {"category":"account"}
+        return {"category": "account"}
 
     @renderer('settings/profile.mako')
     def GET_profile(self, request, response):
-        return {"category":"profile"}
+        return {"category": "profile"}
 
     @renderer('settings/privacy.mako')
     def GET_privacy(self, request, response):
-        return {"category":"privacy"}
-
+        return {"category": "privacy"}
 
     @LoginRequired()
     def POST_settings(self, request, response):
@@ -47,13 +47,13 @@ class SettingsController(object):
         # Get the current user, using the ID that was passed in.
         session = Session()
         user = session.query(User).filter(
-                User.id == request.POST["user_id"]).scalar()
+            User.id == request.POST["user_id"]).scalar()
 
         # If the password-change section is not empty, see if the password is
         # being changed.
         if "passwd_old" in request.POST or \
-                "passwd_new" in request.POST or \
-                "passwd_new_confirm" in request.POST:
+                        "passwd_new" in request.POST or \
+                        "passwd_new_confirm" in request.POST:
             if not self._handle_password_change(request, response, user):
                 return self.GET_settings(request, response)
 
@@ -82,24 +82,24 @@ class SettingsController(object):
         Then update the password accordingly.
         """
         # Check that all password fields have been filled out.
-        if not all([item in request.POST for item in 
-                ("passwd_old", "passwd_new", "passwd_new_confirm")]):
+        if not all([item in request.POST for item in
+                    ("passwd_old", "passwd_new", "passwd_new_confirm")]):
             request.session.flash(
-                    "All password fields are required for a password change.")
+                "All password fields are required for a password change.")
             return False
 
         # Verify the current password.
         if bcrypt.encrypt(request.POST["passwd_old"]) != user.password:
             request.session.flash(
-                    "Current password is incorrect. Please try again.")
+                "Current password is incorrect. Please try again.")
             return False
 
         # Verify that the new password is confirmed.
         if request.POST["passwd_new"] != request.POST["passwd_new_confirm"]:
             request.session.flash(
-                    ("Password and confirmation are not the same. "
-                    "Please try again."),
-                    "error")
+                ("Password and confirmation are not the same. "
+                 "Please try again."),
+                "error")
             return False
 
         # Update the password. This doesn't commit the password; the commit

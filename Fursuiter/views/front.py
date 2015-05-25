@@ -1,6 +1,6 @@
+import logging
 import mimetypes
 import os
-from Fursuiter.logging import getlogger
 from distill.exceptions import HTTPMoved, HTTPForbidden
 
 from passlib.hash import bcrypt
@@ -11,6 +11,8 @@ from Fursuiter.authentication import create_valid_session, LoginRequired
 
 from distill.renderers import renderer
 
+
+logger = logging.getLogger(__name__)
 
 class HomeController(object):
     @renderer('home.mako')

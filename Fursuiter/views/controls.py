@@ -1,7 +1,7 @@
+import logging
 import mimetypes
 import string
 import uuid
-from Fursuiter.logging import getlogger
 from Fursuiter.sql import Session
 from Fursuiter.sql.ORM import Submission
 from Fursuiter.sql.ORM.media import MediaFile
@@ -9,6 +9,9 @@ from Fursuiter.storageengine import StorageEngine
 from Fursuiter.authentication import LoginRequired
 from distill.renderers import renderer
 from distill.exceptions import HTTPMoved
+
+
+logger = logging.getLogger(__name__)
 
 
 class UploadController(object):
@@ -39,7 +42,7 @@ class UploadController(object):
             try:
                 Session().commit()
             except Exception as e:
-                getlogger().error(e)
+                logger.error(e)
                 Session().rollback()
 
             StorageEngine().save(request.POST['image'].file, media_id)

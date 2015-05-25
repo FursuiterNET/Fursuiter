@@ -1,9 +1,10 @@
+import logging
 from swiftclient.client import Connection
 from swiftclient.exceptions import ClientException
 
 from Fursuiter.storageengine.BaseStorageEngine import BaseStorageEngine
-from Fursuiter.logging import getlogger
 
+logger = logging.getLogger(__name__)
 
 class SwiftStorageEngine(BaseStorageEngine):
     def __init__(self, authurl, user, key, **kwargs):
@@ -17,7 +18,7 @@ class SwiftStorageEngine(BaseStorageEngine):
         try:
             return self.client.put_object(container, object_, fp.read())
         except ClientException as ex:
-            getlogger().error("Failed to get media object: {0}" % location)
+            logger.error("Failed to get media object: {0}" % location)
             raise ex
 
     def read(self, location):
@@ -28,7 +29,7 @@ class SwiftStorageEngine(BaseStorageEngine):
         try:
             return self.client.get_object(container, object_)[1]
         except ClientException as ex:
-            getlogger().error("Failed to get media object: {0}" % location)
+            logger.error("Failed to get media object: {0}" % location)
             raise ex
 
     def get_url(self, request, location):
