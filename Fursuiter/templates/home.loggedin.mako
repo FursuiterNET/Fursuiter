@@ -8,38 +8,6 @@
 <div class="row">
   <div class="col-lg-3 visible-lg" id="identity-column">
 
-    <p class="home-button-group-title">
-      Feeds
-    </p>
-    <div class="panel panel-primary">
-      <ul class="list-group">
-        <a href="javascript:void(0)" class="list-group-item feed-trigger default active" data-target-feed="featured">
-          <span class="glyphicon glyphicon-home"></span> Featured
-        </a>
-
-        <a href="javascript:void(0)" class="list-group-item feed-trigger" data-target-feed="friends">
-          <span class="glyphicon glyphicon-user"></span> Friends
-        </a>
-
-        <a href="javascript:void(0)" class="list-group-item feed-trigger" data-target-feed="following">
-          <span class="glyphicon glyphicon-star"></span> Following
-        </a>
-
-        <a href="javascript:void(0)" class="list-group-item feed-trigger" data-target-feed="events">
-          <span class="glyphicon glyphicon-calendar"></span> Events
-        </a>
-
-        <a href="javascript:void(0)" class="list-group-item feed-trigger" data-target-feed="groups">
-          <span class="glyphicon glyphicon-th-large"></span> Groups
-        </a>
-
-        <a href="javascript:void(0)" class="list-group-item feed-trigger" data-target-feed="network">
-          <span class="glyphicon glyphicon-globe"></span> Network
-        </a>
-      </ul>
-    </div>
-
-
     %if req.user.groups:
       <p class="home-button-group-title">
         Groups

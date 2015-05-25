@@ -48,3 +48,7 @@
 #message-form .panel-body textarea {
 	border: 0;
 }
+
+#feeds-container .tab-content {
+	margin-top: 16px;
+}

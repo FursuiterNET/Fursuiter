@@ -22,9 +22,9 @@ class UsersController(object):
 
         # [API-TODO] Please provide fields defined in /docs/SyncAPI.md
         return {
-            "username": user,
+            "user": user,
             "userid": 0,
-            "characters": characters,
+            "characters": characters
         }
 
     @renderer("users/user.mako")

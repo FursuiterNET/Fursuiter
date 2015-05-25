@@ -1,184 +1,87 @@
-/* Bindings for all standard AJAX response bindings */
-window.fursuiter = {
-  responseBindings: {
-    ALERT:function(alert){alert(alert)}, //Need to wrap these in closures to counteract Illegal Invocation protection
-    LOG:function(message){console.log(message)},
-    MESSAGE:showMessage
-  },
-  spinners: [],
-  requests: {},
-  timeouts: {}
-}
+var app = angular.module('fursuiter', ['ngCookies', 'ui.bootstrap']);
 
-/* Serialize all input elements within element 'el' */
-function serialize(el) {
-  var MD5 = function(src){return "";} //Dummy encryption function
-  var o={};
-  $.map($(el).find('input:not([type=radio]:not(:checked)), select, textarea'),function(e) {
-    if(n=(e=$(e)).prop('name')) {
-      o[n]=((e.is('[type=password]'))
-        ?MD5(e.val())
-        :((e.is('[type=checkbox]'))
-          ?e.is(':checked')
-          :e.val()));
+/* Global controller, please only use when necessary */
+app.controller('globalCtrl', function($scope, $cookies){
+  $scope.leftbarVisible = $cookies['leftbar-visible']=='true';
+  $scope.leftbarToggle = function(){
+    $scope.leftbarVisible = !$scope.leftbarVisible
+    $cookies['leftbar-visible'] = $scope.leftbarVisible
+  }
+})
+
+app.controller('navbarCtrl', function($scope){
+  // Live search stuff will go here
+})
+
+app.controller('feedsCtrl', function($scope, $http){
+  $scope.feeds = [
+    {
+      id: "featured",
+      label: "Featured",
+      icon: "home",
+      posts: [],
+      cursor: 0
+    },
+    {
+      id: "friends",
+      label: "Friends",
+      icon: "user",
+      posts: [],
+      cursor: 0
+    },
+    {
+      id: "following",
+      label: "Following",
+      icon: "star",
+      posts: [],
+      cursor: 0
+    },
+    {
+      id: "events",
+      label: "Events",
+      icon: "calendar",
+      posts: [],
+      cursor: 0
+    },
+    {
+      id: "groups",
+      label: "Groups",
+      icon: "th-large",
+      posts: [],
+      cursor: 0
+    },
+    {
+      id: "network",
+      label: "Network",
+      icon: "globe",
+      posts: [],
+      cursor: 0
     }
-  });
-  return o;
-} 
+  ];
 
-/* [Private] Initiate AJAX Request, abort duplicates */
-function _ajax(options) {
 
-  options.route=options.route||"ping"
-  if((r = window.fursuiter.requests[options.route]) && !r.isComplete){
-    r.abort()
+  $scope.show = function(feed) {
+    $scope.visibleFeed = feed
   }
 
-  options.callback=options.callback||handleResponse;
-  return window.fursuiter.requests[options.route] = $.ajax({
-    url:options.route,
-    type:options.type||"POST",
-    data:options.params||{},
-    complete:function(xhr){
-      window.fursuiter.requests[options.route].isComplete = true;
-      if(options.handleResponse===false) {
-        options.callback(xhr.responseText)
-      } else {
-        options.callback(handleResponse(xhr.responseText));
-      }
-    }
-  })
-}
-
-/* Standard AJAX request */
-function ajax(route,params,callback){
-  return _ajax({route:route,params:params,callback:callback,type:"POST",handleResponse:true})
-}
-
-/* AJAX for unencapsulated markup grab */
-function aget(url,params,callback) {
-  return _ajax({route:url,params:params,callback:callback,type:"GET",handleResponse:false})
-}
-
-/* Handle AJAX responses (responses should be in properly-formatted JSON) */
-function handleResponse(jsonSrc) {
-  jo = {}
-  try {
-    jo = JSON.parse(jsonSrc);
-  } catch(e) {
-    console.error("Could not parse JSON input: "+e);
-    return undefined;
+  $scope.fetch = function(feed){
+    feed.posts.push({
+      id: "12345",
+      username: "copperbadger",
+      realname: "Copper Badger",
+      edate: "17 May 2015",
+      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates nisi harum dolore, ea aperiam eligendi dolorem officiis. Sapiente corporis reiciendis, debitis magni possimus molestiae! Esse vel illum, quasi a deleniti."
+    });
+    
+    // Enable when backend starts giving us JSON
+    /*$scope.loading = true
+    $http.post('/feeds/'+feed.id, {cursor: feed.cursor}).success(function(data){
+      $scope.loading = false
+      feed.posts = data.posts
+    }).error(function(){
+      $scope.loading = false
+    })*/
   }
 
-  for(k in jo) {
-    if(clos=window.fursuiter.responseBindings[k]) {
-      clos(jo[k]);
-    } else {
-      console.warn("No binding found for \""+k+"\"");
-    }
-  }
-
-  return jo || undefined
-}
-
-/* 
-  Display on-screen message to user, message <div> will be appended to any
-  elements with class 'messages'
-*/
-function showMessage(message) {
-  var m = $("<div>"+message+"&nbsp;</div>").appendTo('.messages');
-  var dismiss=function(){$(m).slideUp(function(){$(this).remove();});};
-  $('<a href="javascript:void(0)" />').html("(dismiss)").click(dismiss).appendTo(m);
-  setTimeout(dismiss,5000);
-}
-
-
-
-/* Shortcut function, get markup for glyphicon with name `ico` */
-function ico(ico){
-  return "<span class='glyphicon glyphicon-"+ico+"'></span>"
-}
-
-function toggleLeftbar() {
-  $('#leftbar, #content-root').toggleClass('leftbar-visible')
-  Cookies.set('leftbar-visible',$('#leftbar').is('.leftbar-visible'))
-}
-
-/*
-  Make an element spin with the relative speed (default is 1). Returns a
-  closure that stops the element spinning when called.
- */
-/*function spin(el,speed){
-  rot = 0
-  window.fursuiter.spinners.push(nt = setInterval(function(){
-    $(el).css({transform:'rotate('+(rot+=(5*(speed||1)))+'deg)'})
-  },50))
-  return function(){clearInterval(nt)}
-}*/
-
-/*
-  Bind AJAX to element that will fire 0.75 seconds after the last keyup,
-  ensures redundant requests and timeout overlap do not occur. Configuration
-  parameter object keys are as follows:
-
-  complete: function to execute when AJAX request returns. Arguments are res
-    (as in ajax() function), and context (supplied by onfire). Optional
-  noinput: function to execute when text field has no input. Optional.
-  onfire: function to execute before request is sent. Returned value is used
-    as the context argument passed to `complete`. Optional.
-  params: function that returns the AJAX request arguments. If not supplied,
-    name and value will be pulled from markup automatically.
-  parel: selector of parent of the target element(s). Defaults to 'body'.
-  * route: AJAX route string
-  spinWrap: Wrapper for spinning cog icon. Optional.
-*/
-function liveInput(target,par) {
-  $(par.parel||"body").on("keyup",target,function(){
-    noop = function(){}
-    t = $(target)
-    val = t.val()
-    if(val != t.attr('data-previous-value')){
-      t.attr('data-previous-value',val)
-      clearTimeout(window.fursuiter.timeouts[target])
-      if(val){
-        window.fursuiter.timeouts[target] = setTimeout(function(){
-          context = (par.onfire||noop)()
-          if(!val){
-            val = t.attr('data-previous-value')
-          }
-          nm = t.prop('name')
-          params = par.params?(par.params(t)):{nm:t.val()}
-          s = noop
-          if(par.spinWrap) {
-            i = $(ico('cog'));
-            $(par.spinWrap).html(i);
-            s = spin(i)
-          }
-          ajax(par.route,params,function(res){
-            s()
-            {(par.complete||noop)(res,context)}
-          })
-        },750)
-      } else {
-        (par.noinput||noop)()
-      }
-    }
-  })
-}
-
-$(document).ready(function(){
-  // Apply binding to search box
-  liveInput("#search-input",{
-    route: "search",
-    complete: function(res){$('#search-results').html(res.CONTENT)},
-    onfire: function(){$('#search-results').html("Searching...").show()},
-    noinput: function(){$('#search-results').html("").hide()}
-  })
-
-  // Apply binding to leftbar toggles, initialize leftbar visibility
-  $('.leftbar-toggle').on("click",toggleLeftbar)
-
-  if(Cookies.get('leftbar-visible')=="true"){
-    toggleLeftbar()
-  }
+  $scope.fetch($scope.feeds[0])
 })

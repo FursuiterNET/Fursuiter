@@ -1,4 +1,4 @@
-<div class="navbar navbar-default" id="navbar">
+<div ng-controller='navbarCtrl' class="navbar navbar-default" id="navbar">
   <div class="container">
     %if not req.user:
       <div class="navbar-header">
@@ -12,7 +12,7 @@
           Fursuiter.net
         </a>
         <span class="navbar-text">
-          <a href="javascript:void(0)" title="Toggle User Panel" class="navbar-left navbar-link leftbar-toggle">
+          <a href="javascript:void(0)" title="Toggle User Panel" ng-click="leftbarToggle()" class="navbar-left navbar-link">
             <span class="glyphicon glyphicon-th-list"></span>
           </a>
         </span>
@@ -69,7 +69,7 @@
           </div>
           <form action="/search" method="GET" class="form-inline navbar-form hidden-sm hidden-xs" role="search">
             <div class="form-group">
-              <input type="text" name="q" class="form-control" placeholder="Search" />
+              <input type="text" name="q" class="form-control" ng-model="query" placeholder="Search" />
             </div>
             <div class="form-group">
               <button class="btn btn-default btn-block" title="Search">
