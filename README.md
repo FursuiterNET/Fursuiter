@@ -10,6 +10,7 @@ Tech
 * MySQL
 * [Distill](https://github.com/Dreae/Distill) - A web framework for Python.
 * [Bootstrap](http://getbootstrap.com) - A frontend library in LESS and JQuery.
+* [AngularJS](https://angularjs.org) - A client-side MVC library
 
 
 Developers: Getting Started
