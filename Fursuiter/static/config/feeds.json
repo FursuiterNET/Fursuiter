@@ -1,0 +1,44 @@
+[
+  {
+    "id": "featured",
+    "label": "Featured",
+    "icon": "home",
+    "posts": [],
+    "cursor": 0
+  },
+  {
+    "id": "friends",
+    "label": "Friends",
+    "icon": "user",
+    "posts": [],
+    "cursor": 0
+  },
+  {
+    "id": "following",
+    "label": "Following",
+    "icon": "star",
+    "posts": [],
+    "cursor": 0
+  },
+  {
+    "id": "events",
+    "label": "Events",
+    "icon": "calendar",
+    "posts": [],
+    "cursor": 0
+  },
+  {
+    "id": "groups",
+    "label": "Groups",
+    "icon": "th-large",
+    "posts": [],
+    "cursor": 0
+  },
+  {
+    "id": "network",
+    "label": "Network",
+    "icon": "globe",
+    "posts": [],
+    "cursor": 0
+  }
+]

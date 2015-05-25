@@ -1,0 +1,17 @@
+[
+	{
+		"id": "inbox",
+		"label": "Inbox",
+		"messages": []
+	},
+	{
+		"id": "outbox",
+		"label": "Sent Mail",
+		"messages": []
+	},
+	{
+		"id": "",
+		"label": "Trash",
+		"messages": []
+	}
+]
