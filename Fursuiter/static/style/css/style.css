@@ -12,6 +12,12 @@
   margin: 0;
 }
 
+.menuBtn {
+  background: transparent;
+  border: 0;
+  margin-left: 16px;
+}
+
 .control-hint {
   margin-bottom: 0px;
   padding-top: 9px;

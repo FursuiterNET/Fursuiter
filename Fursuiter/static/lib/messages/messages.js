@@ -21,7 +21,7 @@ app.controller('messagesCtrl',function($scope, $http){
 		})
 		// For when server gives us data in JSON
 		/*$scope.loading = true
-		$http.get('/messages/'+box.id,function(data){
+		$http.get('/messages/'+box.id).success(function(data){
 			$scope.loading = false
 			box.messages = data
 		})*/
