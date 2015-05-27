@@ -20,7 +20,8 @@ def add_controllers(app_):
 
 
 def map_routes(app):
-    app.map_connect('home', '/', controller='homecontroller', action='GET_home')
+    app.map_connect('base', '/', controller='homecontroller', action='GET_base')
+    app.map_connect('home', '/home', controller='homecontroller', action='GET_home')
     app.map_connect('login', '/login', controller='homecontroller', action='GET_login', conditions={"method": "GET"})
     app.map_connect('login', '/login', controller='homecontroller', action='POST_login', conditions={"method": "POST"})
     app.map_connect('logout', '/logout', controller='homecontroller', action='GET_logout')

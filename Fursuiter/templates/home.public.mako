@@ -1,10 +1,3 @@
-<%inherit file="base.mako" />
-<%block name="includes">
-  <script src="/static/lib/home.public.js"></script>
-  <script src="/static/lib/registerValidate.js"></script>
-  <link rel="stylesheet" href="/static/style/css/home.public.css">
-</%block>
-
 <div class="jumbomaster-overlay"></div>
 <div class="jumbomaster">
   <div class="container">
@@ -180,10 +173,5 @@
       </div>
     </div>
 
-  </div>
-  <div class="row">
-    <div class="col-sm-12">
-      
-    </div>
   </div>
 </div>

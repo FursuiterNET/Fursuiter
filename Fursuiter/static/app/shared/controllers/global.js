@@ -1,15 +1,5 @@
-var app = angular.module('fursuiter', ['ngCookies','ui.bootstrap']);
-
-app.filter('noZero',function(){
-  return function(input){
-    return (parseInt(input)==0)?'':input;
-  }
-})
-
 /* Global controller, please only use when necessary */
-app.controller('globalCtrl', function($scope, $http, $cookies){
-
-  
+app.controller('GlobalCtrl', ['$scope', '$http', '$cookies', function($scope, $http, $cookies){
 
   $scope.fetchState = function(){
   	$scope.userState = {
@@ -30,8 +20,4 @@ app.controller('globalCtrl', function($scope, $http, $cookies){
     $scope.leftbarVisible = !$scope.leftbarVisible
     $cookies['leftbar-visible'] = $scope.leftbarVisible
   }
-})
-
-app.controller('navbarCtrl', function($scope){
-  // Live search stuff will go here
-})
+}])

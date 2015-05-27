@@ -1,10 +1,3 @@
-<%inherit file="base.mako" />
-
-<%block name="includes">
-  <script src="/static/lib/home.loggedin.js"></script>
-  <link rel="stylesheet" href="/static/style/css/home.loggedin.css" id="stylesheet" />
-</%block>
-
 <div class="row">
   <div class="col-lg-3 visible-lg" id="identity-column">
 
@@ -21,7 +14,7 @@
       </ul>
     %endif
 
-    <div class="advertisement"></div>
+    <ad></ad>
 
     <hr>
 
@@ -38,8 +31,8 @@
   </div>
 
   <div class="col-lg-2 col-md-4 col-sm-3 col-xs-12" id="ad-column">
-    <div class="advertisement"></div>
-    <div class="advertisement"></div>
+    <ad></ad>
+    <ad></ad>
     <hr>
     <p class="hidden-lg">
       Copyright &copy; 2015 Fursuiter.net

@@ -1,0 +1,26 @@
+{
+  "name": "fursuiter.net",
+  "version": "0.0.0",
+  "homepage": "https://github.com/FursuiterNET/Fursuiter",
+  "description": "Fursuiter.NET",
+  "main": "",
+  "authors": [
+    "Colon3.io"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "angular-bootstrap": "~0.13.0",
+    "angular-cookies": "~1.4.0",
+    "angular-route": "~1.4.0",
+    "angular-masonry": "~0.11.0",
+    "bootswatch-dist": "flatly"
+  },
+  "resolutions": {
+    "angular": "1.4.0"
+  }
+}

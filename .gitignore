@@ -9,3 +9,9 @@ util.css
 theme.css
 dist/
 *.egg-info/
+
+node_modules/
+bower_components/
+Fursuiter/static/build/*
+Fursuiter/static/lib/*
+dump.rdb

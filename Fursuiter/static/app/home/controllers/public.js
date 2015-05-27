@@ -1,4 +1,4 @@
-$(document).ready(function(){
+/*$(document).ready(function(){
   $('body').on("click",".accordion .panel-toggleable .panel-heading",function(){
       $('.panel-shown').removeClass('panel-shown')
       $(this).parents('.panel').addClass('panel-shown').find('.panel-body').slideDown()
@@ -20,4 +20,4 @@ $(document).ready(function(){
     })
 
   $('#loginUsername').focus()
-})
+})*/

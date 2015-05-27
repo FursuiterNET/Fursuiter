@@ -1,4 +1,4 @@
-app.controller('messagesCtrl',function($scope, $http){
+app.controller('messagesCtrl',['$scope','$http',function($scope, $http){
 	$http.get('/static/config/messages.json').success(function(data){
 		$scope.boxes = data
 		$scope.fetch($scope.boxes[0])
@@ -26,4 +26,4 @@ app.controller('messagesCtrl',function($scope, $http){
 			box.messages = data
 		})*/
 	}
-})
+}])

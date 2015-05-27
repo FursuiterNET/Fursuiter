@@ -15,6 +15,10 @@ from distill.renderers import renderer
 logger = logging.getLogger(__name__)
 
 class HomeController(object):
+    @renderer('base.mako')
+    def GET_base(self, request, response):
+        return {}
+
     @renderer('home.mako')
     def GET_home(self, request, response):
         return {}

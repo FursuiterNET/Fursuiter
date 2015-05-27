@@ -2,7 +2,7 @@
   <div class="panel-body">
     <div class="form-group">
       <label for="message-input" class="control-label sr-only">Message</label>
-      <textarea name="message" class="form-control" id="message-input" placeholder="Status Update" rows="3"></textarea>
+      <textarea name="message" ng-model="post.content" class="form-control" id="message-input" placeholder="Status Update" rows="3"></textarea>
     </div>
   </div>
   <div class="form-group status-addon-group" style="display:none;" data-addon-type="media">
@@ -23,7 +23,7 @@
   </div>
   <div class="form-group status-addon-group" style="display:none;" data-addon-type="commission-status">
     <label for="commission-status-select" class="control-label">Status</label>
-    <select name="commission-status" id="commission-status-select" class="form-control">
+    <select name="commission-status" ng-model="post.commissions" id="commission-status-select" class="form-control">
       <option value="open">Open</option>
       <option value="closed">Closed</option>
     </select>
@@ -43,7 +43,7 @@
           Commission Status
         </button>
       </div>
-      <button type="submit" class="btn btn-sm btn-primary pull-right">Post</button>
+      <button type="submit" ng-click="sendPost(post)" class="btn btn-sm btn-primary pull-right">Post</button>
     </div>
   </div>
 </form>
