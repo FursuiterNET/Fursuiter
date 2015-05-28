@@ -17,7 +17,7 @@
     "angular-bootstrap": "~0.13.0",
     "angular-cookies": "~1.4.0",
     "angular-masonry": "~0.11.0",
-    "bootswatch-dist": "cerulean",
+    "bootswatch-dist": "darkly",
     "ui-router": "~0.2.15"
   },
   "resolutions": {

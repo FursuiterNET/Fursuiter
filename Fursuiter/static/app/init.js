@@ -50,6 +50,17 @@ app.config(['$stateProvider',function($stateProvider){
 		url: "/account",
 		templateUrl: "/settings/account"
 	})
+
+	.state('settings.profile', {
+		url: "/profile",
+		templateUrl: "/settings/profile"
+	})
+
+	.state('settings.privacy', {
+		url: "/privacy",
+		templateUrl: "/settings/privacy"
+	})
+
 }])
 
 /*app.config(['$routeProvider', function($routeProvider){

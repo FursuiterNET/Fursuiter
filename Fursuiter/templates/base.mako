@@ -42,9 +42,7 @@
 <body ng-controller="GlobalCtrl" ng-app>
   <%include file="shared/navbar.mako" />
 
-  <div class="container" id="content-root" ui-view>
-
-  </div>
+  <div class="container" id="content-root" ng-class="leftbarVisible? 'leftbar-visible' : 'leftbar-hidden' " ui-view></div>
 
   <%include file="shared/footer.mako" />
 

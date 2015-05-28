@@ -73,6 +73,10 @@
   padding: 10px 18px;
 }
 
+#footer {
+  margin: 72px -15px 0 -15px;
+}
+
 /* Temporary advertisement placeholder style */
 .advertisement {
   width: 100%;
@@ -104,7 +108,7 @@
 @media (min-width: 992px) {
 
   #content-root.leftbar-visible {
-    padding-left: 264px;
+    margin-left: 272px;
   }
 
 }
