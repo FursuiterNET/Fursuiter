@@ -32,6 +32,11 @@ app.config(['$stateProvider',function($stateProvider){
 		templateUrl: "/messages"
 	})
 
+	.state('notifications',{
+		url: "/notifications",
+		templateUrl: "/notifications"
+	})
+
 	// Settings
 
 	.state('settings',{

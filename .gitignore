@@ -15,3 +15,5 @@ bower_components/
 Fursuiter/static/build/*
 Fursuiter/static/lib/*
 dump.rdb
+
+*.copper

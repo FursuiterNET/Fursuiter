@@ -9,7 +9,6 @@ class MessagesController(object):
 	def messages(self, request, response):
 		return {}
 
-	@LoginRequired()
 	@renderer('messages/notifications.mako')
 	def notifications(self, request, response):
 		return {}

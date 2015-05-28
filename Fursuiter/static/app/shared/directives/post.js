@@ -1,7 +1,3 @@
-/*
-	The <post> directive
-*/
-
 app.directive('post', function(){
 	return {
 		restrict: "E",
