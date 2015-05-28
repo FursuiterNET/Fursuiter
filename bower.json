@@ -16,9 +16,9 @@
   "dependencies": {
     "angular-bootstrap": "~0.13.0",
     "angular-cookies": "~1.4.0",
-    "angular-route": "~1.4.0",
     "angular-masonry": "~0.11.0",
-    "bootswatch-dist": "flatly"
+    "bootswatch-dist": "cerulean",
+    "ui-router": "~0.2.15"
   },
   "resolutions": {
     "angular": "1.4.0"

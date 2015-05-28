@@ -8,9 +8,9 @@ from distill.renderers import renderer
 
 class SettingsController(object):
     # @LoginRequired()
-    @renderer('settings/account.mako')
+    @renderer('settings/settings.mako')
     def GET_settings(self, request, response):
-        return {"category": "account"}
+        return {"category": "none"}
 
     @renderer('settings/account.mako')
     def GET_account(self, request, response):

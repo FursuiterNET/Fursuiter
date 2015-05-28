@@ -1,7 +1,3 @@
-<%inherit file="../base.mako" />
-<%block name="includes">
-	<script src="/static/lib/messages/messages.js"></script>
-</%block>
 %if req.user:
 
 <div ng-controller="messagesCtrl">
@@ -31,7 +27,6 @@
 			</table>
 		</tab>
 	</tabset>
-
 </div>
 
 %else:

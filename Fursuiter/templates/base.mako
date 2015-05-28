@@ -16,7 +16,6 @@
   <script src="../static/lib/angular/angular.js"></script>
   <script src="../static/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
   <script src="../static/lib/angular-cookies/angular-cookies.js"></script>
-  <script src="../static/lib/angular-route/angular-route.js"></script>
   <script src="../static/lib/get-style-property/get-style-property.js"></script>
   <script src="../static/lib/get-size/get-size.js"></script>
   <script src="../static/lib/eventie/eventie.js"></script>
@@ -29,6 +28,7 @@
   <script src="../static/lib/imagesloaded/imagesloaded.js"></script>
   <script src="../static/lib/angular-masonry/angular-masonry.js"></script>
   <script src="../static/lib/bootswatch-dist/js/bootstrap.js"></script>
+  <script src="../static/lib/ui-router/release/angular-ui-router.js"></script>
   <!-- endbower -->
 
   <script src="/static/build/fursuiter.min.js"></script>
@@ -42,9 +42,11 @@
 <body ng-controller="GlobalCtrl" ng-app>
   <%include file="shared/navbar.mako" />
 
-  <div class="container" id="content-root" ng-view>
+  <div class="container" id="content-root" ui-view>
 
   </div>
+
+  <%include file="shared/footer.mako" />
 
   <%include file="shared/leftbar.mako" />
 </body>
