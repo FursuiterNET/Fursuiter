@@ -3,28 +3,30 @@
 <div ng-controller="messagesCtrl">
 	<tabset>
 		<tab ng-repeat="box in boxes" heading="{{ box.label }}">
-			<table class="table table-bordered">
-				<tr>
-					<th>Subject</th>
-					<th>Sender</th>
-					<th>Date Sent</th>
-					<th></th>
-				</tr>
-				<tr ng-repeat="message in box.messages">
-					<td>
-						<a href="/messages/read/{{ message.id }}">
-							{{ message.subject }}
-						</a>
-					</td>
-					<td>
-						<a href="/user/{{ message.from_username }}">
+			<ul class="list-group messages-list">
+				<li class="list-group-item" ng-repeat="message in box.messages">
+					<div class="row">
+						<!-- <a href="/#/user/{{ message.from_username }}" class="col-sm-1 hidden-xs">
+							<img ng-src="/static/demo/avatar/{{ message.from_username }}.png" alt="{{ message.from_realname }}" class="img-responsive">
+						</a> -->
+						<a href="/#/user/{{ message.from_username }}" class="col-sm-2 hidden-xs">
 							{{ message.from_realname }}
 						</a>
-					</td>
-					<td>{{ message.date_sent }}</td>
-					<td></td>
-				</tr>
-			</table>
+						<div class="col-sm-10">
+							<div class="pull-right text-muted">
+								{{ message.senddate }}
+							</div>
+							<strong>
+								<a href="/#/message/read/{{ message.id }}">{{ message.subject }}</a>
+							</strong>
+							&middot;
+							<span class="text-muted">
+								{{ message.body | ellipsis }}
+							</span>
+						</div>
+					</div>
+				</li>
+			</ul>
 		</tab>
 	</tabset>
 </div>
