@@ -6,11 +6,9 @@
         Groups
       </p>
       <ul class="list-group">
-        %for g in req.user.groups:
-          <a href="/groups/" class="list-group-item">
-            (Group Name)
-          </a>
-        %endfor
+        <a href="/#/groups/" class="list-group-item" ng-repeat="group in user.groups">
+          (Group Name)
+        </a>
       </ul>
     %endif
 
