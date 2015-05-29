@@ -40,13 +40,23 @@
 </head>
 
 <body ng-controller="GlobalCtrl" ng-app>
-  <%include file="shared/navbar.mako" />
 
-  <div class="container" id="content-root" ng-class="leftbarVisible? 'leftbar-visible' : 'leftbar-hidden' " ui-view></div>
+  % if req.user:
 
-  <%include file="shared/footer.mako" />
+    <%include file="shared/navbar.mako" />
 
-  <%include file="shared/leftbar.mako" />
+    <div class="container" id="content-root" ng-class="leftbarVisible? 'leftbar-visible' : 'leftbar-hidden' " ui-view></div>
+
+    <%include file="shared/footer.mako" />
+
+    <%include file="shared/leftbar.mako" />
+
+  % else:
+
+    <div class="container-fluid" ui-view></div>
+
+  % endif
+
 </body>
 
 </html>

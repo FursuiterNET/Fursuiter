@@ -1,3 +1,5 @@
+% if req.user:
+
 <div class="panel panel-default">
   <ul class="list-group">
     <a href="#/user/${req.user.username}" class="list-group-item">
@@ -7,3 +9,5 @@
     </a>
   </ul>
 </div>
+
+% endif
