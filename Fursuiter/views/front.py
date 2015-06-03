@@ -23,7 +23,7 @@ class HomeController(object):
     def GET_home(self, request, response):
         return {}
 
-    @renderer('login.mako')
+    @renderer('public/login.mako')
     def GET_login(self, request, response):
         if request.user is not None:
             return HTTPMoved(request.url('home'))
@@ -36,25 +36,24 @@ class HomeController(object):
     def POST_login(self, request, response):
         if 'username' in request.POST:
             user = Session().query(User).filter(User.username == request.POST['username']).scalar()
-            if not user:
-            # if not user or not bcrypt.verify(request.POST['password'], user.password):
+            if not user or not bcrypt.verify(request.POST['password'], user.password):
                 request.session.flash('Invalid username or password', 'error')
                 return self.GET_login(request, response)
             else:
                 request.session['username'] = user.username
                 request.user = user
 
-            return HTTPMoved(request.url("home"))
+            return HTTPMoved(request.url("/"))
         else:
             return self.GET_login(request, response)
 
-    @LoginRequired()
+    # @LoginRequired()
     def GET_logout(self, request, response):
         if 'token' in request.GET and request.GET['token'] == request.session.get_csrf_token():
             request.session.invalidate()
             del request.session["username"]
             del request.user
-            return HTTPMoved(request.url("home"))
+            return HTTPMoved(request.url("/"))
         else:
             return HTTPForbidden()
 

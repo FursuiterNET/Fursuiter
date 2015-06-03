@@ -4,6 +4,6 @@
 
 %else:
 
-  <%include file="home.public.mako" />
+  <%include file="public/home.mako" />
 
 %endif

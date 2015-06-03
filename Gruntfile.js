@@ -11,7 +11,8 @@ module.exports = function(grunt){
 		uglify: {
 			js: {
 				files: {
-					'Fursuiter/static/build/fursuiter.min.js': ['Fursuiter/static/app/init.js','Fursuiter/static/app/**/*.js']
+					'Fursuiter/static/build/fursuiter.loggedin.min.js': ['Fursuiter/static/app/init.js','Fursuiter/static/app/**/*.js'],
+					'Fursuiter/static/build/fursuiter.public.min.js': ['Fursuiter/static/publicapp/init.js','Fursuiter/static/publicapp/**/*.js']
 				}
 			}
 		},
@@ -25,8 +26,7 @@ module.exports = function(grunt){
 		wiredep: {
 			base: {
 				bowerJson: require('./bower.json'),
-				//cwd: 'Fursuiter/static/lib/',
-				src: ['Fursuiter/templates/base.mako']
+				src: ['Fursuiter/templates/base.loggedin.mako','Fursuiter/templates/public/base.mako']
 			}
 		},
 		watch: {

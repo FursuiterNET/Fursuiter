@@ -6,13 +6,28 @@ var app = angular.module('fursuiter', [
 	'ui.router'
 ]);
 
-app.config(['$stateProvider',function($stateProvider){
+app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider,$urlRouterProvider){
+
+	// --- States (aka, Routes)
+
 	$stateProvider
 
 	.state('home',{
 		url: "/",
 		templateUrl: "/home",
 		controller: "HomeCtrl"
+	})
+
+	// Login & Registration
+
+	.state('home.login',{
+		url: "^/login",
+		templateUrl: "/login"
+	})
+
+	.state('home.register',{
+		url: "^/register",
+		templateUrl: "/register"
 	})
 
 	// User
@@ -37,7 +52,7 @@ app.config(['$stateProvider',function($stateProvider){
 		templateUrl: "/notifications"
 	})
 
-	// Settings
+	// Settings (uses nesting views)
 
 	.state('settings',{
 		abstract: true,
@@ -66,28 +81,6 @@ app.config(['$stateProvider',function($stateProvider){
 		templateUrl: "/settings/privacy"
 	})
 
-}])
+	$urlRouterProvider.otherwise('/')
 
-/*app.config(['$routeProvider', function($routeProvider){
-	// Note: template URLs must be directed to a mapped route on the server; no partials.
-	$routeProvider
-		.when('/', {
-			templateUrl: "/home",
-			controller: 'HomeCtrl'
-		})
-		.when('/user/:username', {
-			templateUrl: function(params){ return '/user/'+params.username},
-			controller: 'UserCtrl'
-		})
-		.when('/settings/:page', {
-			templateUrl: function(params){ return '/settings/'+params.page},
-			controller: 'SettingsCtrl'
-		})
-		.when('/messages/:box', {
-			templateUrl: function(params){ return '/messages/'+params.page },
-			controller: 'MessagesCtrl'
-		})
-		.otherwise({
-			redirectTo: '/'
-		})
-}])*/
+}])

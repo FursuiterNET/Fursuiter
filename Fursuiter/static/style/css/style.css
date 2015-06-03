@@ -4,6 +4,13 @@
   padding-left: inherit;
 }
 
+/* Makes checkboxes look not crappy next to text */
+input[type=checkbox] {
+  position: relative;
+  top: 2px;
+  margin: 0 8px;
+}
+
 .img-tiny {
   width: 24px;
 }

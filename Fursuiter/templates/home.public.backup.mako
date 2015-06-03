@@ -14,7 +14,7 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container" ui-view>
   <div class="row">
     <div class="col-md-8 hidden-sm hidden-xs" style="margin-top:64px;">
 

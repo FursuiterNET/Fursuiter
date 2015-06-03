@@ -45,7 +45,7 @@ class UsersController(object):
             characters = []
         return {"user": user, "characters": characters, }
 
-    @renderer("users/register.mako")
+    @renderer("public/register.mako")
     def GET_register(self, request, response):
         if request.user is not None:
             return HTTPMoved(request.url("home"))
